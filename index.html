@@ -336,17 +336,7 @@
             <article class="tool-card"><span class="tool-icon">🥣</span><h3>دليل التغذية</h3><p>معلومات تساعدك تفهم العوامل المؤثرة في احتياجاته الغذائية.</p><a href="nutrition.html">اعرف أكتر ←</a></article>
             <article class="tool-card"><span class="tool-icon">🗓️</span><h3>مواعيد الرعاية</h3><p>قائمة بسيطة تساعدك تفتكر المتابعة والعناية الدورية.</p><a href="care.html">شوف القائمة ←</a></article>\n            <article class="tool-card"><span class="tool-icon">🪪</span><h3>PawTint ID</h3><p>ملف شخصي مجاني قيد التطوير لتنظيم بيانات صاحبك الأليف.</p><a href="pawtint-id.html">اكتشف الفكرة ←</a></article>\n            <article class="tool-card"><span class="tool-icon">🛍️</span><h3>دليل المنتجات</h3><p>نصائح لاختيار مستلزمات مناسبة للقطط والكلاب.</p><a href="products.html">افتح الدليل ←</a></article>\n            <article class="tool-card"><span class="tool-icon">🐾</span><h3>PawTint ID</h3><p>ملف مجاني لبيانات حيوانك وملاحظات الرعاية، محفوظ على جهازك.</p><a href="pawtint-id.html">أنشئ ملفه مجانًا ←</a></article>\n            <article class="tool-card"><span class="tool-icon">🛍️</span><h3>دليل المنتجات</h3><p>معايير بسيطة تساعدك تختار مستلزمات القطط والكلاب بوعي.</p><a href="products.html">اكتشف دليل الاختيار ←</a></article>
           </div>
-          <div class="age-tool" id="age-calculator">
-            <h3>🎂 احسب العمر التقريبي</h3>
-            <div class="calc-row">
-              <select id="pet-type" aria-label="نوع الحيوان"><option value="dog">كلب</option><option value="cat">قطة</option></select>
-              <input id="pet-years" type="number" min="0" max="30" step="1" placeholder="سنين" aria-label="العمر بالسنوات">
-              <input id="pet-months" type="number" min="0" max="11" step="1" placeholder="شهور إضافية" aria-label="شهور إضافية">
-              <button class="button" id="calculate-age" type="button">احسب العمر</button>
-            </div>
-            <p class="calc-result" id="age-result" aria-live="polite"></p>
-            <p class="note">النتيجة تقريبية للتوعية فقط؛ تطور الحيوانات يختلف حسب النوع والحجم والصحة، ولا تُستخدم لتقييم الحالة الطبية.</p>
-          </div>
+
         </div>
       </div>
     </section>
@@ -400,21 +390,6 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("calculate-age").addEventListener("click", function () {
-      const type = document.getElementById("pet-type").value;
-      const years = Number(document.getElementById("pet-years").value || 0);
-      const months = Number(document.getElementById("pet-months").value || 0);
-      const result = document.getElementById("age-result");
-      if (!Number.isFinite(years) || !Number.isFinite(months) || years < 0 || years > 30 || months < 0 || months > 11 || (years === 0 && months === 0)) {
-        result.textContent = "اكتب عمر صحيح: من 1 شهر إلى 30 سنة.";
-        return;
-      }
-      const age = years + months / 12;
-      const human = age <= 1 ? 15 * age : age <= 2 ? 15 + (age - 1) * 9 : 24 + (age - 2) * (type === "cat" ? 4 : 5);
-      result.textContent = "العمر التقريبي المكافئ: " + Math.round(human) + " سنة بشرية تقريبًا. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية.";
-    });
-  </script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
