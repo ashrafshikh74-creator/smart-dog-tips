@@ -116,6 +116,26 @@
     .story-copy{background:#f8e9ed}
     .newsletter{background:linear-gradient(120deg,#f5d9e3,#f7e9d5 65%,#e9e2f4)}
     .newsletter .button{background:#6f5875}
+    
+    /* PawTint Playful Storefront */
+    .playful-floor{position:relative;isolation:isolate}
+    .shop-pets{position:fixed;inset:auto 0 0;z-index:30;pointer-events:none;height:118px;overflow:hidden}
+    .shop-dog{position:absolute;bottom:7px;left:-100px;font-size:58px;filter:drop-shadow(0 5px 4px #49384a22);animation:dog-stroll 27s linear infinite}
+    .shop-dog:after{content:"";position:absolute;left:12px;bottom:-3px;width:58px;height:9px;border-radius:50%;background:#6d526022;filter:blur(4px)}
+    @keyframes dog-stroll{0%{transform:translateX(0) scaleX(1)}47%{transform:translateX(calc(100vw + 180px)) scaleX(1)}50%{transform:translateX(calc(100vw + 180px)) scaleX(-1)}97%{transform:translateX(0) scaleX(-1)}100%{transform:translateX(0) scaleX(1)}}
+    .shop-cat{position:fixed;right:18px;bottom:22px;z-index:31;pointer-events:auto;border:1px solid #f0dce7;background:#fffafc;color:#6e5574;border-radius:25px 25px 8px 25px;padding:8px 13px;box-shadow:0 9px 28px #50364b20;display:flex;align-items:center;gap:9px;cursor:pointer;transition:transform .2s}
+    .shop-cat:hover{transform:translateY(-5px) rotate(-2deg)}
+    .shop-cat-face{font-size:34px;line-height:1}
+    .shop-cat-hint{font-size:12px;font-weight:800;white-space:nowrap}
+    .shop-cat.scratching .shop-cat-face{animation:cat-scratch .48s ease-in-out 3}
+    @keyframes cat-scratch{0%,100%{transform:rotate(0)}30%{transform:rotate(-16deg) translateY(-4px)}65%{transform:rotate(13deg) translateY(2px)}}
+    .toy-pop{position:fixed;right:34px;bottom:105px;z-index:32;pointer-events:none;font-size:24px;opacity:0;transform:translateY(12px) scale(.7);transition:.25s}
+    .toy-pop.show{opacity:1;transform:translateY(0) scale(1)}
+    .paw-trail{position:fixed;z-index:29;pointer-events:none;font-size:20px;color:#c887a2;animation:paw-fade .9s ease-out forwards}
+    @keyframes paw-fade{to{opacity:0;transform:translateY(-24px) rotate(25deg) scale(.7)}}
+    @media(max-width:620px){.shop-pets{height:82px}.shop-dog{font-size:42px;bottom:4px}.shop-cat{right:10px;bottom:12px;padding:7px 10px}.shop-cat-face{font-size:28px}.shop-cat-hint{font-size:11px}.toy-pop{right:24px;bottom:78px}}
+    @media(prefers-reduced-motion:reduce){.shop-dog,.shop-cat.scratching .shop-cat-face,.paw-trail{animation:none!important}.shop-dog{left:12px}.paw-trail{display:none}}
+
     </style>
 </head>
 <body>
@@ -259,6 +279,48 @@
       const human = age <= 1 ? 15 * age : age <= 2 ? 15 + (age - 1) * 9 : 24 + (age - 2) * (type === "cat" ? 4 : 5);
       result.textContent = "العمر التقريبي المكافئ: " + Math.round(human) + " سنة بشرية تقريبًا. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية.";
     });
+  </script>
+
+  <div class="shop-pets" aria-hidden="true"><span class="shop-dog">🐕</span></div>
+  <button class="shop-cat" id="shop-cat" type="button" aria-label="العب مع القطة الصغيرة">
+    <span class="shop-cat-face" aria-hidden="true">🐈</span><span class="shop-cat-hint" id="shop-cat-hint">دوس هنا… مياو!</span>
+  </button>
+  <span class="toy-pop" id="toy-pop" aria-hidden="true">🧶 ✨</span>
+
+  <script>
+
+    const shopCat = document.getElementById("shop-cat");
+    const catHint = document.getElementById("shop-cat-hint");
+    const toyPop = document.getElementById("toy-pop");
+    let catTimer;
+    shopCat.addEventListener("click", () => {
+      shopCat.classList.remove("scratching");
+      void shopCat.offsetWidth;
+      shopCat.classList.add("scratching");
+      catHint.textContent = "مياااو! عايزة ألعب 🐾";
+      toyPop.classList.add("show");
+      clearTimeout(catTimer);
+      catTimer = setTimeout(() => {
+        shopCat.classList.remove("scratching");
+        catHint.textContent = "دوس هنا… مياو!";
+        toyPop.classList.remove("show");
+      }, 1900);
+    });
+    let pawStamp = 0;
+    document.addEventListener("click", (event) => {
+      if (event.target.closest("a,button,input,select") || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const now = Date.now();
+      if (now - pawStamp < 450) return;
+      pawStamp = now;
+      const paw = document.createElement("span");
+      paw.className = "paw-trail";
+      paw.textContent = "🐾";
+      paw.style.left = Math.min(event.clientX, window.innerWidth - 30) + "px";
+      paw.style.top = Math.min(event.clientY, window.innerHeight - 35) + "px";
+      document.body.appendChild(paw);
+      setTimeout(() => paw.remove(), 950);
+    });
+
   </script>
 </body>
 </html>
