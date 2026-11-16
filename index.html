@@ -148,10 +148,10 @@
           <p>ابدأ من هنا — هتلاقي معلومات وأفكار عملية تساعدك تفهم احتياجاته وتهتم بيه كل يوم.</p>
         </div>
         <div class="category-grid">
-          <a class="category" href="#guides"><span class="cat-icon">🐶</span><div><h3>عالم الكلاب</h3><p>تدريب، نشاط، وعناية يومية</p></div><span class="arrow">↙</span></a>
-          <a class="category" href="#guides"><span class="cat-icon">🐱</span><div><h3>عالم القطط</h3><p>راحة، لعب، وتغذية</p></div><span class="arrow">↙</span></a>
+          <a class="category" href="dogs.html"><span class="cat-icon">🐶</span><div><h3>عالم الكلاب</h3><p>تدريب، نشاط، وعناية يومية</p></div><span class="arrow">↙</span></a>
+          <a class="category" href="cats.html"><span class="cat-icon">🐱</span><div><h3>عالم القطط</h3><p>راحة، لعب، وتغذية</p></div><span class="arrow">↙</span></a>
           <a class="category" href="#tools"><span class="cat-icon">🧮</span><div><h3>أدوات ذكية</h3><p>حسابات سهلة ومجانية</p></div><span class="arrow">↙</span></a>
-          <a class="category" href="#care"><span class="cat-icon">🌿</span><div><h3>روتين الرعاية</h3><p>نظّم المواعيد والعادات</p></div><span class="arrow">↙</span></a>
+          <a class="category" href="care.html"><span class="cat-icon">🌿</span><div><h3>روتين الرعاية</h3><p>نظّم المواعيد والعادات</p></div><span class="arrow">↙</span></a>
         </div>
       </div>
     </section>
@@ -163,9 +163,9 @@
           <h2>شوية أدوات…<br>تسهّل عليك الحكاية.</h2>
           <p>بنجهّز أدوات صغيرة تساعدك تاخد فكرة أوضح عن احتياجات حيوانك الأليف. جرّب أول أداة، والباقي جاي.</p>
           <div class="tool-grid">
-            <article class="tool-card"><span class="tool-icon">🎂</span><h3>عمره يساوي كام؟</h3><p>تقدير تقريبي لعمر الكلب أو القط مقارنةً بالعمر البشري.</p><a href="#age-calculator">جرّب الحاسبة ←</a></article>
-            <article class="tool-card"><span class="tool-icon">🥣</span><h3>دليل التغذية</h3><p>معلومات تساعدك تفهم العوامل المؤثرة في احتياجاته الغذائية.</p><a href="#care">اعرف أكتر ←</a></article>
-            <article class="tool-card"><span class="tool-icon">🗓️</span><h3>مواعيد الرعاية</h3><p>قائمة بسيطة تساعدك تفتكر المتابعة والعناية الدورية.</p><a href="#care">شوف القائمة ←</a></article>
+            <article class="tool-card"><span class="tool-icon">🎂</span><h3>عمره يساوي كام؟</h3><p>تقدير تقريبي لعمر الكلب أو القط مقارنةً بالعمر البشري.</p><a href="age-calculator.html">جرّب الحاسبة ←</a></article>
+            <article class="tool-card"><span class="tool-icon">🥣</span><h3>دليل التغذية</h3><p>معلومات تساعدك تفهم العوامل المؤثرة في احتياجاته الغذائية.</p><a href="care.html">اعرف أكتر ←</a></article>
+            <article class="tool-card"><span class="tool-icon">🗓️</span><h3>مواعيد الرعاية</h3><p>قائمة بسيطة تساعدك تفتكر المتابعة والعناية الدورية.</p><a href="care.html">شوف القائمة ←</a></article>
           </div>
           <div class="age-tool" id="age-calculator">
             <h3>🎂 احسب العمر التقريبي</h3>
@@ -243,13 +243,8 @@
         return;
       }
       const age = years + months / 12;
-      let human;
-      if (type === "cat") {
-        human = age <= 1 ? 15 * age : age <= 2 ? 15 + (age - 1) * 9 : 24 + (age - 2) * 4;
-      } else {
-        human = age <= 1 ? 15 * age : age <= 2 ? 15 + (age - 1) * 9 : 24 + (age - 2) * 5;
-      }
-      result.textContent = "العمر التقريبي المكافئ: " + Math.round(human) + " سنة بشرية تقريبًا.";
+      const human = age <= 1 ? 15 * age : age <= 2 ? 15 + (age - 1) * 9 : 24 + (age - 2) * (type === "cat" ? 4 : 5);
+      result.textContent = "العمر التقريبي المكافئ: " + Math.round(human) + " سنة بشرية تقريبًا. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية.";
     });
   </script>
 </body>
