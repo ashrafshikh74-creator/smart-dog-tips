@@ -14,9 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink:#25372f; --muted:#68766d; --cream:#fffaf1; --paper:#fffdf8;
-      --green:#dcebdc; --green-deep:#315b48; --coral:#f28b70; --yellow:#f6cf68;
-      --lilac:#e9e4f4; --line:#e9e4d9; --shadow:0 18px 50px rgba(46,65,52,.09);
+      --ink:#342c3c; --muted:#756b7c; --cream:#fff8f7; --paper:#fffdfd;
+      --green:#e4eee5; --green-deep:#526b5d; --coral:#e98c9d; --yellow:#f5d58c;
+      --lilac:#eee7f7; --line:#eee3e8; --shadow:0 18px 50px rgba(100,65,91,.10);
       --radius:26px;
     }
     *{box-sizing:border-box}
@@ -103,7 +103,20 @@
     .copyright{text-align:center;color:#929a91;font-size:12px;padding-top:20px}
     @media(max-width:850px){.hero-grid{gap:25px}.category-grid{grid-template-columns:repeat(2,1fr)}.tool-grid{grid-template-columns:1fr}.tools-band{padding:32px 24px}.nav-links{gap:14px}}
     @media(max-width:620px){.container{width:min(100% - 28px,520px)}.topbar{padding:14px 0}.nav-links{display:none}.brand{font-size:22px}.nav-cta{padding:9px 15px;font-size:14px}.hero{padding:22px 0 48px}.hero-grid{grid-template-columns:1fr;gap:10px}.hero-copy{font-size:17px}.hero-visual{min-height:330px;margin:5px 10px 0}.photo-frame{height:310px;width:88%}.sticker-sun{width:72px;height:72px;font-size:27px}.sticker-note{width:105px;height:105px;font-size:14px;left:-2px}.section{padding:52px 0}.section-head{display:block}.section-head p{margin-top:12px}.category-grid{gap:10px}.category{padding:17px;min-height:170px}.category h3{font-size:20px}.tools-band{border-radius:27px;padding:27px 18px}.story-grid{grid-template-columns:1fr}.story-photo{min-height:260px}.story-copy{padding:27px}.story-copy h2{font-size:30px}.newsletter{padding:38px 18px}.newsletter h2{font-size:29px}.footer-inner{display:block}.footer-links{margin-top:20px}}
-  </style>
+  .brand-mark{background:linear-gradient(145deg,#b77f9e,#6f5875)}
+    .nav-cta,.button{background:linear-gradient(120deg,#9b718e,#6f5875)}
+    .eyebrow{background:#f8e8ed;color:#8e5e75}
+    h1 em{color:#d87992}
+    .sticker-sun{background:#f7d6e1;color:#8c5870}
+    .sticker-note{background:#9b7ca9}
+    .category:nth-child(1){background:#e5eee5}.category:nth-child(2){background:#f8e1e7}.category:nth-child(3){background:#f8edcf}.category:nth-child(4){background:#eee6f6}
+    .tools-band{background:linear-gradient(135deg,#57475f,#354c43)}
+    .tools-band .eyebrow{background:#79637d;color:#ffe2ec}
+    .tool-card{border:1px solid #f1e4ea;box-shadow:0 8px 22px #24152b0b}
+    .story-copy{background:#f8e9ed}
+    .newsletter{background:linear-gradient(120deg,#f5d9e3,#f7e9d5 65%,#e9e2f4)}
+    .newsletter .button{background:#6f5875}
+    </style>
 </head>
 <body>
   <header class="topbar">
@@ -120,16 +133,16 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">✦ تعالى نلعب شوية!</span>
-          <h1>مش مجرد موقع…<br>ده <em>عالمهم</em> المرح!</h1>
-          <p class="hero-copy">اختبارات خفيفة، تحديات لطيفة، ألعاب تخليك تفهم شخصية قطتك أو كلبك… ومفاجآت صغيرة مستنياك في كل زيارة.</p>
+          <span class="eyebrow">✿ مساحة مرحة… بذوق ناعم ✿</span>
+          <h1>تعالى نعيش<br><em>لحظات حلوة</em> سوا!</h1>
+          <p class="hero-copy">مكان لطيف يجمعك بصاحبك الأليف: اختبارات شخصية، ألعاب خفيفة، أفكار لعب حقيقية، ولمسات جمالية تحب ترجعلها كل يوم.</p>
           <div class="hero-actions">
             <a class="button" href="play.html">يلا نلعب! <span>←</span></a>
             <a class="text-link" href="#categories">لف في عالم PawTint</a>
           </div>
           <div class="trust-row">
             <div class="avatars"><span>🐶</span><span>🐱</span><span>🐾</span></div>
-            <span>مكان للعب والاكتشاف والضحك 🐾</span>
+            <span>لأن وقتكم سوا يستاهل يبقى أحلى ♡</span>
           </div>
         </div>
         <div class="hero-visual">
@@ -144,8 +157,8 @@
     <section class="section" id="categories">
       <div class="container">
         <div class="section-head">
-          <div><span class="eyebrow">اختار صاحبك</span><h2>كل حيوان وله حكاية.</h2></div>
-          <p>اختار القطط أو الكلاب، وبعدها ادخل على اختبارات وألعاب ومحتوى معمول بحب.</p>
+          <div><span class="eyebrow">اختاري رفيقك</span><h2>كل واحد فيهم له شخصية وحكاية!</h2></div>
+          <p>سواء قلبك مع القطط أو الكلاب، هتلاقي مساحة شبهكم وأفكار تعملوها سوا.</p>
         </div>
         <div class="category-grid">
           <a class="category" href="dogs.html"><span class="cat-icon">🐶</span><div><h3>عالم الكلاب</h3><p>تدريب، نشاط، وعناية يومية</p></div><span class="arrow">↙</span></a>
@@ -213,8 +226,8 @@
       <div class="container">
         <div class="newsletter">
           <span class="eyebrow">خليك قريب من PawTint</span>
-          <h2>حاجات لطيفة جاية في الطريق 🐾</h2>
-          <p>بنضيف أدوات وأدلة جديدة تساعدك تهتم بصاحبك الأليف.</p>
+          <h2>كل يوم حكاية جديدة بينكم ♡</h2>
+          <p>ارجع اكتشف ألعاب وتحديات وأفكار جديدة ليكم.</p>
           <a class="button" href="#tools">استكشف الموجود دلوقتي</a>
         </div>
       </div>
@@ -224,7 +237,7 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div><a class="brand" href="#"><span class="brand-mark">🐾</span><span>PawTint</span></a><p>حياة ألطف ليهم… وراحة بال أكتر ليك.</p></div>
+        <div><a class="brand" href="#"><span class="brand-mark">🐾</span><span>PawTint</span></a><p>مساحة دافئة للّعب والحب والاهتمام ♡</p></div>
         <div class="footer-links"><a href="#categories">اكتشف</a><a href="#tools">الأدوات</a><a href="about.html">من نحن</a><a href="contact.html">اتصل بنا</a><a href="privacy.html">الخصوصية</a><a href="play.html">منطقة اللعب</a><a href="disclaimer.html">إخلاء المسؤولية</a></div>
       </div>
       <div class="copyright">© <span id="year"></span> PawTint. صُنع بحب لكل أصحاب الحيوانات الأليفة.</div>
