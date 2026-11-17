@@ -323,5 +323,60 @@
     });
 
   </script>
-</body>
+
+<script>
+(()=>{
+ const dict={"محل اللعب والاكتشاف للقطط والكلاب":"A playful discovery shop for cats and dogs","اكتشف":"Explore","الأدوات":"Tools","من نحن":"About","اتصل بنا":"Contact","الخصوصية":"Privacy","منطقة اللعب":"Play zone","إخلاء المسؤولية":"Disclaimer","محل لعب واكتشاف مجاني لمحبي القطط والكلاب ♡":"A free play and discovery space for cat and dog lovers ♡","اللعب الحقيقي يكمل الحكاية":"Real-life play completes the story","بعد اللعب على الشاشة… جرّبوا حاجة سوا في البيت.":"After screen time… try something together at home.","خد فكرة نشاط بسيطة، وخلّي وقت اللعب جزءًا لطيفًا من يومكم. ومعاه هتلاقي إرشادات عامة تساعدك في الرعاية اليومية.":"Find a simple activity idea and make play a lovely part of your day. You’ll also find general tips for everyday care.","ارجع للألعاب والتحديات ←":"Back to games & challenges ←","روتين صغير، فرق كبير":"Small routines make a big difference","قائمة رعاية تفتكرها بسهولة.":"An easy care checklist to remember.","استخدم القائمة كتذكير عام، وعدّلها حسب احتياجات حيوانك وتعليمات الطبيب البيطري.":"Use this as a general reminder and adapt it to your pet’s needs and your veterinarian’s advice.","مياه نظيفة":"Fresh water","وفّر مياه عذبة باستمرار.":"Provide fresh water at all times.","لعب وتفاعل":"Play & interaction","وقت يومي للحركة والاهتمام.":"Daily time for movement and attention.","نظافة وتمشيط":"Grooming","حسب نوع الفرو واحتياجاته.":"Based on coat type and individual needs.","متابعة بيطرية":"Veterinary care","التطعيمات والفحوصات حسب الطبيب.":"Vaccinations and checkups as advised by your vet.","المحل مفتوح ليك في أي وقت":"The shop is always open","ارجع وقت ما تحب… فيه دايمًا حاجة تتجرب ♡":"Come back anytime… there’s always something new to try ♡","الألعاب والتصفح والأنشطة الأساسية مجانية. مفيش اشتراك ولا رسوم دخول.":"Games, browsing, and core activities are free. No subscription or entry fee.","ادخل منطقة اللعب":"Enter the play zone","صُنع بحب لكل أصحاب الحيوانات الأليفة.":"Made with love for every pet person.","احسب العمر":"Calculate age","شهور إضافية":"Additional months","سنوات":"Years","شهور":"Months","اكتب عمر صحيح: من 1 شهر إلى 30 سنة.":"Enter a valid age: from 1 month to 30 years.","العمر التقريبي المكافئ: ":"Approximate equivalent age: "," سنة بشرية تقريبًا. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية.":" human years. For a size-based dog estimate, use the detailed calculator.","دوس هنا… مياو!":"Tap here… meow!","مياااو! عايزة ألعب 🐾":"Meeeow! I want to play 🐾","العب مع القطة الصغيرة":"Play with the little cat"};
+ const reverse=Object.fromEntries(Object.entries(dict).map(([a,b])=>[b,a]));
+ const langKey='pawtint-language';
+ let lang='ar';
+ try{lang=localStorage.getItem(langKey)==='en'?'en':'ar'}catch(e){}
+ const norm=s=>s.replace(/\\s+/g,' ').trim();
+ const translateValue=(value,to)=>{
+   const key=norm(value);
+   const map=to==='en'?dict:reverse;
+   if(!map[key]) return value;
+   const lead=value.match(/^\\s*/)?.[0]||'';
+   const tail=value.match(/\\s*$/)?.[0]||'';
+   return lead+map[key]+tail;
+ };
+ const apply=()=>{
+   document.documentElement.lang=lang;
+   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+   document.querySelectorAll('[data-pt-language]').forEach(x=>x.remove());
+   const btn=document.createElement('button');
+   btn.type='button';btn.dataset.ptLanguage='1';
+   btn.textContent=lang==='ar'?'English':'العربية';
+   btn.setAttribute('aria-label',lang==='ar'?'Switch to English':'التبديل إلى العربية');
+   btn.style.cssText='position:fixed;z-index:9999;top:14px;'+(lang==='ar'?'left:14px;':'right:14px;')+'border:1px solid #d9c8d9;border-radius:999px;background:#fff;color:#66516f;padding:9px 15px;font:800 14px system-ui;box-shadow:0 4px 16px #49354a18;cursor:pointer';
+   btn.addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';try{localStorage.setItem(langKey,lang)}catch(e){};apply()});
+   document.body.appendChild(btn);
+   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+   let node;
+   while(node=walker.nextNode()){
+     if(node.parentElement?.closest('script,style,[data-pt-language]'))continue;
+     node.nodeValue=translateValue(node.nodeValue,lang);
+   }
+   document.querySelectorAll('input[placeholder],button[aria-label],img[alt],meta[content],title').forEach(el=>{
+     for(const attr of ['placeholder','aria-label','alt','content']){
+       if(el.hasAttribute(attr))el.setAttribute(attr,translateValue(el.getAttribute(attr),lang));
+     }
+     if(el.tagName==='TITLE')el.textContent=translateValue(el.textContent,lang);
+   });
+ };
+ apply();
+ const observer=new MutationObserver(records=>{
+   for(const rec of records){
+     for(const n of rec.addedNodes){
+       if(n.nodeType===Node.TEXT_NODE)n.nodeValue=translateValue(n.nodeValue,lang);
+       else if(n.nodeType===Node.ELEMENT_NODE&&!n.matches('[data-pt-language]')){
+         const walker=document.createTreeWalker(n,NodeFilter.SHOW_TEXT);let t;
+         while(t=walker.nextNode())t.nodeValue=translateValue(t.nodeValue,lang);
+       }
+     }
+   }
+ });
+ observer.observe(document.body,{childList:true,subtree:true});
+})();
+</script>\n</body>
 </html>
