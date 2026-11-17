@@ -73,7 +73,7 @@ showStamps();
      let m=key.match(/^Approximate equivalent age:\s*(\d+)\s*human years\. For a size-based dog estimate, use the detailed calculator\.$/);
      if(m)return 'العمر التقريبي المكافئ: '+m[1]+' سنة بشرية تقريبًا. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية.';
      m=key.match(/^🐾\s*(\d+)\s*pawprints?$/);
-     if(m)return '🐾 '+m[1]+' '+(Number(m[1])===1?'بصمة':'بصمات');
+     if(m)return '🐾 '+m[1]+' بصمة';
      m=key.match(/^Your score:\s*(\d+)\s*\/\s*(\d+)$/);
      if(m)return 'نقاطك: '+m[1]+' / '+m[2];
    }
