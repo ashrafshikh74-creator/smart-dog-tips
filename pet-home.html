@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fff8fb"><title>بيت بطلك | PawTint World</title><meta name="description" content="ادخل بيت شخصيتك في عالم PawTint واكتشف أركانًا ومهامًا مجانية."><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#382d40;--muted:#786d7e;--cream:#fff8fb;--pink:#f3dce7;--lilac:#ece4f5;--sage:#e4eee5;--plum:#725b7b;--line:#efdfE8;--gold:#f4dfa4}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 8% 4%,#f7e6ef 0,transparent 25%),radial-gradient(circle at 95% 25%,#e9e4f4 0,transparent 25%),var(--cream);color:var(--ink);font:17px/1.8 Tajawal,sans-serif}.wrap{width:min(1050px,calc(100% - 30px));margin:auto}.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}.brand{font:800 24px Arial,sans-serif;direction:ltr;color:var(--plum);text-decoration:none}.nav a:last-child{color:var(--plum);font-weight:800;text-decoration:none}.welcome{text-align:center;padding:22px 10px}.welcome .eyebrow{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 14px;color:var(--plum);font-weight:800;font-size:13px}.welcome h1{font-size:clamp(34px,6vw,52px);line-height:1.2;margin:12px 0}.welcome p{color:var(--muted);margin:0}.house{background:linear-gradient(135deg,#f6e4ec,#eee8f7 58%,#e5eee6);border:1px solid #eadce8;border-radius:34px;padding:clamp(20px,4vw,38px);text-align:center;position:relative;overflow:hidden}.house:before,.house:after{content:"✦";position:absolute;color:#fff8;font-size:90px}.house:before{top:-22px;left:25px}.house:after{bottom:-35px;right:20px}.pet{font-size:100px;line-height:1.3;filter:drop-shadow(0 9px 8px #725b7b22)}.petname{font-size:32px;font-weight:800;margin:0}.trait{display:inline-block;background:#fff;border-radius:99px;padding:4px 16px;color:var(--plum);font-weight:800}.house p{color:#6e6175;margin:10px auto 0;max-width:550px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:35px 0 15px}.section-title h2{margin:0;font-size:27px}.section-title p{margin:0;color:var(--muted);font-size:14px}.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.room{background:#fffdfd;border:1px solid var(--line);border-radius:24px;padding:20px;min-height:190px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 12px 28px #634b640b}.room .icon{font-size:38px}.room h3{margin:7px 0 2px;font-size:21px}.room p{color:var(--muted);font-size:14px;margin:0 0 12px}.room button,.room a{margin-top:auto;border:0;border-radius:99px;background:#f5eaf1;color:var(--plum);padding:9px 15px;font:800 14px Tajawal;cursor:pointer;text-decoration:none}.room:nth-child(2){background:#f7f1fa}.room:nth-child(3){background:#f0f5ef}.reward{margin:28px 0 45px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px;display:flex;align-items:center;gap:16px}.medal{font-size:44px}.reward h3{margin:0}.reward p{margin:2px 0 0;color:var(--muted);font-size:14px}.reward-count{margin-right:auto;color:var(--plum);font-weight:800;white-space:nowrap}.notice{font-size:13px;color:var(--muted);text-align:center;margin:0 0 35px}button:focus-visible,a:focus-visible{outline:3px solid #bd8dab;outline-offset:3px}@media(max-width:720px){.rooms{grid-template-columns:1fr}.room{min-height:0}.section-title{display:block}.section-title p{margin-top:4px}.reward{align-items:flex-start;flex-wrap:wrap}.reward-count{margin-right:0;width:100%}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style></head><body><main class="wrap"><header class="nav"><a class="brand" href="index.html">🐾 PawTint</a><a href="world.html">تعديل شخصية بطلك ←</a></header>
+<section class="welcome"><span class="eyebrow">🏡 بيتك في PawTint World</span><h1>أهلاً في بيت <span id="welcome-name">بطلك</span>!</h1><p>هنا تبدأ الحكايات الصغيرة. اختار ركنًا واكتشف حاجة جديدة.</p></section>
+<section class="house"><div class="pet" id="pet-emoji">🐱</div><h2 class="petname" id="pet-name">بطل PawTint</h2><span class="trait" id="pet-trait">🔎 فضولي</span><p id="pet-line">مستعد يكتشف كل ركن جديد في العالم!</p></section>
+<div class="section-title"><h2>أركان بيتك</h2><p>كل ركن فيه تجربة مجانية جديدة</p></div>
+<section class="rooms">
+<article class="room"><span class="icon">🧸</span><h3>ركن اللعب</h3><p>اختار نشاطًا بسيطًا وآمنًا تعملوه سوا.</p><a href="play.html">اكتشف الألعاب ←</a></article>
+<article class="room"><span class="icon">🌿</span><h3>حديقة الاستكشاف</h3><p>مهمة صغيرة تشجع صاحبك يستكشف بهدوء.</p><button id="garden-task" type="button">هات مهمة للحديقة</button></article>
+<article class="room"><span class="icon">📸</span><h3>بطاقة بطلك</h3><p>ارجع لبطاقته وشاركها مع أصحابك.</p><a href="world.html">افتح الاستوديو ←</a></article>
+</section>
+<section class="reward"><span class="medal">🏅</span><div><h3>دفتر إنجازات بطلك</h3><p id="reward-copy">ابدأ أول مغامرة واجمع أول بصمة!</p></div><span class="reward-count" id="reward-count">🐾 0 بصمة</span></section>
+<p class="notice">التقدم يُحفظ على هذا الجهاز فقط إذا كان المتصفح يسمح بذلك. لا يوجد حساب أو مزامنة بين الأجهزة. كل التجارب الأساسية مجانية.</p>
+</main>
+<script>
+const params=new URLSearchParams(location.search);
+const species=params.get("species")==="dog"?"dog":"cat";
+const trait=["فضولي","مشاغب","هادئ","مغامر"].includes(params.get("trait"))?params.get("trait"):"فضولي";
+const rawName=(params.get("name")||"بطل PawTint").trim().slice(0,18);
+const name=rawName||"بطل PawTint";
+const emoji=species==="dog"?"🐶":"🐱";
+const traitIcon={فضولي:"🔎",مشاغب:"🎈",هادئ:"🌙",مغامر:"🧭"};
+const lines={فضولي:"مستعد يكتشف كل ركن جديد في العالم!",مشاغب:"دايمًا وراه فكرة جديدة ومقلب لطيف!",هادئ:"بيحب اللحظات الهادية والونس الجميل.",مغامر:"كل يوم عنده حكاية ومكان جديد يكتشفه."};
+document.getElementById("welcome-name").textContent=name;
+document.getElementById("pet-name").textContent=name;
+document.getElementById("pet-emoji").textContent=emoji;
+document.getElementById("pet-trait").textContent=traitIcon[trait]+" "+trait;
+document.getElementById("pet-line").textContent=lines[trait];
+const key="pawtint-world-stamps-v1";
+let stamps=0;
+try{stamps=Number(localStorage.getItem(key)||0);if(!Number.isFinite(stamps)||stamps<0)stamps=0}catch(e){}
+function showStamps(){document.getElementById("reward-count").textContent="🐾 "+stamps+" بصمة";document.getElementById("reward-copy").textContent=stamps?"برافو! بطلك بدأ يجمع ذكريات ومغامرات.":"ابدأ أول مغامرة واجمع أول بصمة!"}
+const tasks=["امشوا جولة استكشاف قصيرة في مكان آمن، وسيبه يشم ويلاحظ براحة ومن غير إجبار.","اخفِ لعبة كبيرة وآمنة في مكان ظاهر جزئيًا وشجعه يكتشفها تحت إشرافك.","خصصوا خمس دقايق للعب بلعبته المفضلة، ووقفوا لو ظهر عليه تعب أو توتر.","جهّز ركن راحة هادي فيه ميا نظيفة ومكان مريح، وسيبه يختاره بنفسه."];
+document.getElementById("garden-task").addEventListener("click",()=>{
+ const task=tasks[Math.floor(Math.random()*tasks.length)];
+ document.getElementById("garden-task").textContent="مهمة جديدة جاهزة ✓";
+ document.getElementById("garden-task").insertAdjacentText("afterend"," ");
+ let box=document.getElementById("task-result");
+ if(!box){box=document.createElement("p");box.id="task-result";box.style.cssText="background:#fff;border-radius:14px;padding:10px;margin:10px 0 0;color:#66566e;font-weight:700";document.querySelectorAll(".room")[1].appendChild(box)}
+ box.textContent=task;
+ if(stamps<99)stamps++;
+ try{localStorage.setItem(key,String(stamps))}catch(e){}
+ showStamps();
+});
+showStamps();
+</script></body></html>
