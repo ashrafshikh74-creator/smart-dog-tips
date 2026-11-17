@@ -48,56 +48,90 @@ showStamps();
 </script>
 <script>
 (()=>{
- const dict={"بيت بطلك | PawTint World":"Your Hero’s Home | PawTint World","تعديل شخصية بطلك ←":"Edit your hero ←","🏡 بيتك في PawTint World":"🏡 Your home in PawTint World","أهلاً في بيت ":"Welcome to ","بطلك":"your hero","هنا تبدأ الحكايات الصغيرة. اختار ركنًا واكتشف حاجة جديدة.":"Little stories begin here. Choose a room and discover something new.","أركان بيتك":"Your home’s rooms","كل ركن فيه تجربة مجانية جديدة":"Every room has a new free experience","ركن اللعب":"Play room","اختار نشاطًا بسيطًا وآمنًا تعملوه سوا.":"Choose a simple, safe activity to enjoy together.","اكتشف الألعاب ←":"Explore games ←","حديقة الاستكشاف":"Discovery garden","مهمة صغيرة تشجع صاحبك يستكشف بهدوء.":"A little mission to encourage your pet to explore at their own pace.","هات مهمة للحديقة":"Get a garden mission","بطاقة بطلك":"Your hero card","ارجع لبطاقته وشاركها مع أصحابك.":"Visit their card and share it with friends.","افتح الاستوديو ←":"Open the studio ←","دفتر إنجازات بطلك":"Your hero’s achievement book","ابدأ أول مغامرة واجمع أول بصمة!":"Start your first adventure and collect your first pawprint!","برافو! بطلك بدأ يجمع ذكريات ومغامرات.":"Great job! Your hero is collecting memories and adventures.","بصمة":"pawprint","بصمات":"pawprints","التقدم يُحفظ على هذا الجهاز فقط إذا كان المتصفح يسمح بذلك. لا يوجد حساب أو مزامنة بين الأجهزة. كل التجارب الأساسية مجانية.":"Progress is saved on this device only, if your browser allows it. There is no account or cross-device sync. All core experiences are free.","مستعد يكتشف كل ركن جديد في العالم!":"Ready to explore every corner of the world!","دايمًا وراه فكرة جديدة ومقلب لطيف!":"Always coming up with a new idea and a playful prank!","بيحب اللحظات الهادية والونس الجميل.":"Loves peaceful moments and cozy company.","كل يوم عنده حكاية ومكان جديد يكتشفه.":"Every day brings a new story and place to explore.","امشوا جولة استكشاف قصيرة في مكان آمن، وسيبه يشم ويلاحظ براحة ومن غير إجبار.":"Take a short exploration walk in a safe place. Let your pet sniff and observe comfortably, without pressure.","اخفِ لعبة كبيرة وآمنة في مكان ظاهر جزئيًا وشجعه يكتشفها تحت إشرافك.":"Partially hide a large, safe toy and encourage your pet to find it under your supervision.","خصصوا خمس دقايق للعب بلعبته المفضلة، ووقفوا لو ظهر عليه تعب أو توتر.":"Spend five minutes playing with a favorite toy, and stop if your pet seems tired or stressed.","جهّز ركن راحة هادي فيه ميا نظيفة ومكان مريح، وسيبه يختاره بنفسه.":"Set up a quiet resting spot with fresh water and a comfy place, and let your pet choose it."};
- const reverse=Object.fromEntries(Object.entries(dict).map(([a,b])=>[b,a]));
- const langKey='pawtint-language';
+ const dict={"بيت بطلك | PawTint World":"Your Hero’s Home | PawTint World","تعديل شخصية بطلك ←":"Edit your hero ←","🏡 بيتك في PawTint World":"🏡 Your home in PawTint World","أهلاً في بيت ":"Welcome to ","بطلك":"your hero","هنا تبدأ الحكايات الصغيرة. اختار ركنًا واكتشف حاجة جديدة.":"Little stories begin here. Choose a room and discover something new.","أركان بيتك":"Your home’s rooms","كل ركن فيه تجربة مجانية جديدة":"Every room has a new free experience","ركن اللعب":"Play room","اختار نشاطًا بسيطًا وآمنًا تعملوه سوا.":"Choose a simple, safe activity to enjoy together.","اكتشف الألعاب ←":"Explore games ←","حديقة الاستكشاف":"Discovery garden","مهمة صغيرة تشجع صاحبك يستكشف بهدوء.":"A little mission to encourage your pet to explore at their own pace.","هات مهمة للحديقة":"Get a garden mission","بطاقة بطلك":"Your hero card","ارجع لبطاقته وشاركها مع أصحابك.":"Visit their card and share it with friends.","افتح الاستوديو ←":"Open the studio ←","دفتر إنجازات بطلك":"Your hero’s achievement book","ابدأ أول مغامرة واجمع أول بصمة!":"Start your first adventure and collect your first pawprint!","برافو! بطلك بدأ يجمع ذكريات ومغامرات.":"Great job! Your hero is collecting memories and adventures.","بصمة":"pawprint","بصمات":"pawprints","التقدم يُحفظ على هذا الجهاز فقط إذا كان المتصفح يسمح بذلك. لا يوجد حساب أو مزامنة بين الأجهزة. كل التجارب الأساسية مجانية.":"Progress is saved on this device only, if your browser allows it. There is no account or cross-device sync. All core experiences are free.","مستعد يكتشف كل ركن جديد في العالم!":"Ready to explore every corner of the world!","دايمًا وراه فكرة جديدة ومقلب لطيف!":"Always coming up with a new idea and a playful prank!","بيحب اللحظات الهادية والونس الجميل.":"Loves peaceful moments and cozy company.","كل يوم عنده حكاية ومكان جديد يكتشفه.":"Every day brings a new story and place to explore.","امشوا جولة استكشاف قصيرة في مكان آمن، وسيبه يشم ويلاحظ براحة ومن غير إجبار.":"Take a short exploration walk in a safe place. Let your pet sniff and observe comfortably, without pressure.","اخفِ لعبة كبيرة وآمنة في مكان ظاهر جزئيًا وشجعه يكتشفها تحت إشرافك.":"Partially hide a large, safe toy and encourage your pet to find it under your supervision.","خصصوا خمس دقايق للعب بلعبته المفضلة، ووقفوا لو ظهر عليه تعب أو توتر.":"Spend five minutes playing with a favorite toy, and stop if your pet seems tired or stressed.","جهّز ركن راحة هادي فيه ميا نظيفة ومكان مريح، وسيبه يختاره بنفسه.":"Set up a quiet resting spot with fresh water and a comfy place, and let your pet choose it.","ادخل بيت شخصيتك في عالم PawTint واكتشف أركانًا ومهامًا مجانية.":"Enter your character’s home in PawTint World and discover free rooms and missions.","بطل PawTint":"PawTint Hero","🔎 فضولي":"🔎 Curious","🎈 مشاغب":"🎈 Playful","🌙 هادئ":"🌙 Calm","🧭 مغامر":"🧭 Adventurous","فضولي":"Curious","مشاغب":"Playful","هادئ":"Calm","مغامر":"Adventurous","مهمة جديدة جاهزة ✓":"A new mission is ready ✓"};
+ const norm=s=>String(s).replace(/\\s+/g,' ').trim();
+ const toEn=Object.fromEntries(Object.entries(dict).map(([a,b])=>[norm(a),b]));
+ const toAr=Object.fromEntries(Object.entries(dict).map(([a,b])=>[norm(b),a]));
+ const languageKey='pawtint-language';
  let lang='ar';
- try{lang=localStorage.getItem(langKey)==='en'?'en':'ar'}catch(e){}
- const norm=s=>s.replace(/\\s+/g,' ').trim();
+ try{lang=localStorage.getItem(languageKey)==='en'?'en':'ar'}catch(e){}
  const translateValue=(value,to)=>{
-   const key=norm(value);
-   const map=to==='en'?dict:reverse;
-   if(!map[key]) return value;
-   const lead=value.match(/^\\s*/)?.[0]||'';
-   const tail=value.match(/\\s*$/)?.[0]||'';
-   return lead+map[key]+tail;
+   const key=norm(value), map=to==='en'?toEn:toAr;
+   if(map[key]!==undefined){
+     const lead=String(value).match(/^\\s*/)?.[0]||'';
+     const tail=String(value).match(/\\s*$/)?.[0]||'';
+     return lead+map[key]+tail;
+   }
+   if(to==='en'){
+     let m=key.match(/^العمر التقريبي المكافئ:\\s*(\\d+)\\s*سنة بشرية تقريبًا\\. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية\\.$/);
+     if(m)return 'Approximate equivalent age: '+m[1]+' human years. For a size-based dog estimate, use the detailed calculator.';
+     m=key.match(/^🐾\\s*(\\d+)\\s*بصمة$/);
+     if(m)return '🐾 '+m[1]+' '+(Number(m[1])===1?'pawprint':'pawprints');
+     m=key.match(/^نقاطك:\\s*(\\d+)\\s*\\/\\s*(\\d+)$/);
+     if(m)return 'Your score: '+m[1]+' / '+m[2];
+   }else{
+     let m=key.match(/^Approximate equivalent age:\\s*(\\d+)\\s*human years\\. For a size-based dog estimate, use the detailed calculator\\.$/);
+     if(m)return 'العمر التقريبي المكافئ: '+m[1]+' سنة بشرية تقريبًا. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية.';
+     m=key.match(/^🐾\\s*(\\d+)\\s*pawprints?$/);
+     if(m)return '🐾 '+m[1]+' '+(Number(m[1])===1?'بصمة':'بصمات');
+     m=key.match(/^Your score:\\s*(\\d+)\\s*\\/\\s*(\\d+)$/);
+     if(m)return 'نقاطك: '+m[1]+' / '+m[2];
+   }
+   return value;
+ };
+ const translateTree=root=>{
+   const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;
+   while(node=walker.nextNode()){
+     if(node.parentElement?.closest('script,style,[data-pt-language]'))continue;
+     const next=translateValue(node.nodeValue,lang);
+     if(next!==node.nodeValue)node.nodeValue=next;
+   }
+ };
+ const translateAttributes=()=>{
+   document.querySelectorAll('[placeholder],[aria-label],[alt],[content]').forEach(el=>{
+     for(const attr of ['placeholder','aria-label','alt','content'])if(el.hasAttribute(attr)){
+       const value=el.getAttribute(attr),next=translateValue(value,lang);
+       if(next!==value)el.setAttribute(attr,next);
+     }
+   });
+   const title=document.querySelector('title');
+   if(title)title.textContent=translateValue(title.textContent,lang);
+ };
+ const addDirectionStyle=()=>{
+   if(document.getElementById('pawtint-l10n-style'))return;
+   const style=document.createElement('style');style.id='pawtint-l10n-style';
+   style.textContent='html[dir="ltr"] body{direction:ltr}html[dir="ltr"] .choice,html[dir="ltr"] .mystery-box{text-align:left}html[dir="ltr"] .reward-count{margin-left:auto;margin-right:0}html[dir="ltr"] input{text-align:left}';
+   document.head.appendChild(style);
  };
  const apply=()=>{
-   document.documentElement.lang=lang;
-   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+   document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+   translateTree(document.head);translateTree(document.body);translateAttributes();addDirectionStyle();
    document.querySelectorAll('[data-pt-language]').forEach(x=>x.remove());
-   const btn=document.createElement('button');
-   btn.type='button';btn.dataset.ptLanguage='1';
+   const btn=document.createElement('button');btn.type='button';btn.dataset.ptLanguage='1';
    btn.textContent=lang==='ar'?'English':'العربية';
    btn.setAttribute('aria-label',lang==='ar'?'Switch to English':'التبديل إلى العربية');
    btn.style.cssText='position:fixed;z-index:9999;top:14px;'+(lang==='ar'?'left:14px;':'right:14px;')+'border:1px solid #d9c8d9;border-radius:999px;background:#fff;color:#66516f;padding:9px 15px;font:800 14px system-ui;box-shadow:0 4px 16px #49354a18;cursor:pointer';
-   btn.addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';try{localStorage.setItem(langKey,lang)}catch(e){};apply()});
+   btn.addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';try{localStorage.setItem(languageKey,lang)}catch(e){}apply()});
    document.body.appendChild(btn);
-   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
-   let node;
-   while(node=walker.nextNode()){
-     if(node.parentElement?.closest('script,style,[data-pt-language]'))continue;
-     node.nodeValue=translateValue(node.nodeValue,lang);
-   }
-   document.querySelectorAll('input[placeholder],button[aria-label],img[alt],meta[content],title').forEach(el=>{
-     for(const attr of ['placeholder','aria-label','alt','content']){
-       if(el.hasAttribute(attr))el.setAttribute(attr,translateValue(el.getAttribute(attr),lang));
-     }
-     if(el.tagName==='TITLE')el.textContent=translateValue(el.textContent,lang);
-   });
  };
  apply();
  const observer=new MutationObserver(records=>{
-   for(const rec of records){
-     for(const n of rec.addedNodes){
-       if(n.nodeType===Node.TEXT_NODE)n.nodeValue=translateValue(n.nodeValue,lang);
-       else if(n.nodeType===Node.ELEMENT_NODE&&!n.matches('[data-pt-language]')){
-         const walker=document.createTreeWalker(n,NodeFilter.SHOW_TEXT);let t;
-         while(t=walker.nextNode())t.nodeValue=translateValue(t.nodeValue,lang);
+   for(const record of records){
+     if(record.type==='characterData'){
+       const node=record.target;
+       if(!node.parentElement?.closest('script,style,[data-pt-language]')){
+         const next=translateValue(node.nodeValue,lang);if(next!==node.nodeValue)node.nodeValue=next;
        }
+     }
+     for(const added of record.addedNodes||[]){
+       if(added.nodeType===Node.TEXT_NODE){
+         if(!added.parentElement?.closest('script,style,[data-pt-language]')){
+           const next=translateValue(added.nodeValue,lang);if(next!==added.nodeValue)added.nodeValue=next;
+         }
+       }else if(added.nodeType===Node.ELEMENT_NODE&&!added.matches('[data-pt-language]'))translateTree(added);
      }
    }
  });
- observer.observe(document.body,{childList:true,subtree:true});
+ observer.observe(document.body,{childList:true,subtree:true,characterData:true});
 })();
 </script>\n</body></html>
