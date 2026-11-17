@@ -39,4 +39,59 @@ document.querySelectorAll("#surprise-choices .mystery-box").forEach(btn=>btn.add
  out.classList.remove("hidden");
  document.querySelectorAll("#surprise-choices .mystery-box").forEach(x=>x.disabled=true);
 }));
-</script></body></html>
+</script>
+<script>
+(()=>{
+ const dict={"محل الألعاب | PawTint":"The Play Shop | PawTint","محل الألعاب":"The Play Shop","منطقة اللعب":"Play zone","تحدي معلومات الحيوانات":"Pet knowledge challenge","هل القطط بتحتاج لعب وتفاعل حتى لو عايشة داخل البيت؟":"Do cats need play and interaction even when they live indoors?","أيوه، اللعب والإثراء مهمين":"Yes, play and enrichment matter","لأ، هي بتسلّي نفسها دائمًا":"No, they always entertain themselves","السؤال اللي بعده":"Next question","نقاطك: 0":"Your score: 0","مهمة النهارده":"Today’s mission","فكرة بسيطة تعملها مع صاحبك الأليف النهارده.":"A simple idea to try with your pet today.","اضغط الزر وخد مهمة لطيفة!":"Tap the button for a fun little mission!","هاتلي مهمة 🐾":"Give me a mission 🐾","مزاج اللعب إيه النهارده؟":"What’s the play mood today?","اختاري طاقة صاحبك دلوقتي عشان نقترح عليكم وقت لطيف.":"Choose your pet’s energy level and we’ll suggest a lovely activity.","عايز هدوء ودلع 🌙":"Feeling calm and cuddly 🌙","عنده طاقة وحابب يتحرك ⚡":"Full of energy and ready to move ⚡","فضولي وعايز يستكشف 🔎":"Curious and ready to explore 🔎","افتح صندوق الحظ":"Open the surprise box","اختار صندوق من غير ما تعرف جواه إيه، وخد فكرة لطيفة تجربها مع صاحبك الأليف.":"Choose a mystery box and get a lovely idea to try with your pet.","الصندوق الوردي":"Pink box","الصندوق البنفسجي":"Purple box","الصندوق الأخضر":"Green box","شخصية قطتك غالبًا: ":"Your cat’s likely personality: "," طبعًا كل قطة ليها مزيجها الخاص!":" — every cat has their own unique mix!","اقرأ لغة جسمه واستشر مختص سلوك عند استمرار القلق.":"Learn to read their body language and consult a behavior professional if anxiety persists.","إجابة صح! ⭐ ":"Correct! ⭐ ","مش دي المرة دي 🙂 ":"Not this time 🙂 ","اللعب والإثراء بيساعدوا القطط على الحركة والاستكشاف وتقليل الملل.":"Play and enrichment help cats move, explore, and avoid boredom.","التدريب الإيجابي القصير والمتكرر بيساعد على التعلم.":"Short, repeated positive-reinforcement sessions help learning.","الأجزاء الصغيرة ممكن تتبلع؛ افحص الألعاب واستبدل التالف.":"Small parts can be swallowed; inspect toys and replace damaged ones.","نقاطك: ":"Your score: "," / ":" / ","اعمل جلسة لعب 5 دقايق بلعبته المفضلة.":"Have a five-minute play session with a favorite toy.","خبّي مكافأة صغيرة في لعبة آمنة وخليه يدور عليها تحت إشرافك.":"Hide a small treat in a safe toy and let your pet find it under supervision.","خصص وقت هادي للتمشيط لو هو متعود عليه وبيحبه.":"Set aside calm grooming time if your pet is used to it and enjoys it.","علّمه إشارة بسيطة بالمكافأة والتشجيع.":"Teach a simple cue using rewards and encouragement.","جدّد المياه ونضّف الوعاء كويس.":"Refresh the water and clean the bowl well.","راقب إيه اللعبة اللي بتخليه مبسوط أكتر النهارده.":"Notice which toy makes your pet happiest today.","اعملي ركن مريح، اقعدي جنبه بهدوء وقدمي له اهتمامه المفضل من غير إجبار على التفاعل.":"Create a comfy spot, sit nearby calmly, and offer the kind of attention your pet enjoys without forcing interaction.","جربي لعبة مطاردة آمنة أو تدريب قصير بالمكافآت، مع مراعاة حجمه ولياقته.":"Try a safe chase game or a short reward-based training session, considering your pet’s size and fitness.","اعملي لعبة شم أو استكشاف بسيطة بإشرافك، من غير أشياء صغيرة ممكن يبلعها.":"Set up a simple scent or discovery game under supervision, avoiding small items your pet could swallow.","🎾 جرّب لعبة مطاردة بلعبة مناسبة لحجم حيوانك، وخلي اللعب قصير وتحت إشرافك.":"🎾 Try a chase game with a toy suited to your pet’s size. Keep it short and supervised.","🔎 اعملوا جولة استكشاف هادية: سيبه يشم ويتعرف على مكان آمن جديد من غير إجبار.":"🔎 Take a calm discovery walk. Let your pet sniff and explore a new safe place without pressure.","🧸 اختاروا لعبته المفضلة وافحصوها الأول؛ لو فيها قطع مفكوكة أو تالفة، ابعدها واستبدلها.":"🧸 Choose a favorite toy and inspect it first. Remove and replace it if parts are loose or damaged.","عالم الكلاب":"Dog world","عالم القطط":"Cat world"};
+ const reverse=Object.fromEntries(Object.entries(dict).map(([a,b])=>[b,a]));
+ const langKey='pawtint-language';
+ let lang='ar';
+ try{lang=localStorage.getItem(langKey)==='en'?'en':'ar'}catch(e){}
+ const norm=s=>s.replace(/\\s+/g,' ').trim();
+ const translateValue=(value,to)=>{
+   const key=norm(value);
+   const map=to==='en'?dict:reverse;
+   if(!map[key]) return value;
+   const lead=value.match(/^\\s*/)?.[0]||'';
+   const tail=value.match(/\\s*$/)?.[0]||'';
+   return lead+map[key]+tail;
+ };
+ const apply=()=>{
+   document.documentElement.lang=lang;
+   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+   document.querySelectorAll('[data-pt-language]').forEach(x=>x.remove());
+   const btn=document.createElement('button');
+   btn.type='button';btn.dataset.ptLanguage='1';
+   btn.textContent=lang==='ar'?'English':'العربية';
+   btn.setAttribute('aria-label',lang==='ar'?'Switch to English':'التبديل إلى العربية');
+   btn.style.cssText='position:fixed;z-index:9999;top:14px;'+(lang==='ar'?'left:14px;':'right:14px;')+'border:1px solid #d9c8d9;border-radius:999px;background:#fff;color:#66516f;padding:9px 15px;font:800 14px system-ui;box-shadow:0 4px 16px #49354a18;cursor:pointer';
+   btn.addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';try{localStorage.setItem(langKey,lang)}catch(e){};apply()});
+   document.body.appendChild(btn);
+   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+   let node;
+   while(node=walker.nextNode()){
+     if(node.parentElement?.closest('script,style,[data-pt-language]'))continue;
+     node.nodeValue=translateValue(node.nodeValue,lang);
+   }
+   document.querySelectorAll('input[placeholder],button[aria-label],img[alt],meta[content],title').forEach(el=>{
+     for(const attr of ['placeholder','aria-label','alt','content']){
+       if(el.hasAttribute(attr))el.setAttribute(attr,translateValue(el.getAttribute(attr),lang));
+     }
+     if(el.tagName==='TITLE')el.textContent=translateValue(el.textContent,lang);
+   });
+ };
+ apply();
+ const observer=new MutationObserver(records=>{
+   for(const rec of records){
+     for(const n of rec.addedNodes){
+       if(n.nodeType===Node.TEXT_NODE)n.nodeValue=translateValue(n.nodeValue,lang);
+       else if(n.nodeType===Node.ELEMENT_NODE&&!n.matches('[data-pt-language]')){
+         const walker=document.createTreeWalker(n,NodeFilter.SHOW_TEXT);let t;
+         while(t=walker.nextNode())t.nodeValue=translateValue(t.nodeValue,lang);
+       }
+     }
+   }
+ });
+ observer.observe(document.body,{childList:true,subtree:true});
+})();
+</script>\n</body></html>
