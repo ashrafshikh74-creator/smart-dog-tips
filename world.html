@@ -16,7 +16,7 @@ a{color:inherit;text-decoration:none}.wrap{width:min(1080px,calc(100% - 30px));m
 .options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.option{border:1px solid #eadde7;background:#fff;border-radius:17px;padding:12px;cursor:pointer;text-align:center;font:700 16px Tajawal;color:var(--ink);transition:.18s}.option span{display:block;font-size:30px}.option[aria-pressed=true]{border:2px solid #a77d9c;background:#fbf1f6;box-shadow:0 5px 15px #77556c14}
 .temperaments{display:flex;flex-wrap:wrap;gap:8px}.temperament{border:1px solid #e9dce7;background:#fff;border-radius:999px;padding:8px 15px;cursor:pointer;font:700 15px Tajawal;color:var(--ink)}.temperament[aria-pressed=true]{background:var(--lilac);border-color:#b9a5ca;color:#594569}
 .primary{border:0;border-radius:999px;background:linear-gradient(120deg,#a87d9d,#725b7b);color:white;padding:13px 22px;font:800 16px Tajawal;cursor:pointer;width:100%;margin-top:10px}.hint{font-size:13px;color:var(--muted);margin:9px 0 0}
-.preview{background:linear-gradient(145deg,#f6e4ec,#eee8f7 60%,#e5eee6);position:sticky;top:16px;text-align:center;overflow:hidden}.preview-top{font-size:13px;color:#705d78;font-weight:800;letter-spacing:.3px}.character{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;margin:18px auto 12px;background:#fff9fc;border:8px solid #ffffffb8;box-shadow:0 12px 35px #745c7520;font-size:91px;position:relative}.spark{position:absolute;font-size:25px}.spark.one{top:13px;right:18px}.spark.two{bottom:15px;left:15px}.pet-name{font-size:32px;font-weight:800;margin:3px 0}.pet-trait{display:inline-block;background:#fff;border-radius:999px;padding:5px 17px;color:#705d78;font-weight:800}.card-note{max-width:280px;margin:13px auto;color:#716579;font-size:14px}.share{border:1px solid #d8c7d8;background:#fff;color:#65516f;border-radius:999px;padding:10px 17px;font:800 15px Tajawal;cursor:pointer}.share:disabled{opacity:.5;cursor:default}.world-note{text-align:center;color:var(--muted);font-size:14px;margin:0 0 45px}
+.preview{background:linear-gradient(145deg,#f6e4ec,#eee8f7 60%,#e5eee6);position:sticky;top:16px;text-align:center;overflow:hidden}.preview-top{font-size:13px;color:#705d78;font-weight:800;letter-spacing:.3px}.character{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;margin:18px auto 12px;background:#fff9fc;border:8px solid #ffffffb8;box-shadow:0 12px 35px #745c7520;font-size:91px;position:relative}.spark{position:absolute;font-size:25px}.spark.one{top:13px;right:18px}.spark.two{bottom:15px;left:15px}.pet-name{font-size:32px;font-weight:800;margin:3px 0}.pet-trait{display:inline-block;background:#fff;border-radius:999px;padding:5px 17px;color:#705d78;font-weight:800}.card-note{max-width:280px;margin:13px auto;color:#716579;font-size:14px}.share{border:1px solid #d8c7d8;background:#fff;color:#65516f;border-radius:999px;padding:10px 17px;font:800 15px Tajawal;cursor:pointer}.share:disabled{opacity:.5;cursor:default}.enter-home{display:block;margin:10px auto 0;background:#e5eee5;color:#526b5d;border:1px solid #cfdfd1;border-radius:999px;padding:10px 17px;font:800 15px Tajawal;cursor:pointer}.world-note{text-align:center;color:var(--muted);font-size:14px;margin:0 0 45px}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bd8dab;outline-offset:3px}
 @media(max-width:760px){.studio{grid-template-columns:1fr}.preview{position:static;grid-row:1}.panel{grid-row:2}.hero{padding-top:22px}.panel,.preview{padding:20px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
@@ -49,6 +49,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bd8d
 <div class="pet-trait" id="card-trait">🔎 فضولي</div>
 <p class="card-note" id="card-note">مستعد يكتشف كل ركن جديد في العالم!</p>
 <button class="share" id="share-card" type="button">شارك بطاقة بطلك ↗</button>
+<button class="enter-home" id="enter-home" type="button">ادخل بيت بطلك 🏡</button>
 <p class="hint" id="share-status" role="status">بطاقتك جاهزة للمشاركة.</p>
 </aside>
 </section>
@@ -73,6 +74,10 @@ nameInput.addEventListener("input",()=>{state.name=nameInput.value.slice(0,18);r
 speciesButtons.forEach(b=>b.addEventListener("click",()=>{state.species=b.dataset.species;render()}));
 traitButtons.forEach(b=>b.addEventListener("click",()=>{state.trait=b.dataset.trait;render()}));
 document.getElementById("make-card").addEventListener("click",()=>{render();document.getElementById("share-status").textContent="بطاقة "+(state.name.trim()||"بطل PawTint")+" جاهزة! ✨"});
+document.getElementById("enter-home").addEventListener("click",()=>{
+ const params=new URLSearchParams({name:state.name.trim()||"بطل PawTint",species:state.species,trait:state.trait});
+ location.href="pet-home.html?"+params.toString();
+});
 document.getElementById("share-card").addEventListener("click",async()=>{
  const name=state.name.trim()||"بطل PawTint";
  const text="🐾 "+name+" انضم لعالم PawTint!\nشخصيته: "+state.trait+" "+emoji[state.species]+"\nاصنع بطاقة بطلك مجانًا: "+location.href;
