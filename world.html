@@ -89,4 +89,59 @@ document.getElementById("share-card").addEventListener("click",async()=>{
  }catch(e){if(e.name!=="AbortError")status.textContent="حصلت مشكلة بسيطة في المشاركة. جرّب تاني."}
 });
 render();
-</script></body></html>
+</script>
+<script>
+(()=>{
+ const dict={"اصنع شخصية حيوانك | PawTint World":"Create your pet’s character | PawTint World","العودة للمحل ←":"Back to the shop ←","🌷 أول بوابة في PawTint World":"🌷 Your first gateway to PawTint World","كل بطل له":"Every hero has a","شخصية!":"personality!","اصنع بطاقة لطيفة لرفيقك الأليف. اختار شكله واسمه وطبعه، وشوف شخصيته في عالم PawTint — مجانًا ومن غير تسجيل.":"Create a lovely profile card for your pet. Choose their type, name, and personality, and see them come to life in PawTint World — free, with no sign-up.","🎨 يلا نصمم بطلك":"🎨 Let’s create your hero","1. اسمه إيه؟":"1. What’s their name?","اكتب اسم صاحبك الأليف":"Enter your pet’s name","2. اختار رفيقك":"2. Choose your companion","قطة":"Cat","كلب":"Dog","3. طبعه الأقرب ليه":"3. Which trait fits best?","فضولي":"Curious","مشاغب":"Playful","هادئ":"Calm","مغامر":"Adventurous","اصنع بطاقة بطلي ✨":"Create my hero card ✨","اختياراتك بتتحدث على البطاقة فورًا. تقدر تعدّلها في أي وقت.":"Your choices update the card instantly. You can change them anytime.","بطل PawTint":"PawTint Hero","مستعد يكتشف كل ركن جديد في العالم!":"Ready to explore every corner of the world!","دايمًا وراه فكرة جديدة ومقلب لطيف!":"Always coming up with a new idea and a playful prank!","بيحب اللحظات الهادية والونس الجميل.":"Loves peaceful moments and cozy company.","كل يوم عنده حكاية ومكان جديد يكتشفه.":"Every day brings a new story and place to explore.","شارك بطاقة بطلك ↗":"Share your hero card ↗","ادخل بيت بطلك 🏡":"Enter your hero’s home 🏡","بطاقتك جاهزة للمشاركة.":"Your card is ready to share.","بطاقة ":"Card "," جاهزة! ✨":" is ready! ✨","اتشاركت بطاقتك بنجاح! ♡":"Your card was shared! ♡","نسخنا نص بطاقتك — شاركه مع أصحابك! ♡":"Your card text was copied — share it with friends! ♡","المشاركة غير مدعومة هنا. جرّب فتح الصفحة من متصفح هاتفك.":"Sharing isn’t supported here. Try opening this page in your phone’s browser.","حصلت مشكلة بسيطة في المشاركة. جرّب تاني.":"Something went wrong while sharing. Please try again.","🐾 عالم PawTint لسه بيكبر… ودي أول حكاية فيه. كل التجربة مجانية.":"🐾 PawTint World is still growing… and this is its first story. The whole experience is free."};
+ const reverse=Object.fromEntries(Object.entries(dict).map(([a,b])=>[b,a]));
+ const langKey='pawtint-language';
+ let lang='ar';
+ try{lang=localStorage.getItem(langKey)==='en'?'en':'ar'}catch(e){}
+ const norm=s=>s.replace(/\\s+/g,' ').trim();
+ const translateValue=(value,to)=>{
+   const key=norm(value);
+   const map=to==='en'?dict:reverse;
+   if(!map[key]) return value;
+   const lead=value.match(/^\\s*/)?.[0]||'';
+   const tail=value.match(/\\s*$/)?.[0]||'';
+   return lead+map[key]+tail;
+ };
+ const apply=()=>{
+   document.documentElement.lang=lang;
+   document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+   document.querySelectorAll('[data-pt-language]').forEach(x=>x.remove());
+   const btn=document.createElement('button');
+   btn.type='button';btn.dataset.ptLanguage='1';
+   btn.textContent=lang==='ar'?'English':'العربية';
+   btn.setAttribute('aria-label',lang==='ar'?'Switch to English':'التبديل إلى العربية');
+   btn.style.cssText='position:fixed;z-index:9999;top:14px;'+(lang==='ar'?'left:14px;':'right:14px;')+'border:1px solid #d9c8d9;border-radius:999px;background:#fff;color:#66516f;padding:9px 15px;font:800 14px system-ui;box-shadow:0 4px 16px #49354a18;cursor:pointer';
+   btn.addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';try{localStorage.setItem(langKey,lang)}catch(e){};apply()});
+   document.body.appendChild(btn);
+   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+   let node;
+   while(node=walker.nextNode()){
+     if(node.parentElement?.closest('script,style,[data-pt-language]'))continue;
+     node.nodeValue=translateValue(node.nodeValue,lang);
+   }
+   document.querySelectorAll('input[placeholder],button[aria-label],img[alt],meta[content],title').forEach(el=>{
+     for(const attr of ['placeholder','aria-label','alt','content']){
+       if(el.hasAttribute(attr))el.setAttribute(attr,translateValue(el.getAttribute(attr),lang));
+     }
+     if(el.tagName==='TITLE')el.textContent=translateValue(el.textContent,lang);
+   });
+ };
+ apply();
+ const observer=new MutationObserver(records=>{
+   for(const rec of records){
+     for(const n of rec.addedNodes){
+       if(n.nodeType===Node.TEXT_NODE)n.nodeValue=translateValue(n.nodeValue,lang);
+       else if(n.nodeType===Node.ELEMENT_NODE&&!n.matches('[data-pt-language]')){
+         const walker=document.createTreeWalker(n,NodeFilter.SHOW_TEXT);let t;
+         while(t=walker.nextNode())t.nodeValue=translateValue(t.nodeValue,lang);
+       }
+     }
+   }
+ });
+ observer.observe(document.body,{childList:true,subtree:true});
+})();
+</script>\n</body></html>
