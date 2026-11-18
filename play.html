@@ -13,6 +13,32 @@
 .progress-fill{height:100%;width:0;background:linear-gradient(90deg,#bd8ba8,#7b6688);border-radius:99px;transition:width .25s}
 @media(max-width:650px){.games{grid-template-columns:1fr}.game{padding:19px}.hero{padding:27px 18px}.box-choices{gap:6px}.mystery-box{font-size:13px;padding:12px 5px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}@media(max-width:650px){.games{grid-template-columns:1fr}.game{padding:19px}.hero{padding:27px 18px}}
+
+/* ANTI-ALGORITHM: playful archive catalogue, not a stack of app cards */
+:root{--ink:#172d3a;--muted:#586b70;--cream:#f4f1e7;--green:#dce8dc;--deep:#174d4b;--coral:#e45f43;--yellow:#e6c85b;--lilac:#dce6eb}
+body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,58,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(23,45,58,.035) 1px,transparent 1px);background-size:28px 28px;color:var(--ink)}
+.wrap{width:min(1120px,calc(100% - 36px))}
+.nav{border-bottom:1px solid var(--ink);padding:15px 0}.brand{color:var(--ink)}.nav a,.back{color:var(--deep)}
+.hero{background:var(--ink);color:var(--cream);border:1px solid var(--ink);border-radius:3px;text-align:right;margin:20px 0 30px;padding:clamp(26px,5vw,54px);position:relative;box-shadow:8px 8px 0 var(--coral)}
+.hero:after{content:"PLAY ARCHIVE  /  OPEN ACCESS";position:absolute;bottom:15px;inset-inline-end:22px;font:700 10px Arial,sans-serif;letter-spacing:2px;color:var(--yellow)}
+.hero .emoji{font-size:45px}.hero h1{font-size:clamp(38px,6vw,60px);letter-spacing:-1.8px}.hero p{color:#d5ded8;margin-inline-start:0}
+.shop-tag{background:var(--yellow);border:1px solid var(--cream);border-radius:2px;color:var(--ink)}
+.games{grid-template-columns:repeat(6,1fr);gap:14px}
+.game{grid-column:span 3;background:#fffdf5;border:1px solid var(--ink);border-radius:3px;box-shadow:5px 5px 0 #c9d1c9;padding:22px}
+.game:nth-child(3){grid-column:span 4;background:#e0e8ee}.game:nth-child(4){grid-column:span 2;background:#f3e9c9}.game:nth-child(5){grid-column:span 2;background:#e2e9df}.game:nth-child(6){grid-column:span 4;background:#f0ded6}
+.game:after{content:"";width:26px;height:26px;border:1px dashed var(--ink);border-radius:50%;background:var(--cream);left:14px;top:14px}
+.game-kicker{background:var(--yellow);border:1px solid var(--ink);border-radius:2px;color:var(--ink);padding:4px 9px}
+.game h2{font-size:25px}.game p{color:var(--muted)}.game-icon{font-size:35px}
+.choice,.action{border:1px solid var(--ink);border-radius:2px;background:#f4f1e7;color:var(--ink);text-align:start}
+.choice:hover,.action:hover{background:var(--yellow);filter:none;transform:translateX(-2px)}
+.action{background:var(--deep);color:white;text-align:center;box-shadow:3px 3px 0 var(--coral)}
+.result{border:1px dashed var(--ink);border-radius:2px;background:#fffdf5;color:var(--ink)}
+.progress-track{border:1px solid var(--ink);background:#fffdf5;border-radius:0}.progress-fill{background:var(--coral);border-radius:0}
+.mystery-box{border:1px solid var(--ink);border-radius:2px;background:#fffdf5;box-shadow:3px 3px 0 var(--line)}
+.mystery-box:hover{box-shadow:3px 5px 0 var(--coral)}
+.footer{border-top:1px solid var(--ink);margin-top:32px}
+@media(max-width:700px){.games{grid-template-columns:1fr}.game,.game:nth-child(n){grid-column:span 1}.hero{text-align:center}.hero p{margin-inline:auto}.hero:after{position:static;display:block;margin-top:15px}.game{padding:19px}}
+
 </style></head><body><main class="wrap"><header class="nav"><a class="brand" href="index.html">🐾 PawTint</a><a href="index.html">ارجع للرئيسية ←</a></header><section class="hero"><div class="emoji">🎉🐶🐱🎉</div><span class="shop-tag">🐾 المحل مفتوح · كل الألعاب مجانية</span><h1>أهلاً بيك في محل PawTint! ♡</h1><p>اختار لعبة، افتح صندوق مفاجآت، أو ادخل تحدي خفيف. كل ركن معمول عشان تستمتعوا بوقتكم سوا — من غير اشتراك ولا ضغط.</p></section><section class="games">
 <article class="game"><div class="game-kicker">🐱 ركن القطط</div><div class="game-icon">💛</div><h2>شخصية قطتك إيه؟</h2><p>اختار التصرف الأقرب لقطتك وشوف النتيجة المرحة.</p><div class="choices" id="cat-choices"><button class="choice" data-v="مستكشف جريء 🧭">تفتش في كل كيس وصندوق جديد</button><button class="choice" data-v="مدير البيت 👑">تراقب الكل من أعلى مكان</button><button class="choice" data-v="خبير الدلع 🥰">تطلب حضن واهتمام طول اليوم</button><button class="choice" data-v="صياد محترف 🐾">تطارد أي حاجة بتتحرك</button></div><div class="result hidden" id="cat-result" aria-live="polite"></div></article>
 <article class="game"><div class="game-kicker">🐶 ركن الكلاب</div><div class="game-icon">🐕</div><h2>كلبك بيقولك إيه؟</h2><p>موقف سريع… اختار الرد اللي تعتقد إنه الأفضل.</p><div class="choices" id="dog-choices"><button class="choice" data-v="برافو! اديله مساحة وراقب لغة جسمه.">كلبك بيبعد وشه وبيحاول يبعد عنك</button><button class="choice" data-v="خليه يهدى، وما تجبرهوش على التفاعل.">كلبك متوتر وسط زحمة ناس</button><button class="choice" data-v="كافئ الهدوء ودرّبه بالتدريج.">كلبك بينبح لما يسمع صوت بره</button></div><div class="result hidden" id="dog-result" aria-live="polite"></div></article>
