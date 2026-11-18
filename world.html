@@ -62,6 +62,13 @@ body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,5
 @media(hover:hover){.character:hover img{animation:mascot-react .72s cubic-bezier(.2,.8,.25,1) both}}
 @media(prefers-reduced-motion:reduce){.character img,.character img.is-reacting{animation:none!important;will-change:auto}}
 
+
+/* PAWTINT MOTION PASS 03 — contextual locomotion */
+@keyframes pawtint-walk{0%,100%{transform:translateX(0) rotate(0) scale(1)}18%{transform:translateX(-3px) rotate(-2deg) scale(1.015,.99)}38%{transform:translateX(2px) rotate(2deg) scale(.99,1.015)}58%{transform:translateX(-2px) rotate(-1.5deg) scale(1.01,.995)}78%{transform:translateX(2px) rotate(1.5deg)}}
+@keyframes pawtint-hop{0%{transform:translateY(0) scale(1)}18%{transform:translateY(3px) scale(1.045,.95)}48%{transform:translateY(-17px) scale(.98,1.035)}72%{transform:translateY(2px) scale(1.02,.985)}88%,100%{transform:translateY(0) scale(1)}}
+.pawtint-walk{animation:pawtint-walk .78s cubic-bezier(.36,.07,.25,1) both!important}
+.pawtint-hop{animation:pawtint-hop .72s cubic-bezier(.2,.75,.25,1) both!important}
+@media(prefers-reduced-motion:reduce){.pawtint-walk,.pawtint-hop{animation:none!important}}
 </style>
 </head>
 <body><main class="wrap">
@@ -230,4 +237,7 @@ render();
 (()=>{const art=document.getElementById("mascot-art");if(!art)return;const react=()=>{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;art.classList.remove("is-reacting");void art.offsetWidth;art.classList.add("is-reacting")};document.querySelectorAll("#species button,#traits button,#make-card").forEach(button=>button.addEventListener("click",react));art.addEventListener("animationend",()=>art.classList.remove("is-reacting"));})();
 </script>
 
+<script>
+(()=>{const art=document.getElementById('mascot-art');if(!art)return;const reduce=matchMedia('(prefers-reduced-motion: reduce)');let last='';const move=kind=>{if(reduce.matches)return;art.classList.remove('pawtint-walk','pawtint-hop');void art.offsetWidth;art.classList.add(kind==='walk'?'pawtint-walk':'pawtint-hop');last=kind};document.querySelectorAll('#species button,#traits button').forEach(b=>b.addEventListener('click',()=>move('walk')));document.getElementById('make-card')?.addEventListener('click',()=>move('hop'));art.addEventListener('animationend',e=>{if(e.animationName==='pawtint-walk'||e.animationName==='pawtint-hop')art.classList.remove('pawtint-walk','pawtint-hop')});})();
+</script>
 </body></html>
