@@ -42,8 +42,10 @@ A consistent, original 2.5D storybook mascot family for a static HTML/CSS/JS web
 - `bodi.svg`, `loli.svg`, `birdy.svg` are lightweight project-authored vector web illustrations.
 - They establish a first-pass shape/palette direction; they are not final high-detail production masters.
 - Integrated in homepage cast, character creator, personalized pet home and play-room guide.
-- CSS idle/entrance motion is implemented with reduced-motion fallbacks.
-- Birdy currently rotates through text hints on the home page and reacts to play interactions.
+- CSS idle motion and contextual walk/hop reactions are implemented on the creator, pet-home and play pages; Birdy also has SVG wing motion. All non-essential motion has `prefers-reduced-motion` fallbacks.
+- Interaction mapping: creator choices trigger a short walk reaction; card creation triggers a hop; the garden mission triggers a paired pet/Birdy hop; play choices and missions trigger a Birdy hop.
+- These are restrained transforms of the existing SVG/image artwork, not frame-by-frame skeletal walk cycles. True articulated walk/run cycles and alternate expression/pose artwork remain future production work.
+- Browser checks passed on the three core interaction pages at 390 px and 1920 px widths (no horizontal overflow); character images loaded and contextual motion classes were triggered. JavaScript syntax checks passed. Full visual review of animation quality and all game paths remains pending.
 - Next art-production step: create approved high-detail transparent master for each character, then derive the expression/pose family from that master. Do not independently regenerate each pose from text alone.
 
 ## Acceptance gates before release
