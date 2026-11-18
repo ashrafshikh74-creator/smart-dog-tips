@@ -16,6 +16,9 @@
 .loli-tail{transform-box:fill-box;transform-origin:12% 78%;animation:loli-tail 3.2s ease-in-out infinite}
 .loli-ears{transform-box:fill-box;transform-origin:50% 100%;animation:loli-ear 6s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.mascot-body,.loli-tail,.loli-ears{animation:none}}
+@keyframes loli-blink{0%,91%,94%,100%{transform:scaleY(1)}92.5%{transform:scaleY(.08)}}
+.loli-eyes{transform-box:fill-box;transform-origin:50% 50%;animation:loli-blink 6.2s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.loli-eyes{animation:none}}
 </style>
 <g class="mascot-body" filter="url(#shadow)">
 
@@ -24,7 +27,7 @@
 <ellipse cx="210" cy="232" rx="116" ry="128" fill="url(#fur)"/><ellipse cx="210" cy="291" rx="75" ry="63" fill="#fff"/>
 <path class="loli-tail" d="M286 306Q372 308 347 366Q326 404 275 371Q322 372 309 341" fill="none" stroke="#bda3e5" stroke-width="27" stroke-linecap="round"/>
 <path d="M155 135Q210 90 265 135" fill="none" stroke="#b89bdc" stroke-width="18" stroke-linecap="round"/>
-<ellipse cx="166" cy="214" rx="25" ry="33" fill="#fff"/><ellipse cx="254" cy="214" rx="25" ry="33" fill="#fff"/><ellipse cx="170" cy="218" rx="14" ry="23" fill="#6948b7"/><ellipse cx="250" cy="218" rx="14" ry="23" fill="#6948b7"/><circle cx="175" cy="207" r="7" fill="#fff"/><circle cx="255" cy="207" r="7" fill="#fff"/>
+<g class="loli-eyes"><ellipse cx="166" cy="214" rx="25" ry="33" fill="#fff"/><ellipse cx="254" cy="214" rx="25" ry="33" fill="#fff"/><ellipse cx="170" cy="218" rx="14" ry="23" fill="#6948b7"/><ellipse cx="250" cy="218" rx="14" ry="23" fill="#6948b7"/><circle cx="175" cy="207" r="7" fill="#fff"/><circle cx="255" cy="207" r="7" fill="#fff"/></g>
 <path d="M193 259Q210 247 227 259Q210 281 193 259Z" fill="#ee8ba9"/><path d="M210 278Q191 299 177 278M210 278Q229 299 243 278" fill="none" stroke="#8c5b8b" stroke-width="6" stroke-linecap="round"/>
 <path d="M158 90Q172 51 210 70Q248 51 262 90Q236 107 210 94Q184 107 158 90Z" fill="#f05b9b"/><circle cx="210" cy="86" r="15" fill="#ff9fc2"/>
 <path d="M132 300Q210 328 288 300L276 356Q210 379 144 356Z" fill="#8754c1"/><path d="M192 319L210 338L228 319L210 304Z" fill="#f5c34e"/>
