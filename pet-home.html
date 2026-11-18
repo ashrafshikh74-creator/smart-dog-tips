@@ -42,6 +42,17 @@ body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,5
 .room{border:2px solid #76568f;border-radius:18px;box-shadow:5px 5px 0 #e7b0c8;background:linear-gradient(145deg,#fffdf4,#f5e4f5)}
 .room:nth-child(2){background:linear-gradient(145deg,#f7e7ff,#dfeeff)}.room:nth-child(3){background:linear-gradient(145deg,#fff0d2,#dff3df)}
 
+
+/* MOTION PASS 02 — softer breathing, grounded reactions */
+.pet img{will-change:transform;transform-origin:50% 88%;animation:hero-idle-natural 5.2s ease-in-out infinite}
+.birdy-home img{will-change:transform;transform-origin:50% 80%;animation:birdy-hover-natural 4.1s ease-in-out infinite}
+.pet img.is-reacting,.birdy-home img.is-reacting{animation:mascot-home-react .78s cubic-bezier(.2,.8,.25,1) both}
+@keyframes hero-idle-natural{0%,100%{transform:translateY(0) rotate(-.5deg) scale(1)}42%{transform:translateY(-4px) rotate(.35deg) scale(1.006)}68%{transform:translateY(-1px) rotate(0) scale(1)}}
+@keyframes birdy-hover-natural{0%,100%{transform:translateY(0) rotate(-1deg)}38%{transform:translateY(-5px) rotate(1.2deg)}62%{transform:translateY(-2px) rotate(.2deg)}}
+@keyframes mascot-home-react{0%{transform:translateY(0) scale(1)}25%{transform:translateY(2px) scale(1.035,.97)}55%{transform:translateY(-8px) rotate(-2deg) scale(.99,1.02)}82%{transform:translateY(1px) rotate(.5deg)}100%{transform:translateY(0) rotate(0) scale(1)}}
+@media(hover:hover){.birdy-home:hover img{animation:mascot-home-react .78s cubic-bezier(.2,.8,.25,1) both}}
+@media(prefers-reduced-motion:reduce){.pet img,.birdy-home img,.pet img.is-reacting,.birdy-home img.is-reacting{animation:none!important;will-change:auto}}
+
 </style></head><body><main class="wrap"><header class="nav"><a class="brand" href="index.html">🐾 PawTint</a><a href="world.html">تعديل شخصية بطلك ←</a></header>
 <section class="welcome"><span class="eyebrow">🏡 بيتك في PawTint World</span><h1>أهلاً في بيت <span id="welcome-name">بطلك</span>!</h1><p>هنا تبدأ الحكايات الصغيرة. اختار ركنًا واكتشف حاجة جديدة.</p></section>
 <section class="house"><div class="pet"><img id="pet-mascot" src="assets/characters/loli.svg" alt="لولى" width="180" height="180"></div><h2 class="petname" id="pet-name">بطل PawTint</h2><span class="trait" id="pet-trait">🔎 فضولي</span><p id="pet-line">مستعد يكتشف كل ركن جديد في العالم!</p></section>
@@ -193,4 +204,8 @@ showStamps();
  });
  observer.observe(document.body,{childList:true,subtree:true,characterData:true});
 })();
-</script>\n</body></html>
+</script>\n<script>
+(()=>{const reduce=matchMedia("(prefers-reduced-motion: reduce)");const react=el=>{if(!el||reduce.matches)return;el.classList.remove("is-reacting");void el.offsetWidth;el.classList.add("is-reacting")};const pet=document.getElementById("pet-mascot"),bird=document.querySelector(".birdy-home img");document.getElementById("birdy-next")?.addEventListener("click",()=>react(bird));document.querySelectorAll(".room a,.room button").forEach(el=>el.addEventListener("click",()=>react(pet)));[pet,bird].forEach(el=>el?.addEventListener("animationend",()=>el.classList.remove("is-reacting")));})();
+</script>
+
+</body></html>
