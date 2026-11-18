@@ -37,7 +37,10 @@ body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,5
 .preview{background:var(--lilac);border-inline-start:1px dashed var(--ink);position:relative}
 .preview:before{content:"SPECIMEN / 01";position:absolute;top:15px;inset-inline-end:18px;font:700 10px Arial,sans-serif;letter-spacing:2px;color:var(--ink)}
 .preview-top{padding-top:24px;color:var(--muted);font:700 11px Arial,sans-serif;letter-spacing:2px}
-.character{border-radius:3px;background:var(--paper);border:1px solid var(--ink);box-shadow:8px 8px 0 #a9bbc1;width:180px;height:180px}.character img{width:100%;height:100%;object-fit:contain;padding:4px}
+.character{border-radius:3px;background:var(--paper);border:1px solid var(--ink);box-shadow:8px 8px 0 #a9bbc1;width:180px;height:180px}.character img{width:100%;height:100%;object-fit:contain;padding:4px;animation:mascot-arrive .45s ease-out}
+@keyframes mascot-arrive{0%{transform:translateY(10px) scale(.94);opacity:.65}100%{transform:translateY(0) scale(1);opacity:1}}
+.character:focus-within{outline:3px solid #e6c85b}
+@media(prefers-reduced-motion:reduce){.character img{animation:none}}
 .pet-name{font-size:34px}.pet-trait{background:var(--gold);border:1px solid var(--ink);border-radius:2px;color:var(--ink)}
 .share,.enter-home{border:1px solid var(--ink);border-radius:2px;background:var(--paper);color:var(--ink)}.enter-home{background:var(--plum);color:white}
 .world-note{border-top:1px solid var(--ink);padding:20px 0}
@@ -93,7 +96,9 @@ const nameInput=document.getElementById("pet-name");
 const emoji={cat:"🐱",dog:"🐶"};
 const lines={فضولي:"مستعد يكتشف كل ركن جديد في العالم!",مشاغب:"دايمًا وراه فكرة جديدة ومقلب لطيف!",هادئ:"بيحب اللحظات الهادية والونس الجميل.",مغامر:"كل يوم عنده حكاية ومكان جديد يكتشفه."};
 function render(){
- const mascot=document.getElementById("mascot-art");\n mascot.src=state.species==="dog"?"assets/characters/bodi.svg":"assets/characters/loli.svg";\n mascot.alt=state.species==="dog"?"بودى الجرو المستكشف":"لولى القطة الذكية";
+ const mascot=document.getElementById("mascot-art");
+ mascot.src=state.species==="dog"?"assets/characters/bodi.svg":"assets/characters/loli.svg";
+ mascot.alt=state.species==="dog"?"بودى الجرو المستكشف":"لولى القطة الذكية";
  document.getElementById("card-name").textContent=state.name.trim()||"بطل PawTint";
  document.getElementById("card-trait").textContent=({فضولي:"🔎 ",مشاغب:"🎈 ",هادئ:"🌙 ",مغامر:"🧭 "}[state.trait])+state.trait;
  document.getElementById("card-note").textContent=lines[state.trait];
