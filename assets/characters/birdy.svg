@@ -16,12 +16,15 @@
 @keyframes birdy-idle{0%,100%{transform:translateY(0) rotate(-.3deg)}50%{transform:translateY(-3px) rotate(.3deg)}}
 .mascot-body{transform-box:fill-box;transform-origin:50% 90%;animation:birdy-idle 3.8s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.wing-left,.wing-right,.mascot-body{animation:none}}
+@keyframes birdy-blink{0%,91%,94%,100%{transform:scaleY(1)}92.5%{transform:scaleY(.08)}}
+.birdy-eyes{transform-box:fill-box;transform-origin:50% 50%;animation:birdy-blink 5.4s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.birdy-eyes{animation:none}}
 </style>
 <g class="mascot-body" filter="url(#shadow)">
 <ellipse cx="210" cy="245" rx="104" ry="126" fill="url(#fur)"/><ellipse cx="210" cy="288" rx="68" ry="72" fill="#ffe98b"/>
 <path class="wing-left" d="M125 220Q35 133 52 82Q113 103 164 193Z" fill="#1da6d0" stroke="#087caa" stroke-width="8"/><path class="wing-right" d="M295 220Q385 133 368 82Q307 103 256 193Z" fill="#1da6d0" stroke="#087caa" stroke-width="8"/>
 <path d="M120 124Q150 70 210 78Q270 70 300 124" fill="none" stroke="#0c8cb7" stroke-width="22" stroke-linecap="round"/>
-<ellipse cx="170" cy="205" rx="25" ry="33" fill="#fff"/><ellipse cx="250" cy="205" rx="25" ry="33" fill="#fff"/><ellipse cx="174" cy="210" rx="14" ry="22" fill="#174b78"/><ellipse cx="246" cy="210" rx="14" ry="22" fill="#174b78"/><circle cx="179" cy="199" r="7" fill="#fff"/><circle cx="251" cy="199" r="7" fill="#fff"/>
+<g class="birdy-eyes"><ellipse cx="170" cy="205" rx="25" ry="33" fill="#fff"/><ellipse cx="250" cy="205" rx="25" ry="33" fill="#fff"/><ellipse cx="174" cy="210" rx="14" ry="22" fill="#174b78"/><ellipse cx="246" cy="210" rx="14" ry="22" fill="#174b78"/><circle cx="179" cy="199" r="7" fill="#fff"/><circle cx="251" cy="199" r="7" fill="#fff"/></g>
 <path d="M190 249L230 249L210 280Z" fill="#f28c35"/><path d="M174 305Q210 322 246 305" fill="none" stroke="#d99137" stroke-width="7" stroke-linecap="round"/>
 <path d="M122 113Q210 72 298 113L283 133Q210 103 137 133Z" fill="#1c7db5" stroke="#145078" stroke-width="8"/><ellipse cx="170" cy="113" rx="31" ry="19" fill="#d8efff" stroke="#b47a2c" stroke-width="9"/><ellipse cx="250" cy="113" rx="31" ry="19" fill="#d8efff" stroke="#b47a2c" stroke-width="9"/>
 <path d="M142 293Q210 319 278 293L270 334Q210 356 150 334Z" fill="#4f9b48"/><path d="M280 304L333 327L322 357L267 334Z" fill="#347346" stroke="#76502b" stroke-width="7"/>
