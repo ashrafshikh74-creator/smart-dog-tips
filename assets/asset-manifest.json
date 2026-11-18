@@ -2,7 +2,7 @@
   "project": "PawTint World",
   "version": 1,
   "status": "concept-review",
-  "notes": "Vector mascot fallback assets have been added to the development branch and integrated into selected pages. They are lightweight original SVG illustrations, not the final high-detail generated PNG masters. Visual, accessibility, responsive and browser QA remain pending.",
+  "notes": "Vector mascot fallback assets have been added to the development branch and integrated into selected pages. They are lightweight original SVG illustrations, not the final high-detail generated PNG masters. Visual, accessibility, responsive and browser QA remain pending. Phase update: character creator entrance motion, pet-home idle motion, interactive Birdy home hints, and contextual Birdy play feedback are integrated. Inline JavaScript syntax checks passed for world.html, pet-home.html and play.html. Browser rendering, responsive screenshots, and visual QA remain pending.",
   "assets": [
     {
       "id": "pawtint-adventure-world",
@@ -58,7 +58,7 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; visual QA pending",
+      "approval_status": "integrated on development branch; syntax and source-presence checks passed; browser visual QA pending",
       "technical_checks_passed": false
     },
     {
@@ -73,7 +73,7 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; visual QA pending",
+      "approval_status": "integrated on development branch; syntax and source-presence checks passed; browser visual QA pending",
       "technical_checks_passed": false
     },
     {
@@ -88,7 +88,7 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; visual QA pending",
+      "approval_status": "integrated on development branch; syntax and source-presence checks passed; browser visual QA pending",
       "technical_checks_passed": false
     }
   ]
