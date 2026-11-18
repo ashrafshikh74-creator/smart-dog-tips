@@ -17,7 +17,7 @@
 </style>
 <g class="mascot-body" filter="url(#shadow)">
 
-<path class="bodi-ears" d="M105 152Q42 106 64 214Q75 267 135 247Z" fill="#b96e34"/><path d="M315 151Q378 105 356 214Q345 267 285 247Z" fill="#b96e34"/>
+<path class="bodi-ears" d="M105 152Q42 106 64 214Q75 267 135 247Z" fill="#b96e34"/><path class="bodi-ears" d="M315 151Q378 105 356 214Q345 267 285 247Z" fill="#b96e34"/>
 <ellipse cx="210" cy="245" rx="116" ry="119" fill="url(#fur)"/><ellipse cx="210" cy="288" rx="78" ry="66" fill="#fff0d8"/>
 <ellipse cx="135" cy="345" rx="42" ry="28" fill="#f7d49b"/><ellipse cx="285" cy="345" rx="42" ry="28" fill="#f7d49b"/>
 <path d="M112 129Q130 42 210 55Q290 42 308 129L286 143Q210 116 134 143Z" fill="#2587cf" stroke="#174e9a" stroke-width="8"/>
