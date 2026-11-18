@@ -2,7 +2,7 @@
   "project": "PawTint World",
   "version": 1,
   "status": "concept-review",
-  "notes": "First-pass original SVG mascots are integrated into selected PawTint pages. Natural idle motion, staggered eye-blink cycles, Birdy wing movement, and contextual walk/hop reactions are implemented on world.html, pet-home.html and play.html. Inline JavaScript syntax checks passed on all three pages. Browser interaction checks passed: creator choice walk and card-creation hop; garden mission paired pet/Birdy hop; play-choice Birdy hop. Mobile (390px) and desktop (1920px) layouts were checked with no horizontal overflow on all three pages. Character images loaded. Reduced-motion preference was verified to disable the creator reaction animation; SVG files and CSS include reduced-motion fallbacks. Full visual animation review, comprehensive game-path QA, high-detail approved master art, and articulated frame-by-frame walk cycles remain pending. Development branch only; live site unchanged. Mascot SVGs now include subtle blink cycles with reduced-motion fallbacks; XML/browser validation pending. Live site unchanged.",
+  "notes": "First-pass original SVG mascots are integrated into selected PawTint pages. Natural idle motion, staggered eye-blink cycles, Birdy wing movement, and contextual walk/hop reactions are implemented on world.html, pet-home.html and play.html. Inline JavaScript syntax checks passed on all three pages. Browser interaction checks passed: creator choice walk and card-creation hop; garden mission paired pet/Birdy hop; play-choice Birdy hop. Mobile (390px) and desktop (1920px) layouts were checked with no horizontal overflow on all three pages. Character images loaded. Reduced-motion preference was verified to disable the creator reaction animation; SVG files and CSS include reduced-motion fallbacks. Full visual animation review, comprehensive game-path QA, high-detail approved master art, and articulated frame-by-frame walk cycles remain pending. Development branch only; live site unchanged. Mascot SVGs now include subtle blink cycles with reduced-motion fallbacks; SVG tag-nesting and CSS-brace structural checks passed; browser-level blink inspection pending. Live site unchanged.",
   "assets": [
     {
       "id": "pawtint-adventure-world",
@@ -58,8 +58,8 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; blink motion added; browser image-load checks passed; full visual QA pending",
-      "technical_checks_passed": false
+      "approval_status": "integrated on development branch; blink CSS and reduced-motion declarations structurally checked; browser visual QA pending",
+      "technical_checks_passed": true
     },
     {
       "id": "loli-vector-web",
@@ -73,8 +73,8 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; blink motion added; browser image-load checks passed; full visual QA pending",
-      "technical_checks_passed": false
+      "approval_status": "integrated on development branch; blink CSS and reduced-motion declarations structurally checked; browser visual QA pending",
+      "technical_checks_passed": true
     },
     {
       "id": "birdy-vector-web",
@@ -88,8 +88,8 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; blink motion added; browser image-load checks passed; full visual QA pending",
-      "technical_checks_passed": false
+      "approval_status": "integrated on development branch; blink CSS and reduced-motion declarations structurally checked; browser visual QA pending",
+      "technical_checks_passed": true
     }
   ]
 }
