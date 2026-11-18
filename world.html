@@ -53,6 +53,15 @@ body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,5
 .character{background:linear-gradient(145deg,#fff3cb,#d9c4f4);border:7px solid #fff;box-shadow:0 10px 0 #9165b2}
 .primary{background:linear-gradient(110deg,#f19ac1,#7950b6);box-shadow:0 5px 0 #4b3670}
 
+
+/* MOTION PASS 02 — restrained, character-led reactions */
+.character img{will-change:transform;transform-origin:50% 88%;animation:mascot-breathe 4.8s ease-in-out infinite}
+.character img.is-reacting{animation:mascot-react .72s cubic-bezier(.2,.8,.25,1) both}
+@keyframes mascot-breathe{0%,100%{transform:translateY(0) rotate(-.6deg) scale(1)}45%{transform:translateY(-3px) rotate(.45deg) scale(1.008)}72%{transform:translateY(-1px) rotate(0) scale(1)}}
+@keyframes mascot-react{0%{transform:translateY(0) scale(1)}24%{transform:translateY(3px) scale(1.035,.965)}52%{transform:translateY(-9px) rotate(-3deg) scale(.985,1.02)}78%{transform:translateY(1px) rotate(1deg)}100%{transform:translateY(0) rotate(0) scale(1)}}
+@media(hover:hover){.character:hover img{animation:mascot-react .72s cubic-bezier(.2,.8,.25,1) both}}
+@media(prefers-reduced-motion:reduce){.character img,.character img.is-reacting{animation:none!important;will-change:auto}}
+
 </style>
 </head>
 <body><main class="wrap">
@@ -217,4 +226,8 @@ render();
  });
  observer.observe(document.body,{childList:true,subtree:true,characterData:true});
 })();
-</script>\n</body></html>
+</script>\n<script>
+(()=>{const art=document.getElementById("mascot-art");if(!art)return;const react=()=>{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;art.classList.remove("is-reacting");void art.offsetWidth;art.classList.add("is-reacting")};document.querySelectorAll("#species button,#traits button,#make-card").forEach(button=>button.addEventListener("click",react));art.addEventListener("animationend",()=>art.classList.remove("is-reacting"));})();
+</script>
+
+</body></html>
