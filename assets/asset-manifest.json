@@ -22,7 +22,9 @@
     },
     {
       "id": "pawtint-mascot-reference-v1",
-      "path": "review-art/pawtint-mascot-reference-v1.jpg",
+      "path": null,
+      "attachment_filename": "pawtint-mascot-reference-v1.jpg",
+      "repository_status": "not committed; generated image is attached to this conversation",
       "kind": "character-concept-sheet",
       "dimensions": "1536x1024",
       "format": "JPEG",
