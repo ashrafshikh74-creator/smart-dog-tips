@@ -2,7 +2,7 @@
   "project": "PawTint World",
   "version": 1,
   "status": "concept-review",
-  "notes": "Vector mascot fallback assets have been added to the development branch and integrated into selected pages. They are lightweight original SVG illustrations, not the final high-detail generated PNG masters. Visual, accessibility, responsive and browser QA remain pending. Phase update: character creator entrance motion, pet-home idle motion, interactive Birdy home hints, and contextual Birdy play feedback are integrated. Inline JavaScript syntax checks passed for world.html, pet-home.html and play.html. Browser rendering, responsive screenshots, and visual QA remain pending.",
+  "notes": "First-pass original SVG mascots are integrated into selected PawTint pages. Natural idle motion, Birdy wing movement, and contextual walk/hop reactions are implemented on world.html, pet-home.html and play.html. Inline JavaScript syntax checks passed. Browser interaction checks passed for creator walk/hop and play Birdy hop; pet-home Birdy hop verified, with garden-pet reaction awaiting a fresh-cache confirmation. Mobile (390px) and desktop (1920px) layouts were checked with no horizontal overflow on the three core pages. Character images loaded. Reduced-motion CSS is present and creator reaction animation resolves to none under reduced-motion. Full visual animation review, comprehensive game-path QA, high-detail master art, and articulated frame-by-frame walk cycles remain pending. Development branch only; live site unchanged.",
   "assets": [
     {
       "id": "pawtint-adventure-world",
@@ -58,7 +58,7 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; syntax and source-presence checks passed; browser visual QA pending",
+      "approval_status": "integrated on development branch; browser image-load checks passed; full visual QA pending",
       "technical_checks_passed": false
     },
     {
@@ -73,7 +73,7 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; syntax and source-presence checks passed; browser visual QA pending",
+      "approval_status": "integrated on development branch; browser image-load checks passed; full visual QA pending",
       "technical_checks_passed": false
     },
     {
@@ -88,7 +88,7 @@
         "kind": "project-authored-vector",
         "license": "project-original"
       },
-      "approval_status": "integrated on development branch; syntax and source-presence checks passed; browser visual QA pending",
+      "approval_status": "integrated on development branch; browser image-load checks passed; full visual QA pending",
       "technical_checks_passed": false
     }
   ]
