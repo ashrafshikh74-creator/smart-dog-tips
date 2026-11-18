@@ -26,6 +26,13 @@ body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,5
 .notice{border-top:1px dashed var(--ink);padding-top:15px}
 @media(max-width:720px){.welcome{text-align:center}.house{text-align:center;padding:28px 18px}.pet{display:block;margin:0}.petname{display:block}.trait{margin:7px auto}.rooms{grid-template-columns:1fr}.room{min-height:0;padding:20px}.room+.room{border-inline-start:0;border-top:1px dashed var(--ink)}}
 
+/* PAWTINT WORLD — cozy illustrated home */
+.house{background:linear-gradient(90deg,rgba(255,244,219,.94),rgba(255,231,241,.86)),url('assets/pawtint-adventure-world.svg') center 53%/cover;border:2px solid #654a88;border-radius:24px;box-shadow:8px 8px 0 #eea0c1;min-height:300px}
+.house:after{content:"";position:absolute;inset:auto 0 0;height:120px;background:url('assets/pawtint-adventure-world.svg') center 78%/cover;opacity:.18;pointer-events:none}
+.pet{font-size:94px;filter:drop-shadow(0 8px 5px #674b7b44)}
+.room{border:2px solid #76568f;border-radius:18px;box-shadow:5px 5px 0 #e7b0c8;background:linear-gradient(145deg,#fffdf4,#f5e4f5)}
+.room:nth-child(2){background:linear-gradient(145deg,#f7e7ff,#dfeeff)}.room:nth-child(3){background:linear-gradient(145deg,#fff0d2,#dff3df)}
+
 </style></head><body><main class="wrap"><header class="nav"><a class="brand" href="index.html">🐾 PawTint</a><a href="world.html">تعديل شخصية بطلك ←</a></header>
 <section class="welcome"><span class="eyebrow">🏡 بيتك في PawTint World</span><h1>أهلاً في بيت <span id="welcome-name">بطلك</span>!</h1><p>هنا تبدأ الحكايات الصغيرة. اختار ركنًا واكتشف حاجة جديدة.</p></section>
 <section class="house"><div class="pet" id="pet-emoji">🐱</div><h2 class="petname" id="pet-name">بطل PawTint</h2><span class="trait" id="pet-trait">🔎 فضولي</span><p id="pet-line">مستعد يكتشف كل ركن جديد في العالم!</p></section>
