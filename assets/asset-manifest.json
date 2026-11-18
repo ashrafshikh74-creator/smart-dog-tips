@@ -2,7 +2,7 @@
   "project": "PawTint World",
   "version": 1,
   "status": "concept-review",
-  "notes": "Do not treat concept art as production-ready. Technical checks and in-page validation are still required.",
+  "notes": "Vector mascot fallback assets have been added to the development branch and integrated into selected pages. They are lightweight original SVG illustrations, not the final high-detail generated PNG masters. Visual, accessibility, responsive and browser QA remain pending.",
   "assets": [
     {
       "id": "pawtint-adventure-world",
@@ -45,6 +45,51 @@
         "no exact per-character crop, anchor or animation frames",
         "must be reviewed at actual page scale before production use"
       ]
+    },
+    {
+      "id": "bodi-vector-web",
+      "path": "assets/characters/bodi.svg",
+      "kind": "web-mascot-vector",
+      "format": "SVG",
+      "dimensions": "420x420 viewBox",
+      "alpha": true,
+      "role": "lightweight mascot fallback in homepage and personalized pet-home",
+      "source": {
+        "kind": "project-authored-vector",
+        "license": "project-original"
+      },
+      "approval_status": "integrated on development branch; visual QA pending",
+      "technical_checks_passed": false
+    },
+    {
+      "id": "loli-vector-web",
+      "path": "assets/characters/loli.svg",
+      "kind": "web-mascot-vector",
+      "format": "SVG",
+      "dimensions": "420x420 viewBox",
+      "alpha": true,
+      "role": "lightweight mascot fallback in homepage and personalized pet-home",
+      "source": {
+        "kind": "project-authored-vector",
+        "license": "project-original"
+      },
+      "approval_status": "integrated on development branch; visual QA pending",
+      "technical_checks_passed": false
+    },
+    {
+      "id": "birdy-vector-web",
+      "path": "assets/characters/birdy.svg",
+      "kind": "web-mascot-vector",
+      "format": "SVG",
+      "dimensions": "420x420 viewBox",
+      "alpha": true,
+      "role": "mascot guide in homepage and game room",
+      "source": {
+        "kind": "project-authored-vector",
+        "license": "project-original"
+      },
+      "approval_status": "integrated on development branch; visual QA pending",
+      "technical_checks_passed": false
     }
   ]
 }
