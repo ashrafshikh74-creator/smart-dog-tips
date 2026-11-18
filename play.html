@@ -46,7 +46,20 @@ body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,5
 .game:nth-child(3){background:linear-gradient(145deg,#e7efff,#f7e6f1)}.game:nth-child(4){background:linear-gradient(145deg,#fff1ce,#ffe1e8)}.game:nth-child(5){background:linear-gradient(145deg,#e3f4e6,#fff6dd)}.game:nth-child(6){background:linear-gradient(145deg,#f4e5ff,#ffe4ef)}
 .action{background:linear-gradient(110deg,#f19ac1,#7950b6);box-shadow:3px 4px 0 #4c3670}
 
-</style></head><body><main class="wrap"><header class="nav"><a class="brand" href="index.html">🐾 PawTint</a><a href="index.html">ارجع للرئيسية ←</a></header><section class="hero"><div class="emoji">🎉🐶🐱🎉</div><span class="shop-tag">🐾 المحل مفتوح · كل الألعاب مجانية</span><h1>أهلاً بيك في محل PawTint! ♡</h1><p>اختار لعبة، افتح صندوق مفاجآت، أو ادخل تحدي خفيف. كل ركن معمول عشان تستمتعوا بوقتكم سوا — من غير اشتراك ولا ضغط.</p></section><section class="games">
+
+/* BIRDY GUIDE STRIP */
+.birdy-guide{display:flex;align-items:center;gap:18px;margin:0 0 25px;padding:14px 20px;background:linear-gradient(100deg,#e2f4e9,#e2f1fb);border:2px solid #4b8c82;box-shadow:5px 5px 0 #e6c85b}
+.birdy-guide img{width:94px;height:94px;object-fit:contain;flex:0 0 auto}
+.birdy-guide strong{display:block;font-size:19px;color:#174d4b}
+.birdy-guide p{margin:2px 0 0;color:#405e65;font-size:15px}
+@media(max-width:560px){.birdy-guide{gap:10px;padding:12px}.birdy-guide img{width:72px;height:72px}.birdy-guide p{font-size:13px}}
+
+</style></head><body><main class="wrap"><header class="nav"><a class="brand" href="index.html">🐾 PawTint</a><a href="index.html">ارجع للرئيسية ←</a></header><section class="hero"><div class="emoji">🎉🐶🐱🎉</div><span class="shop-tag">🐾 المحل مفتوح · كل الألعاب مجانية</span><h1>أهلاً بيك في محل PawTint! ♡</h1><p>اختار لعبة، افتح صندوق مفاجآت، أو ادخل تحدي خفيف. كل ركن معمول عشان تستمتعوا بوقتكم سوا — من غير اشتراك ولا ضغط.</p></section>
+<section class="birdy-guide" aria-label="بيردى مرشد الألعاب">
+<img src="assets/characters/birdy.svg" alt="بيردى الطائر المرشد" width="94" height="94" loading="lazy">
+<div><strong>بيردى معاك في المغامرة! 🐦</strong><p>اختار لعبة على مهلك؛ بيردى هنا يفتكرك إن اللعب للمتعة، وخد استراحة وقت ما تحتاج.</p></div>
+</section>
+<section class="games">
 <article class="game"><div class="game-kicker">🐱 ركن القطط</div><div class="game-icon">💛</div><h2>شخصية قطتك إيه؟</h2><p>اختار التصرف الأقرب لقطتك وشوف النتيجة المرحة.</p><div class="choices" id="cat-choices"><button class="choice" data-v="مستكشف جريء 🧭">تفتش في كل كيس وصندوق جديد</button><button class="choice" data-v="مدير البيت 👑">تراقب الكل من أعلى مكان</button><button class="choice" data-v="خبير الدلع 🥰">تطلب حضن واهتمام طول اليوم</button><button class="choice" data-v="صياد محترف 🐾">تطارد أي حاجة بتتحرك</button></div><div class="result hidden" id="cat-result" aria-live="polite"></div></article>
 <article class="game"><div class="game-kicker">🐶 ركن الكلاب</div><div class="game-icon">🐕</div><h2>كلبك بيقولك إيه؟</h2><p>موقف سريع… اختار الرد اللي تعتقد إنه الأفضل.</p><div class="choices" id="dog-choices"><button class="choice" data-v="برافو! اديله مساحة وراقب لغة جسمه.">كلبك بيبعد وشه وبيحاول يبعد عنك</button><button class="choice" data-v="خليه يهدى، وما تجبرهوش على التفاعل.">كلبك متوتر وسط زحمة ناس</button><button class="choice" data-v="كافئ الهدوء ودرّبه بالتدريج.">كلبك بينبح لما يسمع صوت بره</button></div><div class="result hidden" id="dog-result" aria-live="polite"></div></article>
 <article class="game"><div class="game-kicker">⭐ اختبر معلوماتك</div><div class="game-icon">🧠</div><h2>تحدي معلومات الحيوانات</h2><div class="progress-track" aria-label="تقدم التحدي"><div class="progress-fill" id="quiz-progress"></div></div><p id="quiz-question">هل القطط بتحتاج لعب وتفاعل حتى لو عايشة داخل البيت؟</p><div class="choices" id="quiz-choices"><button class="choice" data-correct="yes">أيوه، اللعب والإثراء مهمين</button><button class="choice" data-correct="no">لأ، هي بتسلّي نفسها دائمًا</button></div><div class="result hidden" id="quiz-result" aria-live="polite"></div><div class="score" id="quiz-score">نقاطك: 0</div><button class="action" id="next-question">السؤال اللي بعده</button></article>
