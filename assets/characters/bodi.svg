@@ -14,6 +14,9 @@
 .mascot-body{transform-box:fill-box;transform-origin:50% 90%;animation:bodi-idle 4.2s ease-in-out infinite}
 .bodi-ears{transform-box:fill-box;transform-origin:50% 25%;animation:bodi-ear 5.6s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.mascot-body,.bodi-ears{animation:none}}
+@keyframes bodi-blink{0%,91%,94%,100%{transform:scaleY(1)}92.5%{transform:scaleY(.08)}}
+.bodi-eyes{transform-box:fill-box;transform-origin:50% 50%;animation:bodi-blink 5.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.bodi-eyes{animation:none}}
 </style>
 <g class="mascot-body" filter="url(#shadow)">
 
@@ -24,7 +27,7 @@
 <path d="M130 107Q210 72 290 107" fill="none" stroke="#f5d28b" stroke-width="9"/>
 <ellipse cx="210" cy="190" rx="113" ry="100" fill="url(#fur)"/><ellipse cx="210" cy="228" rx="75" ry="55" fill="#fff0d8"/>
 <path d="M155 110Q165 88 190 95M230 95Q260 88 272 110" fill="none" stroke="#8b4a25" stroke-width="9" stroke-linecap="round"/>
-<ellipse cx="169" cy="184" rx="20" ry="27" fill="#fff"/><ellipse cx="251" cy="184" rx="20" ry="27" fill="#fff"/><ellipse cx="172" cy="188" rx="10" ry="17" fill="#513322"/><ellipse cx="248" cy="188" rx="10" ry="17" fill="#513322"/><circle cx="176" cy="180" r="5" fill="#fff"/><circle cx="252" cy="180" r="5" fill="#fff"/>
+<g class="bodi-eyes"><ellipse cx="169" cy="184" rx="20" ry="27" fill="#fff"/><ellipse cx="251" cy="184" rx="20" ry="27" fill="#fff"/><ellipse cx="172" cy="188" rx="10" ry="17" fill="#513322"/><ellipse cx="248" cy="188" rx="10" ry="17" fill="#513322"/><circle cx="176" cy="180" r="5" fill="#fff"/><circle cx="252" cy="180" r="5" fill="#fff"/></g>
 <ellipse cx="210" cy="225" rx="18" ry="13" fill="#583329"/><path d="M188 244Q210 267 233 244" fill="none" stroke="#713d32" stroke-width="7" stroke-linecap="round"/>
 <path d="M135 278Q210 314 285 278L272 326Q210 353 148 326Z" fill="#2587cf"/><circle cx="210" cy="318" r="17" fill="#f2c45e" stroke="#8a5a26" stroke-width="5"/>
 
