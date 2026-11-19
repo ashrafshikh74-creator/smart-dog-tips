@@ -17,3 +17,11 @@ Branch: `pawtint-phase1-affiliate-id`
 
 ## Limits / next gate
 These are CSS/SVG motion treatments, not a frame-by-frame rig or sprite animation. The current character drawings remain first-pass assets. Before calling character animation production-ready, create approved master pose sheets and verify walk/jump cycles visually across several frames, then replace/augment the CSS motion with consistent pose animation. No live deployment or DNS changes were made.
+
+
+## Phase 04 — Motion Lab
+- Added a standalone interactive QA page: `research/pawtint-motion-lab-phase04.html`.
+- It provides Idle, Walk, Hop, and React previews for Bodi, Loli, and Birdy, plus a manual reduced-motion toggle.
+- This is a QA harness for the current whole-illustration motion language, not a frame-by-frame character rig.
+- Browser verification was attempted through the preview host, but the host displayed an external-content gate before rendering the page. The lab is committed; runtime interaction checks remain pending a direct preview/browser route.
+- Next production gate remains master pose approval and limb-art capable walk/jump cycles.
