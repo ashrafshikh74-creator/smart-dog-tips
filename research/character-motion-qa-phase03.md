@@ -1,0 +1,19 @@
+# PawTint Character Motion QA — Phase 03
+
+Branch: `pawtint-phase1-affiliate-id`
+
+## Motion implemented
+- Bodi: gentle idle bob, subtle ear reactions, contextual walk/hop classes.
+- Loli: idle bob, tail sway, occasional ear movement, contextual walk/hop classes.
+- Birdy: wing flap in SVG, body idle motion, contextual guide hop.
+- Contextual CSS motion is triggered in character studio, pet home, and play room.
+- Reduced-motion media rules disable decorative SVG/CSS motion and contextual motion classes.
+
+## Browser QA (390px viewport)
+- `world.html`: character image loads; trait choice triggers `pawtint-walk`; card action triggers `pawtint-hop`; card status updates; document width 375px vs viewport 390px.
+- `pet-home.html`: Bodi and Birdy character images load; garden task triggers hop on both; document width 375px vs viewport 390px.
+- `play.html`: quiz answer updates result and Birdy tip; guide triggers `pawtint-hop`; mission button produces a mission; document width 375px vs viewport 390px.
+- Reduced-motion rules are present in CSS/SVG source. A full browser emulation of reduced-motion was not completed in this pass.
+
+## Limits / next gate
+These are CSS/SVG motion treatments, not a frame-by-frame rig or sprite animation. The current character drawings remain first-pass assets. Before calling character animation production-ready, create approved master pose sheets and verify walk/jump cycles visually across several frames, then replace/augment the CSS motion with consistent pose animation. No live deployment or DNS changes were made.
