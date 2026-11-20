@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fffaf1"><title>محل الألعاب | PawTint</title><meta name="description" content="محل ألعاب تفاعلي مجاني للقطط والكلاب: تحديات، اختبارات، وصندوق مفاجآت وأفكار لعب آمنة."><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&display=swap" rel="stylesheet"><style>
+:root{--ink:#342c3c;--muted:#756b7c;--cream:#fff8f7;--green:#e4eee5;--deep:#6f5875;--coral:#e98c9d;--yellow:#f5d58c;--lilac:#eee7f7}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 8% 5%,#f9e8f0 0,transparent 28%),var(--cream);color:var(--ink);font:17px/1.8 Tajawal,sans-serif}.wrap{width:min(1000px,calc(100% - 30px));margin:auto}.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}.brand{font:800 25px Arial,sans-serif;direction:ltr}.nav a,.back{color:var(--deep);font-weight:800;text-decoration:none}.hero{background:linear-gradient(120deg,#f5dce6,#f8e8d6 60%,#e9e1f4);border-radius:30px;padding:clamp(25px,5vw,48px);text-align:center;margin:10px 0 24px}.hero .emoji{font-size:58px}.hero h1{font-size:clamp(36px,6vw,54px);line-height:1.2;margin:5px 0}.hero p{color:#58685e;max-width:650px;margin:10px auto}.games{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.game{background:#fffdfd;border:1px solid #f0e2e9;border-radius:26px;padding:23px;box-shadow:0 12px 30px #6f587512;position:relative;overflow:hidden}.game:after{content:'✿';position:absolute;left:14px;top:5px;color:#edc3d0;font-size:28px;pointer-events:none}.game h2{margin:4px 0;font-size:25px}.game p{color:var(--muted);margin:4px 0 15px}.game-icon{font-size:38px}.choices{display:grid;gap:9px}.choice,.action{border:1px solid #f1e4ea;border-radius:16px;padding:12px 15px;background:#f8edf1;color:var(--ink);font:700 16px Tajawal;cursor:pointer;text-align:right;transition:.18s}.choice:hover,.action:hover{filter:brightness(.97);transform:translateY(-1px)}.action{background:linear-gradient(120deg,#9b718e,#6f5875);color:white;text-align:center;margin-top:12px}.result{margin-top:13px;padding:13px;border-radius:16px;background:#fff0f3;border:1px solid #f5dbe4;font-weight:700;min-height:48px}.hidden{display:none}.score{font-size:13px;color:var(--muted);margin-top:10px}.footer{padding:25px 0 40px;color:var(--muted);font-size:14px}
+.shop-tag{display:inline-flex;align-items:center;gap:7px;background:#fffdfd;border:1px solid #efdde6;border-radius:999px;padding:6px 13px;color:var(--deep);font-size:13px;font-weight:800;margin-bottom:9px}
+.game-kicker{display:inline-block;color:#9a6d87;font-size:12px;font-weight:800;background:#fbedf2;border-radius:999px;padding:3px 10px;margin-bottom:6px}
+.choice:focus-visible,.action:focus-visible,.nav a:focus-visible{outline:3px solid #c48aa8;outline-offset:3px}
+.choice:disabled{opacity:.62;cursor:default;transform:none}
+.box-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.mystery-box{border:1px solid #eedce7;border-radius:18px;background:linear-gradient(160deg,#fff8fb,#eee7f7);padding:15px 8px;cursor:pointer;font:800 15px Tajawal;color:var(--ink);min-height:105px;transition:transform .18s,box-shadow .18s}
+.mystery-box span{display:block;font-size:31px;margin-bottom:3px}
+.mystery-box:hover{transform:translateY(-4px);box-shadow:0 8px 18px #6f58751a}
+.progress-track{height:8px;background:#f2e8ed;border-radius:99px;overflow:hidden;margin:10px 0}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#bd8ba8,#7b6688);border-radius:99px;transition:width .25s}
+@media(max-width:650px){.games{grid-template-columns:1fr}.game{padding:19px}.hero{padding:27px 18px}.box-choices{gap:6px}.mystery-box{font-size:13px;padding:12px 5px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}@media(max-width:650px){.games{grid-template-columns:1fr}.game{padding:19px}.hero{padding:27px 18px}}
+
+/* ANTI-ALGORITHM: playful archive catalogue, not a stack of app cards */
+:root{--ink:#172d3a;--muted:#586b70;--cream:#f4f1e7;--green:#dce8dc;--deep:#174d4b;--coral:#e45f43;--yellow:#e6c85b;--lilac:#dce6eb}
+body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,58,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(23,45,58,.035) 1px,transparent 1px);background-size:28px 28px;color:var(--ink)}
+.wrap{width:min(1120px,calc(100% - 36px))}
+.nav{border-bottom:1px solid var(--ink);padding:15px 0}.brand{color:var(--ink)}.nav a,.back{color:var(--deep)}
+.hero{background:var(--ink);color:var(--cream);border:1px solid var(--ink);border-radius:3px;text-align:right;margin:20px 0 30px;padding:clamp(26px,5vw,54px);position:relative;box-shadow:8px 8px 0 var(--coral)}
+.hero:after{content:"PLAY ARCHIVE  /  OPEN ACCESS";position:absolute;bottom:15px;inset-inline-end:22px;font:700 10px Arial,sans-serif;letter-spacing:2px;color:var(--yellow)}
+.hero .emoji{font-size:45px}.hero h1{font-size:clamp(38px,6vw,60px);letter-spacing:-1.8px}.hero p{color:#d5ded8;margin-inline-start:0}
+.shop-tag{background:var(--yellow);border:1px solid var(--cream);border-radius:2px;color:var(--ink)}
+.games{grid-template-columns:repeat(6,1fr);gap:14px}
+.game{grid-column:span 3;background:#fffdf5;border:1px solid var(--ink);border-radius:3px;box-shadow:5px 5px 0 #c9d1c9;padding:22px}
+.game:nth-child(3){grid-column:span 4;background:#e0e8ee}.game:nth-child(4){grid-column:span 2;background:#f3e9c9}.game:nth-child(5){grid-column:span 2;background:#e2e9df}.game:nth-child(6){grid-column:span 4;background:#f0ded6}
+.game:after{content:"";width:26px;height:26px;border:1px dashed var(--ink);border-radius:50%;background:var(--cream);left:14px;top:14px}
+.game-kicker{background:var(--yellow);border:1px solid var(--ink);border-radius:2px;color:var(--ink);padding:4px 9px}
+.game h2{font-size:25px}.game p{color:var(--muted)}.game-icon{font-size:35px}
+.choice,.action{border:1px solid var(--ink);border-radius:2px;background:#f4f1e7;color:var(--ink);text-align:start}
+.choice:hover,.action:hover{background:var(--yellow);filter:none;transform:translateX(-2px)}
+.action{background:var(--deep);color:white;text-align:center;box-shadow:3px 3px 0 var(--coral)}
+.result{border:1px dashed var(--ink);border-radius:2px;background:#fffdf5;color:var(--ink)}
+.progress-track{border:1px solid var(--ink);background:#fffdf5;border-radius:0}.progress-fill{background:var(--coral);border-radius:0}
+.mystery-box{border:1px solid var(--ink);border-radius:2px;background:#fffdf5;box-shadow:3px 3px 0 var(--line)}
+.mystery-box:hover{box-shadow:3px 5px 0 var(--coral)}
+.footer{border-top:1px solid var(--ink);margin-top:32px}
+@media(max-width:700px){.games{grid-template-columns:1fr}.game,.game:nth-child(n){grid-column:span 1}.hero{text-align:center}.hero p{margin-inline:auto}.hero:after{position:static;display:block;margin-top:15px}.game{padding:19px}}
+
+/* PAWTINT WORLD — adventure game room */
+.hero{background:linear-gradient(90deg,rgba(34,29,78,.92),rgba(85,51,122,.72)),url('assets/pawtint-adventure-world.svg') center 48%/cover;border:2px solid #f8d78b;box-shadow:8px 8px 0 #ed91bd;border-radius:22px;min-height:300px;padding-inline:clamp(25px,6vw,65px)}
+.hero h1{color:#fff4d9;text-shadow:0 4px 0 #54376f}.hero p{color:#ffe9f4}.hero .shop-tag{background:#ffe18a;color:#53376d;border-color:#fff3ca}
+.game{border:2px solid #62477f;border-radius:18px;box-shadow:5px 5px 0 #e9a0c1;background:linear-gradient(145deg,#fffdf4,#f7e6f1)}
+.game:nth-child(3){background:linear-gradient(145deg,#e7efff,#f7e6f1)}.game:nth-child(4){background:linear-gradient(145deg,#fff1ce,#ffe1e8)}.game:nth-child(5){background:linear-gradient(145deg,#e3f4e6,#fff6dd)}.game:nth-child(6){background:linear-gradient(145deg,#f4e5ff,#ffe4ef)}
+.action{background:linear-gradient(110deg,#f19ac1,#7950b6);box-shadow:3px 4px 0 #4c3670}
+
+
+/* BIRDY GUIDE STRIP */
+.birdy-guide{display:flex;align-items:center;gap:18px;margin:0 0 25px;padding:14px 20px;background:linear-gradient(100deg,#e2f4e9,#e2f1fb);border:2px solid #4b8c82;box-shadow:5px 5px 0 #e6c85b}
+.birdy-guide img{width:94px;height:94px;object-fit:contain;flex:0 0 auto;animation:birdy-bob 3.4s ease-in-out infinite}
+@keyframes birdy-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+.birdy-guide strong{display:block;font-size:19px;color:#174d4b}
+.birdy-guide p{margin:2px 0 0;color:#405e65;font-size:15px}
+@media(prefers-reduced-motion:reduce){.birdy-guide img{animation:none}}\n@media(max-width:560px){.birdy-guide{gap:10px;padding:12px}.birdy-guide img{width:72px;height:72px}.birdy-guide p{font-size:13px}}
+
+
+/* MOTION PASS 02 — guide reacts to play, not constantly */
+.birdy-guide img{will-change:transform;transform-origin:50% 82%;animation:birdy-guide-natural 4.3s ease-in-out infinite}
+.birdy-guide img.is-reacting{animation:birdy-guide-react .82s cubic-bezier(.2,.8,.25,1) both}
+@keyframes birdy-guide-natural{0%,100%{transform:translateY(0) rotate(-.6deg)}40%{transform:translateY(-4px) rotate(.7deg)}68%{transform:translateY(-1px) rotate(0)}}
+@keyframes birdy-guide-react{0%{transform:translateY(0) scale(1)}22%{transform:translateY(2px) scale(1.04,.97)}52%{transform:translateY(-9px) rotate(-4deg) scale(.98,1.02)}78%{transform:translateY(1px) rotate(1deg)}100%{transform:translateY(0) rotate(0) scale(1)}}
+@media(hover:hover){.birdy-guide:hover img{animation:birdy-guide-react .82s cubic-bezier(.2,.8,.25,1) both}}
+@media(prefers-reduced-motion:reduce){.birdy-guide img,.birdy-guide img.is-reacting{animation:none!important;will-change:auto}}
+
+
+/* PAWTINT MOTION PASS 03 — contextual locomotion */
+@keyframes pawtint-walk{0%,100%{transform:translateX(0) rotate(0) scale(1)}20%{transform:translateX(-1.5px) rotate(-.7deg) scale(1.006,.997)}42%{transform:translateX(1px) rotate(.7deg) scale(.997,1.004)}64%{transform:translateX(-.8px) rotate(-.4deg)}82%{transform:translateX(.5px) rotate(.3deg)}}
+@keyframes pawtint-hop{0%{transform:translateY(0) scale(1)}16%{transform:translateY(1.5px) scale(1.018,.985)}38%{transform:translateY(-9px) scale(.995,1.012)}62%{transform:translateY(1px) scale(1.012,.992)}78%{transform:translateY(-1px) scale(.998,1.003)}100%{transform:translateY(0) scale(1)}}
+.pawtint-walk{animation:pawtint-walk .92s cubic-bezier(.4,0,.2,1) both!important}
+.pawtint-hop{animation:pawtint-hop .84s cubic-bezier(.3,.65,.25,1) both!important}
+@media(prefers-reduced-motion:reduce){.pawtint-walk,.pawtint-hop{animation:none!important}}
+</style><link rel="canonical" href="https://pawtint.store/play.html">
+<meta property="og:title" content="محل الألعاب | PawTint">
+<meta property="og:description" content="محل ألعاب تفاعلي مجاني للقطط والكلاب: تحديات، اختبارات، وصندوق مفاجآت وأفكار لعب آمنة.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pawtint.store/play.html">
+<link rel="stylesheet" href="assets/css/pawtint-accessibility.css">
+</head><body><main class="wrap"><header class="nav"><a class="brand" href="index.html">🐾 PawTint</a><a href="index.html">ارجع للرئيسية ←</a></header><section class="hero"><div class="emoji">🎉🐶🐱🎉</div><span class="shop-tag">🐾 المحل مفتوح · كل الألعاب مجانية</span><h1>أهلاً بيك في محل PawTint! ♡</h1><p>اختار لعبة، افتح صندوق مفاجآت، أو ادخل تحدي خفيف. كل ركن معمول عشان تستمتعوا بوقتكم سوا — من غير اشتراك ولا ضغط.</p></section>
+<section class="birdy-guide" aria-label="بيردى مرشد الألعاب">
+<img src="assets/characters/birdy.svg" alt="بيردى الطائر المرشد" width="94" height="94" loading="lazy">
+<div><strong>بيردى معاك في المغامرة! 🐦</strong><p id="birdy-game-tip" aria-live="polite">اختار لعبة على مهلك؛ بيردى هنا يفتكرك إن اللعب للمتعة، وخد استراحة وقت ما تحتاج.</p></div>
+</section>
+<section class="games">
+<article class="game"><div class="game-kicker">🐱 ركن القطط</div><div class="game-icon">💛</div><h2>شخصية قطتك إيه؟</h2><p>اختار التصرف الأقرب لقطتك وشوف النتيجة المرحة.</p><div class="choices" id="cat-choices"><button class="choice" data-v="مستكشف جريء 🧭">تفتش في كل كيس وصندوق جديد</button><button class="choice" data-v="مدير البيت 👑">تراقب الكل من أعلى مكان</button><button class="choice" data-v="خبير الدلع 🥰">تطلب حضن واهتمام طول اليوم</button><button class="choice" data-v="صياد محترف 🐾">تطارد أي حاجة بتتحرك</button></div><div class="result hidden" id="cat-result" aria-live="polite"></div></article>
+<article class="game"><div class="game-kicker">🐶 ركن الكلاب</div><div class="game-icon">🐕</div><h2>كلبك بيقولك إيه؟</h2><p>موقف سريع… اختار الرد اللي تعتقد إنه الأفضل.</p><div class="choices" id="dog-choices"><button class="choice" data-v="برافو! اديله مساحة وراقب لغة جسمه.">كلبك بيبعد وشه وبيحاول يبعد عنك</button><button class="choice" data-v="خليه يهدى، وما تجبرهوش على التفاعل.">كلبك متوتر وسط زحمة ناس</button><button class="choice" data-v="كافئ الهدوء ودرّبه بالتدريج.">كلبك بينبح لما يسمع صوت بره</button></div><div class="result hidden" id="dog-result" aria-live="polite"></div></article>
+<article class="game"><div class="game-kicker">⭐ اختبر معلوماتك</div><div class="game-icon">🧠</div><h2>تحدي معلومات الحيوانات</h2><div class="progress-track" aria-label="تقدم التحدي"><div class="progress-fill" id="quiz-progress"></div></div><p id="quiz-question">هل القطط بتحتاج لعب وتفاعل حتى لو عايشة داخل البيت؟</p><div class="choices" id="quiz-choices"><button class="choice" data-correct="yes">أيوه، اللعب والإثراء مهمين</button><button class="choice" data-correct="no">لأ، هي بتسلّي نفسها دائمًا</button></div><div class="result hidden" id="quiz-result" aria-live="polite"></div><div class="score" id="quiz-score">نقاطك: 0</div><button class="action" id="next-question">السؤال اللي بعده</button></article>
+<article class="game"><div class="game-kicker">🎯 نشاط خارج الشاشة</div><div class="game-icon">🎲</div><h2>مهمة النهارده</h2><p>فكرة بسيطة تعملها مع صاحبك الأليف النهارده.</p><div class="result" id="mission">اضغط الزر وخد مهمة لطيفة!</div><button class="action" id="new-mission">هاتلي مهمة 🐾</button></article>
+<article class="game"><div class="game-kicker">🌷 اختار حسب مزاجه</div><div class="game-icon">🌷</div><h2>مزاج اللعب إيه النهارده؟</h2><p>اختاري طاقة صاحبك دلوقتي عشان نقترح عليكم وقت لطيف.</p><div class="choices" id="mood-choices"><button class="choice" data-mood="هادئ">عايز هدوء ودلع 🌙</button><button class="choice" data-mood="نشيط">عنده طاقة وحابب يتحرك ⚡</button><button class="choice" data-mood="فضولي">فضولي وعايز يستكشف 🔎</button></div><div class="result hidden" id="mood-result" aria-live="polite"></div></article><article class="game"><div class="game-kicker">🎁 مفاجأة من المحل</div><div class="game-icon">🎁</div><h2>افتح صندوق الحظ</h2><p>اختار صندوق من غير ما تعرف جواه إيه، وخد فكرة لطيفة تجربها مع صاحبك الأليف.</p><div class="box-choices" id="surprise-choices"><button class="mystery-box" data-box="0"><span>🎀</span>الصندوق الوردي</button><button class="mystery-box" data-box="1"><span>💜</span>الصندوق البنفسجي</button><button class="mystery-box" data-box="2"><span>🌿</span>الصندوق الأخضر</button></div><div class="result hidden" id="surprise-result" aria-live="polite"></div></article></section><footer class="footer"><a class="back" href="dogs.html">عالم الكلاب</a>　 · 　<a class="back" href="cats.html">عالم القطط</a></footer></main><script>
+document.querySelectorAll("#cat-choices .choice").forEach(b=>b.addEventListener("click",()=>{const r=document.getElementById("cat-result");r.textContent="شخصية قطتك غالبًا: "+b.dataset.v+" طبعًا كل قطة ليها مزيجها الخاص!";r.classList.remove("hidden");setBirdyTip("حلو! لاحظ لغة جسمه، وخلي التفاعل باختياره.");}));
+document.querySelectorAll("#dog-choices .choice").forEach(b=>b.addEventListener("click",()=>{const r=document.getElementById("dog-result");r.textContent=b.dataset.v+" اقرأ لغة جسمه واستشر مختص سلوك عند استمرار القلق.";r.classList.remove("hidden");setBirdyTip("أحسنت! الهدوء والمساحة بيساعدوه يحس بالأمان.");}));
+
+const birdyGameTip=document.getElementById("birdy-game-tip");
+const setBirdyTip=(message)=>{if(birdyGameTip)birdyGameTip.textContent=message};
+const questions=[["هل القطط بتحتاج لعب وتفاعل حتى لو عايشة داخل البيت؟",["أيوه، اللعب والإثراء مهمين","لأ، هي بتسلّي نفسها دائمًا"],0,"اللعب والإثراء بيساعدوا القطط على الحركة والاستكشاف وتقليل الملل."],["إيه أفضل طريقة تبدأ بيها تدريب كلب على أمر جديد؟",["جلسات قصيرة ومكافأة السلوك المطلوب","الصوت العالي والعقاب"],0,"التدريب الإيجابي القصير والمتكرر بيساعد على التعلم."],["لو لعبة حيوانك اتقطعت وبقت فيها أجزاء صغيرة؟",["توقف استخدامها وتستبدلها","تسيبها عادي"],0,"الأجزاء الصغيرة ممكن تتبلع؛ افحص الألعاب واستبدل التالف."]];let qi=0,score=0;
+function draw(){const q=questions[qi];document.getElementById("quiz-question").textContent=q[0];const box=document.getElementById("quiz-choices");box.replaceChildren();q[1].forEach((v,i)=>{const b=document.createElement("button");b.className="choice";b.textContent=v;b.addEventListener("click",()=>{const r=document.getElementById("quiz-result");const good=i===q[2];if(good)score++;r.textContent=(good?"إجابة صح! ⭐ ":"مش دي المرة دي 🙂 ")+q[3];r.classList.remove("hidden");box.querySelectorAll("button").forEach(x=>x.disabled=true);document.getElementById("quiz-score").textContent="نقاطك: "+score+" / "+(qi+1);document.getElementById("quiz-progress").style.width=((qi+1)/questions.length*100)+"%";setBirdyTip(good?"إجابة ممتازة! التعلم بالمكافأة والتفاعل الإيجابي مفيد.":"كل سؤال فرصة نتعلم؛ راجع التفسير وجرب تاني.");});box.appendChild(b)});document.getElementById("quiz-result").classList.add("hidden")}
+document.getElementById("next-question").addEventListener("click",()=>{qi=(qi+1)%questions.length;if(qi===0){score=0;document.getElementById("quiz-score").textContent="نقاطك: 0";document.getElementById("quiz-progress").style.width="0%"}draw()});
+const missions=["اعمل جلسة لعب 5 دقايق بلعبته المفضلة.","خبّي مكافأة صغيرة في لعبة آمنة وخليه يدور عليها تحت إشرافك.","خصص وقت هادي للتمشيط لو هو متعود عليه وبيحبه.","علّمه إشارة بسيطة بالمكافأة والتشجيع.","جدّد المياه ونضّف الوعاء كويس.","راقب إيه اللعبة اللي بتخليه مبسوط أكتر النهارده."];document.getElementById("new-mission").addEventListener("click",()=>{document.getElementById("mission").textContent=missions[Math.floor(Math.random()*missions.length)]});draw();
+const moodIdeas={هادئ:'اعملي ركن مريح، اقعدي جنبه بهدوء وقدمي له اهتمامه المفضل من غير إجبار على التفاعل.',نشيط:'جربي لعبة مطاردة آمنة أو تدريب قصير بالمكافآت، مع مراعاة حجمه ولياقته.',فضولي:'اعملي لعبة شم أو استكشاف بسيطة بإشرافك، من غير أشياء صغيرة ممكن يبلعها.'};
+document.querySelectorAll('#mood-choices .choice').forEach(btn=>btn.addEventListener('click',()=>{const out=document.getElementById('mood-result');out.textContent=moodIdeas[btn.dataset.mood];out.classList.remove('hidden')}));
+
+const surprises=[
+"🎾 جرّب لعبة مطاردة بلعبة مناسبة لحجم حيوانك، وخلي اللعب قصير وتحت إشرافك.",
+"🔎 اعملوا جولة استكشاف هادية: سيبه يشم ويتعرف على مكان آمن جديد من غير إجبار.",
+"🧸 اختاروا لعبته المفضلة وافحصوها الأول؛ لو فيها قطع مفكوكة أو تالفة، ابعدها واستبدلها."
+];
+document.querySelectorAll("#surprise-choices .mystery-box").forEach(btn=>btn.addEventListener("click",()=>{
+ const out=document.getElementById("surprise-result");
+ out.textContent=surprises[Number(btn.dataset.box)];
+ out.classList.remove("hidden");
+ document.querySelectorAll("#surprise-choices .mystery-box").forEach(x=>x.disabled=true);
+}));
+</script>
+<script>
+(()=>{
+ const dict={"محل الألعاب | PawTint":"The Play Shop | PawTint","محل الألعاب":"The Play Shop","منطقة اللعب":"Play zone","تحدي معلومات الحيوانات":"Pet knowledge challenge","هل القطط بتحتاج لعب وتفاعل حتى لو عايشة داخل البيت؟":"Do cats need play and interaction even when they live indoors?","أيوه، اللعب والإثراء مهمين":"Yes, play and enrichment matter","لأ، هي بتسلّي نفسها دائمًا":"No, they always entertain themselves","السؤال اللي بعده":"Next question","نقاطك: 0":"Your score: 0","مهمة النهارده":"Today’s mission","فكرة بسيطة تعملها مع صاحبك الأليف النهارده.":"A simple idea to try with your pet today.","اضغط الزر وخد مهمة لطيفة!":"Tap the button for a fun little mission!","هاتلي مهمة 🐾":"Give me a mission 🐾","مزاج اللعب إيه النهارده؟":"What’s the play mood today?","اختاري طاقة صاحبك دلوقتي عشان نقترح عليكم وقت لطيف.":"Choose your pet’s energy level and we’ll suggest a lovely activity.","عايز هدوء ودلع 🌙":"Feeling calm and cuddly 🌙","عنده طاقة وحابب يتحرك ⚡":"Full of energy and ready to move ⚡","فضولي وعايز يستكشف 🔎":"Curious and ready to explore 🔎","افتح صندوق الحظ":"Open the surprise box","اختار صندوق من غير ما تعرف جواه إيه، وخد فكرة لطيفة تجربها مع صاحبك الأليف.":"Choose a mystery box and get a lovely idea to try with your pet.","الصندوق الوردي":"Pink box","الصندوق البنفسجي":"Purple box","الصندوق الأخضر":"Green box","شخصية قطتك غالبًا: ":"Your cat’s likely personality: "," طبعًا كل قطة ليها مزيجها الخاص!":" — every cat has their own unique mix!","اقرأ لغة جسمه واستشر مختص سلوك عند استمرار القلق.":"Read their body language and consult a behavior professional if anxiety persists.","إجابة صح! ⭐ ":"Correct! ⭐ ","مش دي المرة دي 🙂 ":"Not this time 🙂 ","اللعب والإثراء بيساعدوا القطط على الحركة والاستكشاف وتقليل الملل.":"Play and enrichment help cats move, explore, and avoid boredom.","التدريب الإيجابي القصير والمتكرر بيساعد على التعلم.":"Short, repeated positive-reinforcement sessions support learning.","الأجزاء الصغيرة ممكن تتبلع؛ افحص الألعاب واستبدل التالف.":"Small parts can be swallowed; inspect toys and replace damaged ones.","نقاطك: ":"Your score: "," / ":" / ","اعمل جلسة لعب 5 دقايق بلعبته المفضلة.":"Have a five-minute play session with a favorite toy.","خبّي مكافأة صغيرة في لعبة آمنة وخليه يدور عليها تحت إشرافك.":"Hide a small treat in a safe toy and let your pet find it under supervision.","خصص وقت هادي للتمشيط لو هو متعود عليه وبيحبه.":"Set aside calm grooming time if your pet is used to it and enjoys it.","علّمه إشارة بسيطة بالمكافأة والتشجيع.":"Teach a simple cue using rewards and encouragement.","جدّد المياه ونضّف الوعاء كويس.":"Refresh the water and clean the bowl well.","راقب إيه اللعبة اللي بتخليه مبسوط أكتر النهارده.":"Notice which toy makes your pet happiest today.","اعملي ركن مريح، اقعدي جنبه بهدوء وقدمي له اهتمامه المفضل من غير إجبار على التفاعل.":"Create a comfy spot, sit nearby calmly, and offer the kind of attention your pet enjoys without forcing interaction.","جربي لعبة مطاردة آمنة أو تدريب قصير بالمكافآت، مع مراعاة حجمه ولياقته.":"Try a safe chase game or a short reward-based training session, considering your pet’s size and fitness.","اعملي لعبة شم أو استكشاف بسيطة بإشرافك، من غير أشياء صغيرة ممكن يبلعها.":"Set up a simple scent or discovery game under supervision, avoiding small items your pet could swallow.","🎾 جرّب لعبة مطاردة بلعبة مناسبة لحجم حيوانك، وخلي اللعب قصير وتحت إشرافك.":"🎾 Try a chase game with a toy suited to your pet’s size. Keep it short and supervised.","🔎 اعملوا جولة استكشاف هادية: سيبه يشم ويتعرف على مكان آمن جديد من غير إجبار.":"🔎 Take a calm discovery walk. Let your pet sniff and explore a new safe place without pressure.","🧸 اختاروا لعبته المفضلة وافحصوها الأول؛ لو فيها قطع مفكوكة أو تالفة، ابعدها واستبدلها.":"🧸 Choose a favorite toy and inspect it first. Remove and replace it if parts are loose or damaged.","عالم الكلاب":"Dog world","عالم القطط":"Cat world","محل ألعاب تفاعلي مجاني للقطط والكلاب: تحديات، اختبارات، وصندوق مفاجآت وأفكار لعب آمنة.":"A free interactive play shop for cats and dogs: challenges, quizzes, a surprise box, and safe play ideas.","ارجع للرئيسية ←":"Back to home ←","🐾 المحل مفتوح · كل الألعاب مجانية":"🐾 The shop is open · All games are free",
+"اختار لعبة على مهلك؛ بيردى هنا يفتكرك إن اللعب للمتعة، وخد استراحة وقت ما تحتاج.":"Choose at your own pace. Birdy reminds you that play is for fun, and breaks are always okay.",
+"حلو! لاحظ لغة جسمه، وخلي التفاعل باختياره.":"Great! Watch their body language and let them choose whether to interact.",
+"أحسنت! الهدوء والمساحة بيساعدوه يحس بالأمان.":"Well done! Calm and space can help them feel safe.",
+"إجابة ممتازة! التعلم بالمكافأة والتفاعل الإيجابي مفيد.":"Excellent answer! Reward-based, positive interaction helps learning.",
+"كل سؤال فرصة نتعلم؛ راجع التفسير وجرب تاني.":"Every question is a chance to learn. Review the explanation and try again.",
+"مهمة صغيرة كفاية؛ راقب راحة صاحبك وخليها تجربة إيجابية.":"A small mission is enough. Keep your pet comfortable and make it positive.",
+"اختيارك مناسب للمزاج اللي وصفته؛ ابدأ بهدوء وراقب استجابته.":"That fits the mood you described. Start gently and watch their response.",
+"مفاجأة لطيفة! افحص المكان واللعبة قبل ما تبدأوا.":"A lovely surprise! Check the space and toy before you begin.","أهلاً بيك في محل PawTint! ♡":"Welcome to the PawTint shop! ♡","اختار لعبة، افتح صندوق مفاجآت، أو ادخل تحدي خفيف. كل ركن معمول عشان تستمتعوا بوقتكم سوا — من غير اشتراك ولا ضغط.":"Choose a game, open a mystery box, or try a light challenge. Every room is made for you and your pet to enjoy together — no subscription, no pressure.","🐱 ركن القطط":"🐱 Cat corner","شخصية قطتك إيه؟":"What’s your cat’s personality?","اختار التصرف الأقرب لقطتك وشوف النتيجة المرحة.":"Choose the behavior that best fits your cat and see a fun result.","تفتش في كل كيس وصندوق جديد":"Searches every new bag and box","تراقب الكل من أعلى مكان":"Watches everyone from the highest spot","تطلب حضن واهتمام طول اليوم":"Asks for cuddles and attention all day","تطارد أي حاجة بتتحرك":"Chases anything that moves","مستكشف جريء 🧭":"Bold explorer 🧭","مدير البيت 👑":"House manager 👑","خبير الدلع 🥰":"Cuddle expert 🥰","صياد محترف 🐾":"Pro hunter 🐾","🐶 ركن الكلاب":"🐶 Dog corner","كلبك بيقولك إيه؟":"What is your dog telling you?","موقف سريع… اختار الرد اللي تعتقد إنه الأفضل.":"A quick situation… choose the response you think is best.","كلبك بيبعد وشه وبيحاول يبعد عنك":"Your dog turns their face away and tries to move away","كلبك متوتر وسط زحمة ناس":"Your dog seems uneasy in a crowd","كلبك بينبح لما يسمع صوت بره":"Your dog barks when hearing a sound outside","برافو! اديله مساحة وراقب لغة جسمه.":"Well done! Give them space and watch their body language.","خليه يهدى، وما تجبرهوش على التفاعل.":"Let them settle; don’t force interaction.","كافئ الهدوء ودرّبه بالتدريج.":"Reward calm behavior and train gradually.","⭐ اختبر معلوماتك":"⭐ Test your knowledge","تقدم التحدي":"Challenge progress","🎯 نشاط خارج الشاشة":"🎯 Off-screen activity","🌷 اختار حسب مزاجه":"🌷 Choose by their mood","🎁 مفاجأة من المحل":"🎁 A shop surprise","مستكشف جريء 🧭 طبعًا كل قطة ليها مزيجها الخاص!":"Bold explorer 🧭 — every cat has their own unique mix!","مدير البيت 👑 طبعًا كل قطة ليها مزيجها الخاص!":"House manager 👑 — every cat has their own unique mix!","خبير الدلع 🥰 طبعًا كل قطة ليها مزيجها الخاص!":"Cuddle expert 🥰 — every cat has their own unique mix!","صياد محترف 🐾 طبعًا كل قطة ليها مزيجها الخاص!":"Pro hunter 🐾 — every cat has their own unique mix!"," اقرأ لغة جسمه واستشر مختص سلوك عند استمرار القلق.":" Read their body language and consult a behavior professional if anxiety persists.","برافو! اديله مساحة وراقب لغة جسمه. اقرأ لغة جسمه واستشر مختص سلوك عند استمرار القلق.":"Well done! Give them space and watch their body language. Read their body language and consult a behavior professional if anxiety persists.","خليه يهدى، وما تجبرهوش على التفاعل. اقرأ لغة جسمه واستشر مختص سلوك عند استمرار القلق.":"Let them settle; don’t force interaction. Read their body language and consult a behavior professional if anxiety persists.","كافئ الهدوء ودرّبه بالتدريج. اقرأ لغة جسمه واستشر مختص سلوك عند استمرار القلق.":"Reward calm behavior and train gradually. Read their body language and consult a behavior professional if anxiety persists.","إيه أفضل طريقة تبدأ بيها تدريب كلب على أمر جديد؟":"What’s the best way to start teaching a dog a new cue?","جلسات قصيرة ومكافأة السلوك المطلوب":"Short sessions and rewarding the behavior you want","الصوت العالي والعقاب":"Loud voices and punishment","لو لعبة حيوانك اتقطعت وبقت فيها أجزاء صغيرة؟":"What should you do if your pet’s toy tears and has small loose pieces?","توقف استخدامها وتستبدلها":"Stop using it and replace it","تسيبها عادي":"Leave it as it is","إجابة صح! ⭐ اللعب والإثراء بيساعدوا القطط على الحركة والاستكشاف وتقليل الملل.":"Correct! ⭐ Play and enrichment help cats move, explore, and avoid boredom.","مش دي المرة دي 🙂 اللعب والإثراء بيساعدوا القطط على الحركة والاستكشاف وتقليل الملل.":"Not this time 🙂 Play and enrichment help cats move, explore, and avoid boredom.","إجابة صح! ⭐ التدريب الإيجابي القصير والمتكرر بيساعد على التعلم.":"Correct! ⭐ Short, repeated positive-reinforcement sessions support learning.","مش دي المرة دي 🙂 التدريب الإيجابي القصير والمتكرر بيساعد على التعلم.":"Not this time 🙂 Short, repeated positive-reinforcement sessions support learning.","إجابة صح! ⭐ الأجزاء الصغيرة ممكن تتبلع؛ افحص الألعاب واستبدل التالف.":"Correct! ⭐ Small parts can be swallowed; inspect toys and replace damaged ones.","مش دي المرة دي 🙂 الأجزاء الصغيرة ممكن تتبلع؛ افحص الألعاب واستبدل التالف.":"Not this time 🙂 Small parts can be swallowed; inspect toys and replace damaged ones.","شخصية قطتك غالبًا: مستكشف جريء 🧭 طبعًا كل قطة ليها مزيجها الخاص!":"Your cat’s likely personality: Bold explorer 🧭 — every cat has their own unique mix!","شخصية قطتك غالبًا: مدير البيت 👑 طبعًا كل قطة ليها مزيجها الخاص!":"Your cat’s likely personality: House manager 👑 — every cat has their own unique mix!","شخصية قطتك غالبًا: خبير الدلع 🥰 طبعًا كل قطة ليها مزيجها الخاص!":"Your cat’s likely personality: Cuddle expert 🥰 — every cat has their own unique mix!","شخصية قطتك غالبًا: صياد محترف 🐾 طبعًا كل قطة ليها مزيجها الخاص!":"Your cat’s likely personality: Pro hunter 🐾 — every cat has their own unique mix!"}; const norm=s=>String(s).replace(/\s+/g,' ').trim();
+ const toEn=Object.fromEntries(Object.entries(dict).map(([a,b])=>[norm(a),b]));
+ const toAr=Object.fromEntries(Object.entries(dict).map(([a,b])=>[norm(b),a]));
+ const languageKey='pawtint-language';
+ let lang='ar';
+ try{lang=localStorage.getItem(languageKey)==='en'?'en':'ar'}catch(e){}
+ const translateValue=(value,to)=>{
+   const key=norm(value), map=to==='en'?toEn:toAr;
+   if(map[key]!==undefined){
+     const lead=String(value).match(/^\s*/)?.[0]||'';
+     const tail=String(value).match(/\s*$/)?.[0]||'';
+     return lead+map[key]+tail;
+   }
+   if(to==='en'){
+     let m=key.match(/^العمر التقريبي المكافئ:\s*(\d+)\s*سنة بشرية تقريبًا\. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية\.$/);
+     if(m)return 'Approximate equivalent age: '+m[1]+' human years. For a size-based dog estimate, use the detailed calculator.';
+     m=key.match(/^🐾\s*(\d+)\s*بصمة$/);
+     if(m)return '🐾 '+m[1]+' '+(Number(m[1])===1?'pawprint':'pawprints');
+     m=key.match(/^نقاطك:\s*(\d+)\s*\/\s*(\d+)$/);
+     if(m)return 'Your score: '+m[1]+' / '+m[2];
+   }else{
+     let m=key.match(/^Approximate equivalent age:\s*(\d+)\s*human years\. For a size-based dog estimate, use the detailed calculator\.$/);
+     if(m)return 'العمر التقريبي المكافئ: '+m[1]+' سنة بشرية تقريبًا. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية.';
+     m=key.match(/^🐾\s*(\d+)\s*pawprints?$/);
+     if(m)return '🐾 '+m[1]+' '+(Number(m[1])===1?'بصمة':'بصمات');
+     m=key.match(/^Your score:\s*(\d+)\s*\/\s*(\d+)$/);
+     if(m)return 'نقاطك: '+m[1]+' / '+m[2];
+   }
+   return value;
+ };
+ const translateTree=root=>{
+   const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;
+   while(node=walker.nextNode()){
+     if(node.parentElement?.closest('script,style,[data-pt-language]'))continue;
+     const next=translateValue(node.nodeValue,lang);
+     if(next!==node.nodeValue)node.nodeValue=next;
+   }
+ };
+ const translateAttributes=()=>{
+   document.querySelectorAll('[placeholder],[aria-label],[alt],[content]').forEach(el=>{
+     for(const attr of ['placeholder','aria-label','alt','content'])if(el.hasAttribute(attr)){
+       const value=el.getAttribute(attr),next=translateValue(value,lang);
+       if(next!==value)el.setAttribute(attr,next);
+     }
+   });
+   const title=document.querySelector('title');
+   if(title)title.textContent=translateValue(title.textContent,lang);
+ };
+ const addDirectionStyle=()=>{
+   if(document.getElementById('pawtint-l10n-style'))return;
+   const style=document.createElement('style');style.id='pawtint-l10n-style';
+   style.textContent='html[dir="ltr"] body{direction:ltr}html[dir="ltr"] .choice,html[dir="ltr"] .mystery-box{text-align:left}html[dir="ltr"] .reward-count{margin-left:auto;margin-right:0}html[dir="ltr"] input{text-align:left}';
+   document.head.appendChild(style);
+ };
+ const apply=()=>{
+   document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+   translateTree(document.head);translateTree(document.body);translateAttributes();addDirectionStyle();
+   document.querySelectorAll('[data-pt-language]').forEach(x=>x.remove());
+   const btn=document.createElement('button');btn.type='button';btn.dataset.ptLanguage='1';
+   btn.textContent=lang==='ar'?'English':'العربية';
+   btn.setAttribute('aria-label',lang==='ar'?'Switch to English':'التبديل إلى العربية');
+   btn.style.cssText='position:fixed;z-index:9999;top:14px;'+(lang==='ar'?'left:14px;':'right:14px;')+'border:1px solid #d9c8d9;border-radius:999px;background:#fff;color:#66516f;padding:9px 15px;font:800 14px system-ui;box-shadow:0 4px 16px #49354a18;cursor:pointer';
+   btn.addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';try{localStorage.setItem(languageKey,lang)}catch(e){}apply()});
+   document.body.appendChild(btn);
+ };
+ apply();
+ const observer=new MutationObserver(records=>{
+   for(const record of records){
+     if(record.type==='characterData'){
+       const node=record.target;
+       if(!node.parentElement?.closest('script,style,[data-pt-language]')){
+         const next=translateValue(node.nodeValue,lang);if(next!==node.nodeValue)node.nodeValue=next;
+       }
+     }
+     for(const added of record.addedNodes||[]){
+       if(added.nodeType===Node.TEXT_NODE){
+         if(!added.parentElement?.closest('script,style,[data-pt-language]')){
+           const next=translateValue(added.nodeValue,lang);if(next!==added.nodeValue)added.nodeValue=next;
+         }
+       }else if(added.nodeType===Node.ELEMENT_NODE&&!added.matches('[data-pt-language]'))translateTree(added);
+     }
+   }
+ });
+ observer.observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+</script>\n
+
+
+<script src="assets/js/pawtint-motion-controller.js" defer></script></body></html>

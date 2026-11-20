@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff8fb">
+<title>اصنع شخصية حيوانك | PawTint World</title>
+<meta name="description" content="اصنع بطاقة شخصية لطيفة لقطتك أو كلبك في عالم PawTint. تجربة مجانية بلا تسجيل.">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#382d40;--muted:#786d7e;--cream:#fff8fb;--paper:#fffefe;--pink:#f3dce7;--lilac:#ece4f5;--sage:#e4eee5;--plum:#725b7b;--line:#efdfE8;--gold:#f4dfa4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 8% 4%,#f7e6ef 0,transparent 25%),radial-gradient(circle at 95% 25%,#e9e4f4 0,transparent 25%),var(--cream);color:var(--ink);font:17px/1.8 Tajawal,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1080px,calc(100% - 30px));margin:auto}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:19px 0}.brand{font:800 24px Arial,sans-serif;direction:ltr;color:var(--plum)}.nav a:last-child{color:var(--plum);font-weight:800}
+.hero{text-align:center;padding:35px 15px 28px}.eyebrow{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 14px;color:var(--plum);font-weight:800;font-size:13px}.hero h1{font-size:clamp(34px,6vw,55px);line-height:1.2;margin:14px 0 8px}.hero h1 em{font-style:normal;color:#bd7898}.hero p{color:var(--muted);max-width:620px;margin:0 auto}
+.studio{display:grid;grid-template-columns:1fr .9fr;gap:20px;align-items:start;margin:18px 0 55px}.panel,.preview{background:#fffdfd;border:1px solid var(--line);border-radius:28px;padding:25px;box-shadow:0 15px 45px #634b6410}.panel h2{font-size:24px;margin:0 0 14px}.field{margin:17px 0}.field label{display:block;font-weight:800;margin-bottom:8px}.name-input{width:100%;border:1px solid #e8dce5;background:#fff;border-radius:15px;padding:13px 15px;font:600 17px Tajawal;color:var(--ink);outline:none}.name-input:focus{border-color:#b786a3;box-shadow:0 0 0 3px #f4e4ed}
+.options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.option{border:1px solid #eadde7;background:#fff;border-radius:17px;padding:12px;cursor:pointer;text-align:center;font:700 16px Tajawal;color:var(--ink);transition:.18s}.option span{display:block;font-size:30px}.option[aria-pressed=true]{border:2px solid #a77d9c;background:#fbf1f6;box-shadow:0 5px 15px #77556c14}
+.temperaments{display:flex;flex-wrap:wrap;gap:8px}.temperament{border:1px solid #e9dce7;background:#fff;border-radius:999px;padding:8px 15px;cursor:pointer;font:700 15px Tajawal;color:var(--ink)}.temperament[aria-pressed=true]{background:var(--lilac);border-color:#b9a5ca;color:#594569}
+.primary{border:0;border-radius:999px;background:linear-gradient(120deg,#a87d9d,#725b7b);color:white;padding:13px 22px;font:800 16px Tajawal;cursor:pointer;width:100%;margin-top:10px}.hint{font-size:13px;color:var(--muted);margin:9px 0 0}
+.preview{background:linear-gradient(145deg,#f6e4ec,#eee8f7 60%,#e5eee6);position:sticky;top:16px;text-align:center;overflow:hidden}.preview-top{font-size:13px;color:#705d78;font-weight:800;letter-spacing:.3px}.character{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;margin:18px auto 12px;background:#fff9fc;border:8px solid #ffffffb8;box-shadow:0 12px 35px #745c7520;font-size:91px;position:relative}.spark{position:absolute;font-size:25px}.spark.one{top:13px;right:18px}.spark.two{bottom:15px;left:15px}.pet-name{font-size:32px;font-weight:800;margin:3px 0}.pet-trait{display:inline-block;background:#fff;border-radius:999px;padding:5px 17px;color:#705d78;font-weight:800}.card-note{max-width:280px;margin:13px auto;color:#716579;font-size:14px}.share{border:1px solid #d8c7d8;background:#fff;color:#65516f;border-radius:999px;padding:10px 17px;font:800 15px Tajawal;cursor:pointer}.share:disabled{opacity:.5;cursor:default}.enter-home{display:block;margin:10px auto 0;background:#e5eee5;color:#526b5d;border:1px solid #cfdfd1;border-radius:999px;padding:10px 17px;font:800 15px Tajawal;cursor:pointer}.world-note{text-align:center;color:var(--muted);font-size:14px;margin:0 0 45px}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bd8dab;outline-offset:3px}
+@media(max-width:760px){.studio{grid-template-columns:1fr}.preview{position:static;grid-row:1}.panel{grid-row:2}.hero{padding-top:22px}.panel,.preview{padding:20px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* ANTI-ALGORITHM: field specimen studio */
+:root{--ink:#172d3a;--muted:#586b70;--cream:#f4f1e7;--paper:#fffdf5;--pink:#f0ded2;--lilac:#dce6eb;--sage:#dce8dc;--plum:#174d4b;--line:#c9d1c9;--gold:#e6c85b}
+body{background-color:var(--cream);background-image:linear-gradient(rgba(23,45,58,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(23,45,58,.035) 1px,transparent 1px);background-size:28px 28px;color:var(--ink)}
+.wrap{width:min(1120px,calc(100% - 36px))}
+.nav{border-bottom:1px solid var(--ink);padding:15px 0}.brand{color:var(--ink);font-size:23px}.nav a:last-child{background:var(--yellow);border:1px solid var(--ink);padding:7px 12px;border-radius:2px;color:var(--ink)}
+.hero{text-align:right;padding:42px 5px 30px;max-width:760px}.eyebrow{background:var(--gold);color:var(--ink);border:1px solid var(--ink);border-radius:2px}.hero h1{font-size:clamp(40px,6vw,66px);letter-spacing:-2px}.hero h1 em{color:#e45f43}
+.studio{grid-template-columns:1.05fr .95fr;gap:0;border:1px solid var(--ink);background:var(--paper);box-shadow:8px 8px 0 #c9d1c9}
+.panel,.preview{border:0;border-radius:0;box-shadow:none;padding:clamp(20px,3vw,34px)}
+.panel{background:var(--paper)}.panel h2{border-bottom:1px dashed var(--ink);padding-bottom:13px;font-size:25px}
+.name-input{border:1px solid var(--ink);border-radius:2px;background:#f4f1e7}.name-input:focus{border-color:#e45f43;box-shadow:0 0 0 3px #e45f4325}
+.option{border:1px solid var(--ink);border-radius:2px;background:#f4f1e7}.option[aria-pressed=true]{border:2px solid var(--plum);background:var(--sage);box-shadow:4px 4px 0 var(--gold)}
+.temperament{border:1px solid var(--ink);border-radius:2px;background:var(--paper)}.temperament[aria-pressed=true]{background:var(--gold);border-color:var(--ink);color:var(--ink)}
+.primary{background:var(--plum);border:1px solid var(--ink);border-radius:2px;box-shadow:4px 4px 0 #e45f43}
+.preview{background:var(--lilac);border-inline-start:1px dashed var(--ink);position:relative}
+.preview:before{content:"SPECIMEN / 01";position:absolute;top:15px;inset-inline-end:18px;font:700 10px Arial,sans-serif;letter-spacing:2px;color:var(--ink)}
+.preview-top{padding-top:24px;color:var(--muted);font:700 11px Arial,sans-serif;letter-spacing:2px}
+.character{border-radius:3px;background:var(--paper);border:1px solid var(--ink);box-shadow:8px 8px 0 #a9bbc1;width:180px;height:180px}.character img{width:100%;height:100%;object-fit:contain;padding:4px;animation:mascot-arrive .45s ease-out}
+@keyframes mascot-arrive{0%{transform:translateY(10px) scale(.94);opacity:.65}100%{transform:translateY(0) scale(1);opacity:1}}
+.character:focus-within{outline:3px solid #e6c85b}
+@media(prefers-reduced-motion:reduce){.character img{animation:none}}
+.pet-name{font-size:34px}.pet-trait{background:var(--gold);border:1px solid var(--ink);border-radius:2px;color:var(--ink)}
+.share,.enter-home{border:1px solid var(--ink);border-radius:2px;background:var(--paper);color:var(--ink)}.enter-home{background:var(--plum);color:white}
+.world-note{border-top:1px solid var(--ink);padding:20px 0}
+@media(max-width:760px){.studio{grid-template-columns:1fr}.preview{grid-row:1;border-inline-start:0;border-bottom:1px dashed var(--ink)}.hero{text-align:center;padding-top:28px}.panel,.preview{padding:22px}}
+
+/* PAWTINT WORLD — character studio atmosphere */
+.hero{position:relative;isolation:isolate;padding:48px 22px 36px;max-width:none;min-height:260px;background:linear-gradient(90deg,rgba(31,36,88,.92),rgba(81,55,125,.78)),url('assets/pawtint-adventure-world.svg') center 44%/cover no-repeat;color:#fff4e8;border:2px solid #49376d;box-shadow:8px 8px 0 #ef9bc0}
+.hero p{color:#fff0f4}.hero h1 em{color:#ffcf79}.hero .eyebrow{background:#ffe18a;color:#55366f;border:0}
+.preview{background:linear-gradient(145deg,#fff0c9dd,#f4c9e5dd 55%,#c8dafaee),url('assets/pawtint-adventure-world.svg') center/cover;border:2px solid #61447f;box-shadow:7px 7px 0 #e99bc0}
+.character{background:linear-gradient(145deg,#fff3cb,#d9c4f4);border:7px solid #fff;box-shadow:0 10px 0 #9165b2}
+.primary{background:linear-gradient(110deg,#f19ac1,#7950b6);box-shadow:0 5px 0 #4b3670}
+
+
+/* MOTION PASS 02 — restrained, character-led reactions */
+.character img{will-change:transform;transform-origin:50% 88%;animation:mascot-breathe 4.8s ease-in-out infinite}
+.character img.is-reacting{animation:mascot-react .72s cubic-bezier(.2,.8,.25,1) both}
+@keyframes mascot-breathe{0%,100%{transform:translateY(0) rotate(-.6deg) scale(1)}45%{transform:translateY(-3px) rotate(.45deg) scale(1.008)}72%{transform:translateY(-1px) rotate(0) scale(1)}}
+@keyframes mascot-react{0%{transform:translateY(0) scale(1)}24%{transform:translateY(3px) scale(1.035,.965)}52%{transform:translateY(-9px) rotate(-3deg) scale(.985,1.02)}78%{transform:translateY(1px) rotate(1deg)}100%{transform:translateY(0) rotate(0) scale(1)}}
+@media(hover:hover){.character:hover img{animation:mascot-react .72s cubic-bezier(.2,.8,.25,1) both}}
+@media(prefers-reduced-motion:reduce){.character img,.character img.is-reacting{animation:none!important;will-change:auto}}
+
+
+/* PAWTINT MOTION PASS 03 — contextual locomotion */
+@keyframes pawtint-walk{0%,100%{transform:translateX(0) rotate(0) scale(1)}20%{transform:translateX(-1.5px) rotate(-.7deg) scale(1.006,.997)}42%{transform:translateX(1px) rotate(.7deg) scale(.997,1.004)}64%{transform:translateX(-.8px) rotate(-.4deg)}82%{transform:translateX(.5px) rotate(.3deg)}}
+@keyframes pawtint-hop{0%{transform:translateY(0) scale(1)}16%{transform:translateY(1.5px) scale(1.018,.985)}38%{transform:translateY(-9px) scale(.995,1.012)}62%{transform:translateY(1px) scale(1.012,.992)}78%{transform:translateY(-1px) scale(.998,1.003)}100%{transform:translateY(0) scale(1)}}
+.pawtint-walk{animation:pawtint-walk .92s cubic-bezier(.4,0,.2,1) both!important}
+.pawtint-hop{animation:pawtint-hop .84s cubic-bezier(.3,.65,.25,1) both!important}
+@media(prefers-reduced-motion:reduce){.pawtint-walk,.pawtint-hop{animation:none!important}}
+</style>
+<link rel="canonical" href="https://pawtint.store/world.html">
+<meta property="og:title" content="اصنع شخصية حيوانك | PawTint World">
+<meta property="og:description" content="اصنع بطاقة شخصية لطيفة لقطتك أو كلبك في عالم PawTint. تجربة مجانية بلا تسجيل.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pawtint.store/world.html">
+<link rel="stylesheet" href="assets/css/pawtint-accessibility.css">
+</head>
+<body><main class="wrap">
+<header class="nav"><a class="brand" href="index.html">🐾 PawTint</a><a href="index.html">العودة للمحل ←</a></header>
+<section class="hero"><span class="eyebrow">🌷 أول بوابة في PawTint World</span><h1>كل بطل له <em>شخصية!</em></h1><p>اصنع بطاقة لطيفة لرفيقك الأليف. اختار شكله واسمه وطبعه، وشوف شخصيته في عالم PawTint — مجانًا ومن غير تسجيل.</p></section>
+<section class="studio" aria-label="استوديو إنشاء شخصية الحيوان">
+<div class="panel">
+<h2>🎨 يلا نصمم بطلك</h2>
+<div class="field"><label for="pet-name">1. اسمه إيه؟</label><input class="name-input" id="pet-name" maxlength="18" placeholder="اكتب اسم صاحبك الأليف" autocomplete="off"></div>
+<div class="field"><label>2. اختار رفيقك</label><div class="options" id="species">
+<button class="option" type="button" data-species="cat" aria-pressed="true"><span>🐱</span>قطة</button>
+<button class="option" type="button" data-species="dog" aria-pressed="false"><span>🐶</span>كلب</button>
+</div></div>
+<div class="field"><label>3. طبعه الأقرب ليه</label><div class="temperaments" id="traits">
+<button class="temperament" type="button" data-trait="فضولي" aria-pressed="true">🔎 فضولي</button>
+<button class="temperament" type="button" data-trait="مشاغب" aria-pressed="false">🎈 مشاغب</button>
+<button class="temperament" type="button" data-trait="هادئ" aria-pressed="false">🌙 هادئ</button>
+<button class="temperament" type="button" data-trait="مغامر" aria-pressed="false">🧭 مغامر</button>
+</div></div>
+<button class="primary" id="make-card" type="button">اصنع بطاقة بطلي ✨</button>
+<p class="hint">اختياراتك بتتحدث على البطاقة فورًا. تقدر تعدّلها في أي وقت.</p>
+</div>
+<aside class="preview" aria-live="polite">
+<div class="preview-top">✦ PAWTINT WORLD · CHARACTER CARD ✦</div>
+<div class="character" id="character"><img id="mascot-art" src="assets/characters/loli.svg" alt="لولى" width="145" height="145"><span class="spark one">✦</span><span class="spark two">♡</span></div>
+<div class="pet-name" id="card-name">بطل PawTint</div>
+<div class="pet-trait" id="card-trait">🔎 فضولي</div>
+<p class="card-note" id="card-note">مستعد يكتشف كل ركن جديد في العالم!</p>
+<button class="share" id="share-card" type="button">شارك بطاقة بطلك ↗</button>
+<button class="enter-home" id="enter-home" type="button">ادخل بيت بطلك 🏡</button>
+<p class="hint" id="share-status" role="status">بطاقتك جاهزة للمشاركة.</p>
+</aside>
+</section>
+<p class="world-note">🐾 عالم PawTint لسه بيكبر… ودي أول حكاية فيه. كل التجربة مجانية.</p>
+</main>
+<script>
+const state={name:"",species:"cat",trait:"فضولي"};
+const speciesButtons=[...document.querySelectorAll("#species button")];
+const traitButtons=[...document.querySelectorAll("#traits button")];
+const nameInput=document.getElementById("pet-name");
+const emoji={cat:"🐱",dog:"🐶"};
+const lines={فضولي:"مستعد يكتشف كل ركن جديد في العالم!",مشاغب:"دايمًا وراه فكرة جديدة ومقلب لطيف!",هادئ:"بيحب اللحظات الهادية والونس الجميل.",مغامر:"كل يوم عنده حكاية ومكان جديد يكتشفه."};
+function render(){
+ const mascot=document.getElementById("mascot-art");
+ mascot.src=state.species==="dog"?"assets/characters/bodi.svg":"assets/characters/loli.svg";
+ mascot.alt=state.species==="dog"?"بودى الجرو المستكشف":"لولى القطة الذكية";
+ document.getElementById("card-name").textContent=state.name.trim()||"بطل PawTint";
+ document.getElementById("card-trait").textContent=({فضولي:"🔎 ",مشاغب:"🎈 ",هادئ:"🌙 ",مغامر:"🧭 "}[state.trait])+state.trait;
+ document.getElementById("card-note").textContent=lines[state.trait];
+ speciesButtons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.species===state.species)));
+ traitButtons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.trait===state.trait)));
+}
+nameInput.addEventListener("input",()=>{state.name=nameInput.value.slice(0,18);render()});
+speciesButtons.forEach(b=>b.addEventListener("click",()=>{state.species=b.dataset.species;render()}));
+traitButtons.forEach(b=>b.addEventListener("click",()=>{state.trait=b.dataset.trait;render()}));
+document.getElementById("make-card").addEventListener("click",()=>{render();document.getElementById("share-status").textContent="بطاقة "+(state.name.trim()||"بطل PawTint")+" جاهزة! ✨"});
+document.getElementById("enter-home").addEventListener("click",()=>{
+ const params=new URLSearchParams({name:state.name.trim()||"بطل PawTint",species:state.species,trait:state.trait});
+ location.href="pet-home.html?"+params.toString();
+});
+document.getElementById("share-card").addEventListener("click",async()=>{
+ const name=state.name.trim()||"بطل PawTint";
+ const text=document.documentElement.lang==="en"?"🐾 "+name+" joined PawTint World!\nPersonality: "+({فضولي:"Curious",مشاغب:"Playful",هادئ:"Calm",مغامر:"Adventurous"}[state.trait])+" "+emoji[state.species]+"\nCreate your free hero card: "+location.href:"🐾 "+name+" انضم لعالم PawTint!\nشخصيته: "+state.trait+" "+emoji[state.species]+"\nاصنع بطاقة بطلك مجانًا: "+location.href;
+ const status=document.getElementById("share-status");
+ try{
+  if(navigator.share){await navigator.share({title:"بطاقة "+name+" | PawTint",text});status.textContent="اتشاركت بطاقتك بنجاح! ♡"}
+  else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);status.textContent="نسخنا نص بطاقتك — شاركه مع أصحابك! ♡"}
+  else{status.textContent="المشاركة غير مدعومة هنا. جرّب فتح الصفحة من متصفح هاتفك."}
+ }catch(e){if(e.name!=="AbortError")status.textContent="حصلت مشكلة بسيطة في المشاركة. جرّب تاني."}
+});
+render();
+</script>
+<script>
+(()=>{
+ const dict={"اصنع شخصية حيوانك | PawTint World":"Create your pet’s character | PawTint World","العودة للمحل ←":"Back to the shop ←","🌷 أول بوابة في PawTint World":"🌷 Your first gateway to PawTint World","كل بطل له":"Every hero has a","شخصية!":"personality!","اصنع بطاقة لطيفة لرفيقك الأليف. اختار شكله واسمه وطبعه، وشوف شخصيته في عالم PawTint — مجانًا ومن غير تسجيل.":"Create a lovely profile card for your pet. Choose their type, name, and personality, and see them come to life in PawTint World — free, with no sign-up.","🎨 يلا نصمم بطلك":"🎨 Let’s create your hero","1. اسمه إيه؟":"1. What’s their name?","اكتب اسم صاحبك الأليف":"Enter your pet’s name","2. اختار رفيقك":"2. Choose your companion","قطة":"Cat","كلب":"Dog","3. طبعه الأقرب ليه":"3. Which trait fits best?","فضولي":"Curious","مشاغب":"Playful","هادئ":"Calm","مغامر":"Adventurous","اصنع بطاقة بطلي ✨":"Create my hero card ✨","اختياراتك بتتحدث على البطاقة فورًا. تقدر تعدّلها في أي وقت.":"Your choices update the card instantly. You can change them anytime.","بطل PawTint":"PawTint Hero","مستعد يكتشف كل ركن جديد في العالم!":"Ready to explore every corner of the world!","دايمًا وراه فكرة جديدة ومقلب لطيف!":"Always coming up with a new idea and a playful prank!","بيحب اللحظات الهادية والونس الجميل.":"Loves peaceful moments and cozy company.","كل يوم عنده حكاية ومكان جديد يكتشفه.":"Every day brings a new story and place to explore.","شارك بطاقة بطلك ↗":"Share your hero card ↗","ادخل بيت بطلك 🏡":"Enter your hero’s home 🏡","بطاقتك جاهزة للمشاركة.":"Your card is ready to share.","بطاقة ":"Card "," جاهزة! ✨":" is ready! ✨","اتشاركت بطاقتك بنجاح! ♡":"Your card was shared! ♡","نسخنا نص بطاقتك — شاركه مع أصحابك! ♡":"Your card text was copied — share it with friends! ♡","المشاركة غير مدعومة هنا. جرّب فتح الصفحة من متصفح هاتفك.":"Sharing isn’t supported here. Try opening this page in your phone’s browser.","حصلت مشكلة بسيطة في المشاركة. جرّب تاني.":"Something went wrong while sharing. Please try again.","🐾 عالم PawTint لسه بيكبر… ودي أول حكاية فيه. كل التجربة مجانية.":"🐾 PawTint World is still growing… and this is its first story. The whole experience is free.","اصنع بطاقة شخصية لطيفة لقطتك أو كلبك في عالم PawTint. تجربة مجانية بلا تسجيل.":"Create a lovely character card for your cat or dog in PawTint World. Free, with no sign-up.","استوديو إنشاء شخصية الحيوان":"Pet character studio","🔎 فضولي":"🔎 Curious","🎈 مشاغب":"🎈 Playful","🌙 هادئ":"🌙 Calm","🧭 مغامر":"🧭 Adventurous","بطاقة جاهزة! ✨":"Card is ready! ✨"};
+ const norm=s=>String(s).replace(/\s+/g,' ').trim();
+ const toEn=Object.fromEntries(Object.entries(dict).map(([a,b])=>[norm(a),b]));
+ const toAr=Object.fromEntries(Object.entries(dict).map(([a,b])=>[norm(b),a]));
+ const languageKey='pawtint-language';
+ let lang='ar';
+ try{lang=localStorage.getItem(languageKey)==='en'?'en':'ar'}catch(e){}
+ const translateValue=(value,to)=>{
+   const key=norm(value), map=to==='en'?toEn:toAr;
+   if(map[key]!==undefined){
+     const lead=String(value).match(/^\s*/)?.[0]||'';
+     const tail=String(value).match(/\s*$/)?.[0]||'';
+     return lead+map[key]+tail;
+   }
+   if(to==='en'){
+     let named=key.match(/^بطاقة (.+) جاهزة! ✨$/);
+     if(named)return 'Card '+named[1]+' is ready! ✨';
+     let m=key.match(/^العمر التقريبي المكافئ:\s*(\d+)\s*سنة بشرية تقريبًا\. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية\.$/);
+     if(m)return 'Approximate equivalent age: '+m[1]+' human years. For a size-based dog estimate, use the detailed calculator.';
+     m=key.match(/^🐾\s*(\d+)\s*بصمة$/);
+     if(m)return '🐾 '+m[1]+' '+(Number(m[1])===1?'pawprint':'pawprints');
+     m=key.match(/^نقاطك:\s*(\d+)\s*\/\s*(\d+)$/);
+     if(m)return 'Your score: '+m[1]+' / '+m[2];
+   }else{
+     let named=key.match(/^Card (.+) is ready! ✨$/);
+     if(named)return 'بطاقة '+named[1]+' جاهزة! ✨';
+     let m=key.match(/^Approximate equivalent age:\s*(\d+)\s*human years\. For a size-based dog estimate, use the detailed calculator\.$/);
+     if(m)return 'العمر التقريبي المكافئ: '+m[1]+' سنة بشرية تقريبًا. للحساب حسب حجم الكلب، استخدم الحاسبة التفصيلية.';
+     m=key.match(/^🐾\s*(\d+)\s*pawprints?$/);
+     if(m)return '🐾 '+m[1]+' '+(Number(m[1])===1?'بصمة':'بصمات');
+     m=key.match(/^Your score:\s*(\d+)\s*\/\s*(\d+)$/);
+     if(m)return 'نقاطك: '+m[1]+' / '+m[2];
+   }
+   return value;
+ };
+ const translateTree=root=>{
+   const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;
+   while(node=walker.nextNode()){
+     if(node.parentElement?.closest('script,style,[data-pt-language]'))continue;
+     const next=translateValue(node.nodeValue,lang);
+     if(next!==node.nodeValue)node.nodeValue=next;
+   }
+ };
+ const translateAttributes=()=>{
+   document.querySelectorAll('[placeholder],[aria-label],[alt],[content]').forEach(el=>{
+     for(const attr of ['placeholder','aria-label','alt','content'])if(el.hasAttribute(attr)){
+       const value=el.getAttribute(attr),next=translateValue(value,lang);
+       if(next!==value)el.setAttribute(attr,next);
+     }
+   });
+   const title=document.querySelector('title');
+   if(title)title.textContent=translateValue(title.textContent,lang);
+ };
+ const addDirectionStyle=()=>{
+   if(document.getElementById('pawtint-l10n-style'))return;
+   const style=document.createElement('style');style.id='pawtint-l10n-style';
+   style.textContent='html[dir="ltr"] body{direction:ltr}html[dir="ltr"] .choice,html[dir="ltr"] .mystery-box{text-align:left}html[dir="ltr"] .reward-count{margin-left:auto;margin-right:0}html[dir="ltr"] input{text-align:left}';
+   document.head.appendChild(style);
+ };
+ const apply=()=>{
+   document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+   translateTree(document.head);translateTree(document.body);translateAttributes();addDirectionStyle();
+   document.querySelectorAll('[data-pt-language]').forEach(x=>x.remove());
+   const btn=document.createElement('button');btn.type='button';btn.dataset.ptLanguage='1';
+   btn.textContent=lang==='ar'?'English':'العربية';
+   btn.setAttribute('aria-label',lang==='ar'?'Switch to English':'التبديل إلى العربية');
+   btn.style.cssText='position:fixed;z-index:9999;top:14px;'+(lang==='ar'?'left:14px;':'right:14px;')+'border:1px solid #d9c8d9;border-radius:999px;background:#fff;color:#66516f;padding:9px 15px;font:800 14px system-ui;box-shadow:0 4px 16px #49354a18;cursor:pointer';
+   btn.addEventListener('click',()=>{lang=lang==='ar'?'en':'ar';try{localStorage.setItem(languageKey,lang)}catch(e){}apply()});
+   document.body.appendChild(btn);
+ };
+ apply();
+ const observer=new MutationObserver(records=>{
+   for(const record of records){
+     if(record.type==='characterData'){
+       const node=record.target;
+       if(!node.parentElement?.closest('script,style,[data-pt-language]')){
+         const next=translateValue(node.nodeValue,lang);if(next!==node.nodeValue)node.nodeValue=next;
+       }
+     }
+     for(const added of record.addedNodes||[]){
+       if(added.nodeType===Node.TEXT_NODE){
+         if(!added.parentElement?.closest('script,style,[data-pt-language]')){
+           const next=translateValue(added.nodeValue,lang);if(next!==added.nodeValue)added.nodeValue=next;
+         }
+       }else if(added.nodeType===Node.ELEMENT_NODE&&!added.matches('[data-pt-language]'))translateTree(added);
+     }
+   }
+ });
+ observer.observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+</script>\n
+
+
+<script src="assets/js/pawtint-motion-controller.js" defer></script></body></html>
