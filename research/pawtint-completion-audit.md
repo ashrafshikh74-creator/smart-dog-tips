@@ -13,7 +13,7 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 - The sitemap omitted the three interactive PawTint World pages: `world.html`, `pet-home.html`, and `play.html`.
 - `age-calculator.html` was missing a meta description.
 - Canonical URLs and Open Graph metadata were absent from the page set.
-- Live-domain content is not synchronized with this development branch: the live homepage served an older PawTint version, and live checks for `pet-home.html` and `pawtint-id.html` returned 404. This must be resolved during release/deployment QA, not by silently publishing.
+- GitHub Pages is configured on the repository default branch `main`; the development branch is `pawtint-phase1-affiliate-id`. The current `main` tree contains only the legacy `index.html` and `age-calculator.html` among the new PawTint World core pages. Live-domain content is not synchronized with this development branch: the live homepage served an older PawTint version, and live checks for `pet-home.html` and `pawtint-id.html` returned 404. This is a release/deployment blocker and must be resolved by an explicitly approved merge/deploy.
 - Browser-based runtime QA is still required for interactions, responsive layout, and animation. Source checks are not a substitute.
 - Contact page and privacy copy explicitly state that `hello@pawtint.store` must be verified/activated before publication; this is an owner-side release dependency.
 - Affiliate disclosure and product guide correctly state that there are no active affiliate purchase links yet; do not add monetized links until disclosure placement and program requirements are reviewed.
