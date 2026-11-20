@@ -32,4 +32,9 @@
 <path d="M158 90Q172 51 210 70Q248 51 262 90Q236 107 210 94Q184 107 158 90Z" fill="#f05b9b"/><circle cx="210" cy="86" r="15" fill="#ff9fc2"/>
 <path d="M132 300Q210 328 288 300L276 356Q210 379 144 356Z" fill="#8754c1"/><path d="M192 319L210 338L228 319L210 304Z" fill="#f5c34e"/>
 
-</g></svg>
+</g><style>
+/* MOTION PASS 06 — character-specific secondary motion */
+@keyframes loli-tail-wag{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(7deg)}}
+.loli-tail{transform-box:fill-box;transform-origin:18% 55%;animation:loli-tail-wag 2.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.loli-tail{animation:none}}
+</style></svg>
