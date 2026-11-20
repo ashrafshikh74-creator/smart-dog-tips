@@ -233,11 +233,7 @@ render();
  });
  observer.observe(document.body,{childList:true,subtree:true,characterData:true});
 })();
-</script>\n<script>
-(()=>{const art=document.getElementById("mascot-art");if(!art)return;const react=()=>{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;art.classList.remove("is-reacting");void art.offsetWidth;art.classList.add("is-reacting")};document.querySelectorAll("#species button,#traits button,#make-card").forEach(button=>button.addEventListener("click",react));art.addEventListener("animationend",()=>art.classList.remove("is-reacting"));})();
-</script>
+</script>\n
 
-<script>
-(()=>{const art=document.getElementById('mascot-art');if(!art)return;const reduce=matchMedia('(prefers-reduced-motion: reduce)');let last='';const move=kind=>{if(reduce.matches)return;art.classList.remove('pawtint-walk','pawtint-hop');void art.offsetWidth;art.classList.add(kind==='walk'?'pawtint-walk':'pawtint-hop');last=kind};document.querySelectorAll('#species button,#traits button').forEach(b=>b.addEventListener('click',()=>move('walk')));document.getElementById('make-card')?.addEventListener('click',()=>move('hop'));art.addEventListener('animationend',e=>{if(e.animationName==='pawtint-walk'||e.animationName==='pawtint-hop')art.classList.remove('pawtint-walk','pawtint-hop')});})();
-</script>
-</body></html>
+
+<script src="assets/js/pawtint-motion-controller.js" defer></script></body></html>
