@@ -25,3 +25,10 @@ These are CSS/SVG motion treatments, not a frame-by-frame rig or sprite animatio
 - This is a QA harness for the current whole-illustration motion language, not a frame-by-frame character rig.
 - Browser verification was attempted through the preview host, but the host displayed an external-content gate before rendering the page. The lab is committed; runtime interaction checks remain pending a direct preview/browser route.
 - Next production gate remains master pose approval and limb-art capable walk/jump cycles.
+
+
+## Phase 05 — Master Pose Review Board
+- Added `research/pawtint-master-pose-board-phase05.html` with five pose beats for Bodi, Loli, and Birdy: idle, anticipation, takeoff, airborne, landing.
+- This is a review/continuity board using current illustrations and CSS transforms only. It does not claim new frame artwork or a true rigged animation.
+- Review targets: silhouette consistency, accessories/face continuity, anticipation depth, airborne spacing, landing squash/settle.
+- Production walk/jump cycles remain gated on approved separate pose artwork or a rig.
