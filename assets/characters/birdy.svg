@@ -29,4 +29,11 @@
 <path d="M122 113Q210 72 298 113L283 133Q210 103 137 133Z" fill="#1c7db5" stroke="#145078" stroke-width="8"/><ellipse cx="170" cy="113" rx="31" ry="19" fill="#d8efff" stroke="#b47a2c" stroke-width="9"/><ellipse cx="250" cy="113" rx="31" ry="19" fill="#d8efff" stroke="#b47a2c" stroke-width="9"/>
 <path d="M142 293Q210 319 278 293L270 334Q210 356 150 334Z" fill="#4f9b48"/><path d="M280 304L333 327L322 357L267 334Z" fill="#347346" stroke="#76502b" stroke-width="7"/>
 <path d="M162 357L145 382M258 357L275 382" stroke="#e68a2e" stroke-width="14" stroke-linecap="round"/>
-</g></svg>
+</g><style>
+/* MOTION PASS 06 — guide wing rhythm */
+@keyframes birdy-wing-left{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-7deg)}}
+@keyframes birdy-wing-right{0%,100%{transform:rotate(0deg)}50%{transform:rotate(7deg)}}
+.wing-left,.wing-right{transform-box:fill-box;transform-origin:70% 85%;animation:birdy-wing-left 2.2s ease-in-out infinite}
+.wing-right{animation-name:birdy-wing-right;transform-origin:30% 85%}
+@media(prefers-reduced-motion:reduce){.wing-left,.wing-right{animation:none}}
+</style></svg>
