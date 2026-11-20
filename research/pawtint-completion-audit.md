@@ -23,6 +23,8 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 - Added an Arabic meta description to `age-calculator.html`.
 - Added `world.html`, `pet-home.html`, and `play.html` to `sitemap.xml`.
 - Added a consistent metadata baseline across the reviewed HTML page set.
+- Added shared keyboard focus styling, forced-colors focus support, and a reduced-motion baseline to all 18 reviewed HTML pages via `assets/css/pawtint-accessibility.css`.
+- Changed garden mission rewards so the user receives a pawprint only after explicitly marking the mission complete; requesting a new mission no longer grants progress.
 
 ## Remaining completion work
 1. **Functional QA:** test all interactive flows and edge cases (World creation, URL state, pet home, play quizzes/tasks, PawTint ID local storage, age calculator, care checklist).
@@ -35,6 +37,7 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 
 ## QA status
 - Source-level link/asset checks: passed for reviewed pages.
+- Canonical, description, Open Graph, and shared accessibility stylesheet presence: passed across all 18 reviewed HTML pages.
 - Runtime/browser QA: pending.
 - Live deployment alignment: pending and currently mismatched.
 - Publishing: not authorized.
