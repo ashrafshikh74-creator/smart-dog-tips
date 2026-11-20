@@ -201,11 +201,7 @@ document.querySelectorAll("#surprise-choices .mystery-box").forEach(btn=>btn.add
  });
  observer.observe(document.body,{childList:true,subtree:true,characterData:true});
 })();
-</script>\n<script>
-(()=>{const bird=document.querySelector(".birdy-guide img");if(!bird)return;const reduce=matchMedia("(prefers-reduced-motion: reduce)");const react=()=>{if(reduce.matches)return;bird.classList.remove("is-reacting");void bird.offsetWidth;bird.classList.add("is-reacting")};document.querySelector(".birdy-guide")?.addEventListener("click",e=>{if(e.target.closest("button,a"))react()});document.addEventListener("click",event=>{if(event.target.closest(".choice,#next-question,#new-mission,.mystery-box,#mood-choices button"))react()});bird.addEventListener("animationend",()=>bird.classList.remove("is-reacting"));})();
-</script>
+</script>\n
 
-<script>
-(()=>{const bird=document.querySelector('.birdy-guide img');if(!bird)return;const reduce=matchMedia('(prefers-reduced-motion: reduce)');const move=kind=>{if(reduce.matches)return;bird.classList.remove('pawtint-walk','pawtint-hop');void bird.offsetWidth;bird.classList.add(kind==='walk'?'pawtint-walk':'pawtint-hop')};bird.addEventListener('animationend',e=>{if(['pawtint-walk','pawtint-hop'].includes(e.animationName))bird.classList.remove('pawtint-walk','pawtint-hop')});document.addEventListener('click',e=>{if(e.target.closest('.choice,#next-question,#new-mission,.mystery-box,#mood-choices button'))move('hop')});})();
-</script>
-</body></html>
+
+<script src="assets/js/pawtint-motion-controller.js" defer></script></body></html>
