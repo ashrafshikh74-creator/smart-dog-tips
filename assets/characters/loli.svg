@@ -10,10 +10,10 @@
 <ellipse cx="210" cy="382" rx="118" ry="18" fill="#57456a" opacity=".14"/>
 <style>
 @keyframes loli-idle{0%,100%{transform:translateY(0) rotate(.2deg)}48%{transform:translateY(-3px) rotate(-.2deg)}}
-@keyframes loli-tail{0%,100%{transform:rotate(0)}50%{transform:rotate(8deg)}70%{transform:rotate(-3deg)}}
+@keyframes loli-tail{0%,100%{transform:rotate(0)}58%{transform:rotate(4deg)}68%{transform:rotate(-1.5deg)}}
 @keyframes loli-ear{0%,86%,100%{transform:rotate(0)}91%{transform:rotate(3deg)}96%{transform:rotate(-1deg)}}
 .mascot-body{transform-box:fill-box;transform-origin:50% 90%;animation:loli-idle 4.5s ease-in-out infinite}
-.loli-tail{transform-box:fill-box;transform-origin:12% 78%;animation:loli-tail 3.2s ease-in-out infinite}
+.loli-tail{transform-box:fill-box;transform-origin:12% 78%;animation:loli-tail 5.6s ease-in-out infinite}
 .loli-ears{transform-box:fill-box;transform-origin:50% 100%;animation:loli-ear 6s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.mascot-body,.loli-tail,.loli-ears{animation:none}}
 @keyframes loli-blink{0%,91%,94%,100%{transform:scaleY(1)}92.5%{transform:scaleY(.08)}}
