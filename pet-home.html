@@ -105,14 +105,23 @@ function showStamps(){document.getElementById("reward-count").textContent="🐾 
 const tasks=["امشوا جولة استكشاف قصيرة في مكان آمن، وسيبه يشم ويلاحظ براحة ومن غير إجبار.","اخفِ لعبة كبيرة وآمنة في مكان ظاهر جزئيًا وشجعه يكتشفها تحت إشرافك.","خصصوا خمس دقايق للعب بلعبته المفضلة، ووقفوا لو ظهر عليه تعب أو توتر.","جهّز ركن راحة هادي فيه ميا نظيفة ومكان مريح، وسيبه يختاره بنفسه."];
 document.getElementById("garden-task").addEventListener("click",()=>{
  const task=tasks[Math.floor(Math.random()*tasks.length)];
- document.getElementById("garden-task").textContent="مهمة جديدة جاهزة ✓";
- document.getElementById("garden-task").insertAdjacentText("afterend"," ");
+ const taskButton=document.getElementById("garden-task");
+ taskButton.textContent="هات مهمة تانية";
  let box=document.getElementById("task-result");
  if(!box){box=document.createElement("p");box.id="task-result";box.style.cssText="background:#fff;border-radius:14px;padding:10px;margin:10px 0 0;color:#66566e;font-weight:700";document.querySelectorAll(".room")[1].appendChild(box)}
  box.textContent=task;
- if(stamps<99)stamps++;
- try{localStorage.setItem(key,String(stamps))}catch(e){}
- showStamps();
+ let done=document.getElementById("task-complete");
+ if(!done){done=document.createElement("button");done.id="task-complete";done.type="button";done.textContent="خلصت المهمة! اجمع بصمة 🐾";box.insertAdjacentElement("afterend",done)}
+ done.disabled=false;
+ done.textContent="خلصت المهمة! اجمع بصمة 🐾";
+ done.onclick=()=>{
+  if(done.disabled)return;
+  done.disabled=true;
+  done.textContent="تمت المهمة! +1 بصمة 🐾";
+  if(stamps<99)stamps++;
+  try{localStorage.setItem(key,String(stamps))}catch(e){}
+  showStamps();
+ };
 });
 
 const birdyTips=[
