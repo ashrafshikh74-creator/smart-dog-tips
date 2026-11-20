@@ -32,3 +32,10 @@ These are CSS/SVG motion treatments, not a frame-by-frame rig or sprite animatio
 - This is a review/continuity board using current illustrations and CSS transforms only. It does not claim new frame artwork or a true rigged animation.
 - Review targets: silhouette consistency, accessories/face continuity, anticipation depth, airborne spacing, landing squash/settle.
 - Production walk/jump cycles remain gated on approved separate pose artwork or a rig.
+
+
+## Phase 06 — Secondary Motion
+- Loli: added a restrained tail-wag loop with reduced-motion override.
+- Birdy: added synchronized, subtle wing rhythm with reduced-motion override.
+- Bodi: added occasional ear twitch with reduced-motion override.
+- These motions are SVG CSS animation on existing shapes; they are not new artwork or a limb-based walk cycle. Browser QA remains pending because preview access is gated.
