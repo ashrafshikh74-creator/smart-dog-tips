@@ -9,10 +9,10 @@
 </defs>
 <ellipse cx="210" cy="382" rx="118" ry="18" fill="#57456a" opacity=".14"/>
 <style>
-@keyframes birdy-wing-left{0%,100%{transform:rotate(0deg)}45%{transform:rotate(-19deg)}70%{transform:rotate(7deg)}}
-@keyframes birdy-wing-right{0%,100%{transform:rotate(0deg)}45%{transform:rotate(19deg)}70%{transform:rotate(-7deg)}}
-.wing-left{transform-box:fill-box;transform-origin:100% 85%;animation:birdy-wing-left 1.15s ease-in-out infinite}
-.wing-right{transform-box:fill-box;transform-origin:0% 85%;animation:birdy-wing-right 1.15s ease-in-out infinite}
+@keyframes birdy-wing-left{0%,78%,100%{transform:rotate(0deg)}84%{transform:rotate(-5deg)}90%{transform:rotate(1deg)}}
+@keyframes birdy-wing-right{0%,78%,100%{transform:rotate(0deg)}84%{transform:rotate(5deg)}90%{transform:rotate(-1deg)}}
+.wing-left{transform-box:fill-box;transform-origin:100% 85%;animation:birdy-wing-left 6.8s ease-in-out infinite}
+.wing-right{transform-box:fill-box;transform-origin:0% 85%;animation:birdy-wing-right 6.8s ease-in-out infinite}
 @keyframes birdy-idle{0%,100%{transform:translateY(0) rotate(-.3deg)}50%{transform:translateY(-3px) rotate(.3deg)}}
 .mascot-body{transform-box:fill-box;transform-origin:50% 90%;animation:birdy-idle 3.8s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.wing-left,.wing-right,.mascot-body{animation:none}}
