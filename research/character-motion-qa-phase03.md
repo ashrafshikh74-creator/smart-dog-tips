@@ -49,3 +49,12 @@ These are CSS/SVG motion treatments, not a frame-by-frame rig or sprite animatio
 - Reduced-motion overrides remain in place.
 - Source-level checks only in this pass; browser runtime/visual QA is still pending because the preview host previously blocked the pages with an external-content gate.
 - Next: consolidate duplicate event listeners into one motion controller and create/approve separate poses for believable walk and jump cycles.
+
+
+## Phase 08 — Unified Motion Controller
+- Added `assets/js/pawtint-motion-controller.js` as the single event-driven motion entry point for world, pet-home, and play pages.
+- Removed the duplicated inline motion trigger scripts and integrated the shared controller.
+- Controller selects one motion class, clears prior motion before triggering, ignores triggers under reduced motion, and performs bounded cleanup.
+- Added `research/pawtint-master-pose-board-phase08.html` as a review board for Idle, Anticipation, Takeoff, Airborne, Landing, and Settle across Bodi, Loli, and Birdy.
+- Pose board uses existing art with transforms only; it is not a rig or final frame-by-frame animation. Production pose approval and new art remain necessary for realistic locomotion.
+- Source inspection completed; browser runtime QA not yet available.
