@@ -218,4 +218,4 @@ showStamps();
 <script>
 (()=>{const reduce=matchMedia('(prefers-reduced-motion: reduce)');const pet=document.getElementById('pet-mascot'),bird=document.querySelector('.birdy-home img');const move=(el,kind)=>{if(!el||reduce.matches)return;el.classList.remove('pawtint-walk','pawtint-hop');void el.offsetWidth;el.classList.add(kind==='walk'?'pawtint-walk':'pawtint-hop')};[pet,bird].forEach(el=>el?.addEventListener('animationend',e=>{if(['pawtint-walk','pawtint-hop'].includes(e.animationName))el.classList.remove('pawtint-walk','pawtint-hop')}));document.getElementById('garden-task')?.addEventListener('click',()=>{move(pet,'hop');move(bird,'hop')});document.querySelectorAll('.room a,.room button:not(#garden-task)').forEach(el=>el.addEventListener('click',()=>move(pet,'walk')));document.getElementById('birdy-next')?.addEventListener('click',()=>move(bird,'hop'));})();
 </script>
-</body></html>
+<script src="assets/js/pawtint-motion-controller.js" defer></script></body></html>
