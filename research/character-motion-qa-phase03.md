@@ -39,3 +39,13 @@ These are CSS/SVG motion treatments, not a frame-by-frame rig or sprite animatio
 - Birdy: added synchronized, subtle wing rhythm with reduced-motion override.
 - Bodi: added occasional ear twitch with reduced-motion override.
 - These motions are SVG CSS animation on existing shapes; they are not new artwork or a limb-based walk cycle. Browser QA remains pending because preview access is gated.
+
+
+## Phase 07 — Natural Motion Refinement
+- Reduced locomotion amplitude on `world.html`, `pet-home.html`, and `play.html`: walk is now a subtle weight-shift cue rather than a side-to-side shake; hop height and squash/stretch are reduced.
+- Slowed and softened action timing with more controlled easing.
+- Reduced pet-home idle bob and Birdy hover amplitude.
+- Phase 06 SVG secondary motion was also softened: Bodi ear twitch, Loli tail sway, and Birdy wing movement are slower and less prominent.
+- Reduced-motion overrides remain in place.
+- Source-level checks only in this pass; browser runtime/visual QA is still pending because the preview host previously blocked the pages with an external-content gate.
+- Next: consolidate duplicate event listeners into one motion controller and create/approve separate poses for believable walk and jump cycles.
