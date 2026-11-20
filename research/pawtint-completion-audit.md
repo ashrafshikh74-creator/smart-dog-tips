@@ -15,11 +15,14 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 - Canonical URLs and Open Graph metadata were absent from the page set.
 - Live-domain content is not synchronized with this development branch: the live homepage served an older PawTint version, and live checks for `pet-home.html` and `pawtint-id.html` returned 404. This must be resolved during release/deployment QA, not by silently publishing.
 - Browser-based runtime QA is still required for interactions, responsive layout, and animation. Source checks are not a substitute.
+- Contact page and privacy copy explicitly state that `hello@pawtint.store` must be verified/activated before publication; this is an owner-side release dependency.
+- Affiliate disclosure and product guide correctly state that there are no active affiliate purchase links yet; do not add monetized links until disclosure placement and program requirements are reviewed.
 
 ## Completed in this audit pass
 - Added canonical URLs and Open Graph title/description/type/url metadata to the public HTML pages.
 - Added an Arabic meta description to `age-calculator.html`.
 - Added `world.html`, `pet-home.html`, and `play.html` to `sitemap.xml`.
+- Added a consistent metadata baseline across the reviewed HTML page set.
 
 ## Remaining completion work
 1. **Functional QA:** test all interactive flows and edge cases (World creation, URL state, pet home, play quizzes/tasks, PawTint ID local storage, age calculator, care checklist).
