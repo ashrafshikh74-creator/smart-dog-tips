@@ -3,7 +3,7 @@
  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
  const targets=[
   {el:document.querySelector('#mascot-art'),idle:['pawtint-walk','pawtint-hop'],selectors:'#species button,#traits button',action:'walk',jump:'#make-card'},
-  {el:document.querySelector('.pet img'),idle:['pawtint-walk','pawtint-hop'],selectors:'.room a,.room button:not(#garden-task)',action:'walk'},\n  {el:document.querySelector('.pet img'),idle:['pawtint-walk','pawtint-hop'],selectors:'#garden-task,#birdy-next',action:'hop'},
+  {el:document.querySelector('.pet img'),idle:['pawtint-walk','pawtint-hop'],selectors:'.room a,.room button:not(#garden-task)',action:'walk'},\n  {el:document.querySelector('.pet img'),idle:['pawtint-walk','pawtint-hop'],selectors:'#garden-task',action:'hop'},
   {el:document.querySelector('.birdy-home img'),idle:['pawtint-walk','pawtint-hop'],selectors:'#garden-task',action:'hop'},
   {el:document.querySelector('.birdy-guide img'),idle:['pawtint-walk','pawtint-hop'],selectors:'.choice,#next-question,#new-mission,.mystery-box,#mood-choices button',action:'hop'}
  ].filter(x=>x.el);
