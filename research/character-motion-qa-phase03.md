@@ -58,3 +58,9 @@ These are CSS/SVG motion treatments, not a frame-by-frame rig or sprite animatio
 - Added `research/pawtint-master-pose-board-phase08.html` as a review board for Idle, Anticipation, Takeoff, Airborne, Landing, and Settle across Bodi, Loli, and Birdy.
 - Pose board uses existing art with transforms only; it is not a rig or final frame-by-frame animation. Production pose approval and new art remain necessary for realistic locomotion.
 - Source inspection completed; browser runtime QA not yet available.
+
+
+## Phase 10 — Controller cleanup
+- Removed the remaining legacy inline motion handlers from `pet-home.html` so the shared controller is the only contextual motion trigger.
+- Controller targeting now separates pet walk reactions on room controls from garden-task hops; Birdy hops on tip/task guidance interactions.
+- Source-level inspection only. Browser visual/runtime QA remains pending; no live deployment.
