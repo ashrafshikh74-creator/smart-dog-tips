@@ -46,6 +46,7 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 ## Execution update — 2026-11-22
 - Re-reviewed the homepage, PawTint World pages, utility/content pages, metadata, sitemap, and motion controller source.
 - Fixed a mascot animation timer race in `assets/js/pawtint-motion-controller.js`: repeated interactions no longer allow an older timeout to prematurely stop a newer motion; timers are cleared when motion is reset.
+- Hardened `care.html` checklist persistence: if browser storage is unavailable or blocked, checklist controls still work for the current session instead of failing.
 - Confirmed contact is intentionally email-link based rather than a backend form; the address remains an owner verification dependency.
 - The metadata/sitemap/accessibility work documented above is present on the development branch. This pass has not performed browser runtime QA and has not changed live deployment.
 
