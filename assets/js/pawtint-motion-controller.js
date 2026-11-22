@@ -9,8 +9,9 @@
   {el:document.querySelector('.birdy-guide img'),idle:['pawtint-walk','pawtint-hop'],selectors:'.choice,#next-question,#new-mission,.mystery-box,#mood-choices button',action:'hop'}
  ].filter(x=>x.el);
  const durations={'pawtint-walk':950,'pawtint-hop':880,'is-reacting':820};
- function clear(el){el.classList.remove('pawtint-walk','pawtint-hop','is-reacting');}
- function trigger(el,kind){if(reduce.matches)return;clear(el);el.dataset.motionState=kind;void el.offsetWidth;el.classList.add(kind);setTimeout(()=>{if(el.dataset.motionState===kind){el.classList.remove(kind);delete el.dataset.motionState}},durations[kind]||820)}
+ const timers=new WeakMap();
+ function clear(el){el.classList.remove('pawtint-walk','pawtint-hop','is-reacting');const timer=timers.get(el);if(timer)clearTimeout(timer);timers.delete(el);delete el.dataset.motionState;}
+ function trigger(el,kind){if(reduce.matches)return;clear(el);const token=Symbol(kind);el.dataset.motionToken=String(token);el.dataset.motionState=kind;void el.offsetWidth;el.classList.add(kind);const timer=setTimeout(()=>{if(el.dataset.motionToken===String(token)){el.classList.remove(kind);delete el.dataset.motionState;delete el.dataset.motionToken;timers.delete(el)}},durations[kind]||820);timers.set(el,timer)}
  document.addEventListener('click',e=>{
   if(reduce.matches)return;
   for(const t of targets){if(t.selectors&&e.target.closest(t.selectors)){trigger(t.el,t.action==='react'?'is-reacting':t.action==='hop'?'pawtint-hop':'pawtint-walk');}
