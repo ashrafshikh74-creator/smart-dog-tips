@@ -41,3 +41,17 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 - Runtime/browser QA: pending.
 - Live deployment alignment: pending and currently mismatched.
 - Publishing: not authorized.
+
+
+## Execution update — 2026-11-22
+- Re-reviewed the homepage, PawTint World pages, utility/content pages, metadata, sitemap, and motion controller source.
+- Fixed a mascot animation timer race in `assets/js/pawtint-motion-controller.js`: repeated interactions no longer allow an older timeout to prematurely stop a newer motion; timers are cleared when motion is reset.
+- Confirmed contact is intentionally email-link based rather than a backend form; the address remains an owner verification dependency.
+- The metadata/sitemap/accessibility work documented above is present on the development branch. This pass has not performed browser runtime QA and has not changed live deployment.
+
+### Updated status
+- Source inspection: ongoing; this is not a full re-audit of every interaction.
+- Motion controller race fix: committed.
+- Runtime QA: pending.
+- Live deployment alignment: pending.
+- Publishing: not authorized.
