@@ -81,6 +81,13 @@ jobs:
                           self.has_canonical = True
 
           errors = []
+          pet_id = Path("pawtint-id.html")
+          if pet_id.is_file():
+              pet_id_source = pet_id.read_text(encoding="utf-8")
+              if 'show(d);try{localStorage.setItem(key,JSON.stringify(d))' not in pet_id_source:
+                  errors.append("PawTint ID must render the profile even when persistent storage is unavailable")
+              if 'try{localStorage.removeItem(key)' not in pet_id_source:
+                  errors.append("PawTint ID clear action must handle unavailable browser storage")
           for page in PUBLIC_PAGES:
               path = Path(page)
               if not path.is_file():
