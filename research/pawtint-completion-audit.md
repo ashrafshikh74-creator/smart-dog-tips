@@ -56,3 +56,33 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 - Runtime QA: pending.
 - Live deployment alignment: pending.
 - Publishing: not authorized.
+
+
+## Execution update — 2026-11-24
+
+### Deployment diagnosis
+- The repository default branch is `main`; the development branch is `pawtint-phase1-affiliate-id`.
+- The `main` root contains the legacy public page set and its sitemap lists 12 URLs. It does not contain the new release pages `world.html`, `pet-home.html`, `play.html`, `pawtint-id.html`, `products.html`, or `affiliate-disclosure.html`.
+- The development branch contains the new page set and its sitemap lists all 18 public HTML routes.
+- `CNAME` contains `pawtint.store` on both branches; the custom-domain file is not the branch mismatch.
+- Live checks on 2026-11-24: homepage returned HTTP 200 with the legacy title/content; `world.html`, `pawtint-id.html`, and `products.html` returned HTTP 404. `pet-home.html` and `play.html` returned a generic GitHub 503 page on this check. These requested pages are absent from the current `main` tree, so the branch/source mismatch remains the primary deployment blocker. The published sitemap also reflects the older 12-URL list.
+- The earlier audit records GitHub Pages as configured to publish from the repository default branch. The current GitHub connector could not retrieve the Pages settings endpoint directly; the default branch and branch-content mismatch were independently verified.
+
+### Safe remediation completed on development branch
+- Added `.github/workflows/pawtint-release-preflight.yml`.
+- The workflow is deliberately non-deploying: `contents: read` only; no Pages artifact upload, deploy action, merge, or DNS operation.
+- It validates all 18 public HTML files, non-empty meta descriptions, canonical URLs on `pawtint.store`, the CNAME value, robots.txt Sitemap reference, valid XML sitemap, and sitemap coverage for all public pages.
+- The first workflow attempt exposed a regex escaping error in the robots.txt check; the expression was corrected in the next commit.
+- Latest workflow runs for the corrected head commit `3205a4b978daeaa5967c8182c9c0c03c77160ae3` both passed: push run `45355815893` and PR run `45355824698`.
+
+### Remaining release blockers
+1. The live site still serves `main`; making the new pages live requires a separately approved merge/deployment action. No such action was taken.
+2. Browser-based end-to-end QA remains required; the preflight is static validation only.
+3. Owner-side verification of `hello@pawtint.store` and final privacy-policy review remain open.
+4. Active affiliate links are not present and must not be fabricated; activate the relevant program and review disclosure requirements before adding them.
+
+### Current release status
+- Source preflight: passed.
+- Deployment alignment: blocked pending explicit release authorization.
+- Runtime QA: pending.
+- Publishing / merge / DNS: not performed.
