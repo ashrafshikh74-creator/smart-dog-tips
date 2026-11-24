@@ -1,0 +1,144 @@
+name: PawTint release preflight
+
+on:
+  push:
+    branches:
+      - pawtint-phase1-affiliate-id
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "**.html"
+      - "assets/**"
+      - "CNAME"
+      - "robots.txt"
+      - "sitemap.xml"
+      - ".github/workflows/pawtint-release-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pawtint-preflight-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  site-preflight:
+    name: Validate static release inputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Validate release pages, SEO metadata, sitemap and custom domain
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlsplit
+          import re
+          import sys
+          import xml.etree.ElementTree as ET
+
+          DOMAIN = "pawtint.store"
+          PUBLIC_PAGES = [
+              "index.html",
+              "about.html",
+              "affiliate-disclosure.html",
+              "age-calculator.html",
+              "care.html",
+              "cat-enrichment.html",
+              "cats.html",
+              "contact.html",
+              "disclaimer.html",
+              "dog-training.html",
+              "dogs.html",
+              "nutrition.html",
+              "pawtint-id.html",
+              "pet-home.html",
+              "play.html",
+              "privacy.html",
+              "products.html",
+              "world.html",
+          ]
+
+          class MetadataParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.has_description = False
+                  self.has_canonical = False
+
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag.lower() == "meta" and attrs.get("name", "").lower() == "description":
+                      self.has_description = bool(attrs.get("content", "").strip())
+                  if tag.lower() == "link":
+                      rel = attrs.get("rel", "").lower().split()
+                      href = attrs.get("href", "")
+                      if "canonical" in rel and href.startswith(f"https://{DOMAIN}/"):
+                          self.has_canonical = True
+
+          errors = []
+          for page in PUBLIC_PAGES:
+              path = Path(page)
+              if not path.is_file():
+                  errors.append(f"Missing required page: {page}")
+                  continue
+              parser = MetadataParser()
+              parser.feed(path.read_text(encoding="utf-8"))
+              if not parser.has_description:
+                  errors.append(f"Missing meta description: {page}")
+              if not parser.has_canonical:
+                  errors.append(f"Missing canonical URL on {DOMAIN}: {page}")
+
+          cname = Path("CNAME")
+          if not cname.is_file() or cname.read_text(encoding="utf-8").strip() != DOMAIN:
+              errors.append(f"CNAME must contain exactly {DOMAIN}")
+
+          robots = Path("robots.txt")
+          if not robots.is_file() or not re.search(
+              rf"(?im)^Sitemap:\\s*https://{re.escape(DOMAIN)}/sitemap\\.xml\\s*$",
+              robots.read_text(encoding="utf-8") if robots.is_file() else "",
+          ):
+              errors.append("robots.txt must reference https://pawtint.store/sitemap.xml")
+
+          sitemap = Path("sitemap.xml")
+          if not sitemap.is_file():
+              errors.append("Missing sitemap.xml")
+          else:
+              try:
+                  root = ET.parse(sitemap).getroot()
+                  ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+                  locations = [
+                      item.text.strip()
+                      for item in root.findall(".//sm:loc", ns)
+                      if item.text and item.text.strip()
+                  ]
+                  if len(locations) != len(set(locations)):
+                      errors.append("sitemap.xml contains duplicate URLs")
+                  expected = {
+                      f"https://{DOMAIN}/" if page == "index.html" else f"https://{DOMAIN}/{page}"
+                      for page in PUBLIC_PAGES
+                  }
+                  missing_urls = sorted(expected - set(locations))
+                  if missing_urls:
+                      errors.append("sitemap.xml is missing: " + ", ".join(missing_urls))
+                  invalid_urls = sorted(
+                      url for url in locations
+                      if urlsplit(url).scheme != "https" or urlsplit(url).netloc != DOMAIN
+                  )
+                  if invalid_urls:
+                      errors.append("sitemap.xml contains non-canonical host/scheme URLs: " + ", ".join(invalid_urls))
+              except ET.ParseError as exc:
+                  errors.append(f"sitemap.xml is not valid XML: {exc}")
+
+          if errors:
+              print("PawTint preflight FAILED:")
+              for error in errors:
+                  print(f" - {error}")
+              sys.exit(1)
+
+          print(f"PawTint preflight PASSED: {len(PUBLIC_PAGES)} pages, descriptions, canonical URLs, CNAME and sitemap validated.")
+          PY
