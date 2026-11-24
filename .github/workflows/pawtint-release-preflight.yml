@@ -99,7 +99,7 @@ jobs:
 
           robots = Path("robots.txt")
           if not robots.is_file() or not re.search(
-              rf"(?im)^Sitemap:\\s*https://{re.escape(DOMAIN)}/sitemap\\.xml\\s*$",
+              rf"(?im)^Sitemap:\s*https://{re.escape(DOMAIN)}/sitemap\.xml\s*$",
               robots.read_text(encoding="utf-8") if robots.is_file() else "",
           ):
               errors.append("robots.txt must reference https://pawtint.store/sitemap.xml")
