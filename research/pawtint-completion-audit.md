@@ -114,3 +114,25 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 - Live deployment alignment: still blocked by the main/development branch mismatch and requires explicit release authorization.
 - Owner verification of `hello@pawtint.store` and final privacy-policy review: pending.
 - Publishing: not authorized.
+
+
+## Functional QA pass — 2026-11-26
+
+### Browser availability / live deployment check
+- Live request to `https://pawtint.store/world.html` returned GitHub Pages HTTP 404 ("File not found"). This confirms the interactive development pages are not currently available on the public domain.
+- A raw GitHub source URL returns the HTML source as `text/plain`, not an executable browser preview. The raw.githack preview is blocked by its third-party content interstitial. Therefore no honest end-to-end interaction claim can be made for the development branch in a browser at this time.
+- No live forms were submitted and no production data was changed.
+
+### Static functional checks performed
+- `world.html`: all JavaScript getElementById targets exist; no duplicate IDs. Source paths cover name input, species/trait selection, preview rendering, character creation, home navigation, and share/copy fallback.
+- `pet-home.html`: all JavaScript getElementById targets exist; no duplicate IDs. Source paths cover query-string defaults/validation, pet display, stamp persistence with storage fallback, garden mission completion gating, and Birdy tip rotation.
+- `play.html`: all JavaScript getElementById targets exist; no duplicate IDs. Source paths cover cat/dog choice results, quiz scoring/progress, question cycling, mission generation, mood suggestions, and one-time mystery-box selection.
+- `pawtint-id.html`: all JavaScript getElementById targets exist; no duplicate IDs. Source paths cover required-name validation, preview rendering, local save/load, blocked-storage fallback, print, and clear confirmation.
+- Accessibility source scan: live regions are present on World, Pet Home, Play and PawTint ID; no duplicate IDs or missing getElementById targets in these four pages. PawTint ID uses the shared accessibility stylesheet for focus styling.
+- Motion controller: inspected the event delegation targets and timer cleanup path; this remains source inspection, not animation execution in a browser.
+
+### Result / remaining tests
+- Static DOM/handler reference checks: passed for the four interactive pages.
+- Interactive browser tests (click/keyboard, share API, print dialog, storage-denied mode, mobile visual layout, reduced-motion behavior): blocked until a safe executable preview of the development branch is available.
+- Public-domain check for `world.html`: failed as expected due to the documented branch/deployment mismatch.
+- No merge, publication, Pages settings change, or DNS change was performed.
