@@ -1,0 +1,244 @@
+name: PawTint release preflight
+
+on:
+  push:
+    branches:
+      - pawtint-phase1-affiliate-id
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "**.html"
+      - "assets/**"
+      - "CNAME"
+      - "robots.txt"
+      - "sitemap.xml"
+      - ".github/workflows/pawtint-release-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pawtint-preflight-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  site-preflight:
+    name: Validate static release inputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Check inline JavaScript syntax
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import subprocess
+          import sys
+          import tempfile
+
+          class ScriptExtractor(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.inline = []
+                  self.current = None
+              def handle_starttag(self, tag, attrs):
+                  if tag.lower() == "script" and not dict(attrs).get("src"):
+                      self.current = []
+              def handle_data(self, data):
+                  if self.current is not None:
+                      self.current.append(data)
+              def handle_endtag(self, tag):
+                  if tag.lower() == "script" and self.current is not None:
+                      source = "".join(self.current).strip()
+                      if source:
+                          self.inline.append(source)
+                      self.current = None
+
+          pages = sorted(Path(".").glob("*.html"))
+          checked = 0
+          errors = []
+          with tempfile.TemporaryDirectory() as tmp:
+              for page in pages:
+                  parser = ScriptExtractor()
+                  parser.feed(page.read_text(encoding="utf-8"))
+                  for index, source in enumerate(parser.inline, 1):
+                      script = Path(tmp) / f"{page.stem}-{index}.js"
+                      script.write_text(source, encoding="utf-8")
+                      result = subprocess.run(["node", "--check", str(script)], text=True, capture_output=True)
+                      checked += 1
+                      if result.returncode:
+                          errors.append(f"{page} inline script #{index}: {result.stderr.strip()}")
+          if errors:
+              print("Inline JavaScript syntax FAILED:")
+              for error in errors:
+                  print(" - " + error)
+              sys.exit(1)
+          print(f"Inline JavaScript syntax PASSED: {checked} inline scripts across {len(pages)} HTML pages.")
+          PY
+
+      - name: Validate release pages, SEO metadata, sitemap and custom domain
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import unquote, urlsplit
+          import re
+          import sys
+          import xml.etree.ElementTree as ET
+
+          DOMAIN = "pawtint.store"
+          PUBLIC_PAGES = [
+              "index.html",
+              "about.html",
+              "affiliate-disclosure.html",
+              "age-calculator.html",
+              "care.html",
+              "cat-enrichment.html",
+              "cats.html",
+              "contact.html",
+              "disclaimer.html",
+              "dog-training.html",
+              "dogs.html",
+              "nutrition.html",
+              "pawtint-id.html",
+              "pet-home.html",
+              "play.html",
+              "privacy.html",
+              "products.html",
+              "world.html",
+          ]
+
+          class MetadataParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.has_description = False
+                  self.has_canonical = False
+                  self.references = []
+                  self.title_depth = 0
+                  self.title_text = []
+                  self.h1_count = 0
+
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag.lower() == "meta" and attrs.get("name", "").lower() == "description":
+                      self.has_description = bool(attrs.get("content", "").strip())
+                  if tag.lower() == "link":
+                      rel = attrs.get("rel", "").lower().split()
+                      href = attrs.get("href", "")
+                      if "canonical" in rel and href.startswith(f"https://{DOMAIN}/"):
+                          self.has_canonical = True
+                  for attr in ("href", "src", "poster"):
+                      value = attrs.get(attr, "").strip()
+                      if value:
+                          self.references.append(value)
+                  if tag.lower() == "title":
+                      self.title_depth += 1
+                  if tag.lower() == "h1":
+                      self.h1_count += 1
+
+              def handle_endtag(self, tag):
+                  if tag.lower() == "title" and self.title_depth:
+                      self.title_depth -= 1
+
+              def handle_data(self, data):
+                  if self.title_depth:
+                      self.title_text.append(data)
+
+          errors = []
+          pet_id = Path("pawtint-id.html")
+          if pet_id.is_file():
+              pet_id_source = pet_id.read_text(encoding="utf-8")
+              if 'show(d);try{localStorage.setItem(key,JSON.stringify(d))' not in pet_id_source:
+                  errors.append("PawTint ID must render the profile even when persistent storage is unavailable")
+              if 'try{localStorage.removeItem(key)' not in pet_id_source:
+                  errors.append("PawTint ID clear action must handle unavailable browser storage")
+
+          checked_local_refs = set()
+          for page in PUBLIC_PAGES:
+              path = Path(page)
+              if not path.is_file():
+                  errors.append(f"Missing required page: {page}")
+                  continue
+              parser = MetadataParser()
+              source = path.read_text(encoding="utf-8")
+              parser.feed(source)
+              if not parser.has_description:
+                  errors.append(f"Missing meta description: {page}")
+              if not parser.has_canonical:
+                  errors.append(f"Missing canonical URL on {DOMAIN}: {page}")
+              title = "".join(parser.title_text).strip()
+              if not title:
+                  errors.append(f"Missing page title: {page}")
+              if parser.h1_count != 1:
+                  errors.append(f"Expected exactly one H1 in {page}; found {parser.h1_count}")
+
+              for reference in parser.references:
+                  parsed = urlsplit(reference)
+                  if parsed.scheme or parsed.netloc or not parsed.path:
+                      continue
+                  local_path = unquote(parsed.path)
+                  target = (path.parent / local_path).as_posix() if not local_path.startswith("/") else local_path.lstrip("/")
+                  if target == "":
+                      target = "index.html"
+                  if target.endswith("/"):
+                      target += "index.html"
+                  if not Path(target).is_file():
+                      errors.append(f"Broken local reference in {page}: {reference}")
+                  else:
+                      checked_local_refs.add(target)
+
+          cname = Path("CNAME")
+          if not cname.is_file() or cname.read_text(encoding="utf-8").strip() != DOMAIN:
+              errors.append(f"CNAME must contain exactly {DOMAIN}")
+
+          robots = Path("robots.txt")
+          if not robots.is_file() or not re.search(
+              rf"(?im)^Sitemap:\s*https://{re.escape(DOMAIN)}/sitemap\.xml\s*$",
+              robots.read_text(encoding="utf-8") if robots.is_file() else "",
+          ):
+              errors.append("robots.txt must reference https://pawtint.store/sitemap.xml")
+
+          sitemap = Path("sitemap.xml")
+          if not sitemap.is_file():
+              errors.append("Missing sitemap.xml")
+          else:
+              try:
+                  root = ET.parse(sitemap).getroot()
+                  ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+                  locations = [
+                      item.text.strip()
+                      for item in root.findall(".//sm:loc", ns)
+                      if item.text and item.text.strip()
+                  ]
+                  if len(locations) != len(set(locations)):
+                      errors.append("sitemap.xml contains duplicate URLs")
+                  expected = {
+                      f"https://{DOMAIN}/" if page == "index.html" else f"https://{DOMAIN}/{page}"
+                      for page in PUBLIC_PAGES
+                  }
+                  missing_urls = sorted(expected - set(locations))
+                  if missing_urls:
+                      errors.append("sitemap.xml is missing: " + ", ".join(missing_urls))
+                  invalid_urls = sorted(
+                      url for url in locations
+                      if urlsplit(url).scheme != "https" or urlsplit(url).netloc != DOMAIN
+                  )
+                  if invalid_urls:
+                      errors.append("sitemap.xml contains non-canonical host/scheme URLs: " + ", ".join(invalid_urls))
+              except ET.ParseError as exc:
+                  errors.append(f"sitemap.xml is not valid XML: {exc}")
+
+          if errors:
+              print("PawTint preflight FAILED:")
+              for error in errors:
+                  print(f" - {error}")
+              sys.exit(1)
+
+          print(f"PawTint preflight PASSED: {len(PUBLIC_PAGES)} pages, descriptions, canonical URLs, CNAME and sitemap validated.")
+          PY

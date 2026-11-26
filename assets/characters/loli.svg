@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-labelledby="title desc">
+<title id="title">Loli the clever cat</title>
+<desc id="desc">PawTint World original mascot illustration in a warm dimensional cartoon style.</desc>
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#fce5f0"/><stop offset="1" stop-color="#e4d8fb"/></linearGradient>
+ <linearGradient id="fur" x2=".2" y2="1"><stop stop-color="#fffaff"/><stop offset="1" stop-color="#c8b4ed"/></linearGradient>
+ <linearGradient id="cloth" x2="1" y2="1"><stop stop-color="#a96ae2"/><stop offset="1" stop-color="#6735a7"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#49345a" flood-opacity=".2"/></filter>
+</defs>
+<ellipse cx="210" cy="382" rx="118" ry="18" fill="#57456a" opacity=".14"/>
+<style>
+@keyframes loli-idle{0%,100%{transform:translateY(0) rotate(.2deg)}48%{transform:translateY(-3px) rotate(-.2deg)}}
+@keyframes loli-tail{0%,100%{transform:rotate(0)}58%{transform:rotate(4deg)}68%{transform:rotate(-1.5deg)}}
+@keyframes loli-ear{0%,86%,100%{transform:rotate(0)}91%{transform:rotate(3deg)}96%{transform:rotate(-1deg)}}
+.mascot-body{transform-box:fill-box;transform-origin:50% 90%;animation:loli-idle 4.5s ease-in-out infinite}
+.loli-tail{transform-box:fill-box;transform-origin:12% 78%;animation:loli-tail 5.6s ease-in-out infinite}
+.loli-ears{transform-box:fill-box;transform-origin:50% 100%;animation:loli-ear 6s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.mascot-body,.loli-tail,.loli-ears{animation:none}}
+@keyframes loli-blink{0%,91%,94%,100%{transform:scaleY(1)}92.5%{transform:scaleY(.08)}}
+.loli-eyes{transform-box:fill-box;transform-origin:50% 50%;animation:loli-blink 6.2s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.loli-eyes{animation:none}}
+</style>
+<g class="mascot-body" filter="url(#shadow)">
+
+<path class="loli-ears" d="M115 150L106 42Q105 22 127 39L190 104Z" fill="#fffaff" stroke="#c4a9e6" stroke-width="8"/><path d="M305 150L314 42Q315 22 293 39L230 104Z" fill="#fffaff" stroke="#c4a9e6" stroke-width="8"/>
+<path d="M121 100L126 55L164 105Z" fill="#f4a2c4"/><path d="M299 100L294 55L256 105Z" fill="#f4a2c4"/>
+<ellipse cx="210" cy="232" rx="116" ry="128" fill="url(#fur)"/><ellipse cx="210" cy="291" rx="75" ry="63" fill="#fff"/>
+<path class="loli-tail" d="M286 306Q372 308 347 366Q326 404 275 371Q322 372 309 341" fill="none" stroke="#bda3e5" stroke-width="27" stroke-linecap="round"/>
+<path d="M155 135Q210 90 265 135" fill="none" stroke="#b89bdc" stroke-width="18" stroke-linecap="round"/>
+<g class="loli-eyes"><ellipse cx="166" cy="214" rx="25" ry="33" fill="#fff"/><ellipse cx="254" cy="214" rx="25" ry="33" fill="#fff"/><ellipse cx="170" cy="218" rx="14" ry="23" fill="#6948b7"/><ellipse cx="250" cy="218" rx="14" ry="23" fill="#6948b7"/><circle cx="175" cy="207" r="7" fill="#fff"/><circle cx="255" cy="207" r="7" fill="#fff"/></g>
+<path d="M193 259Q210 247 227 259Q210 281 193 259Z" fill="#ee8ba9"/><path d="M210 278Q191 299 177 278M210 278Q229 299 243 278" fill="none" stroke="#8c5b8b" stroke-width="6" stroke-linecap="round"/>
+<path d="M158 90Q172 51 210 70Q248 51 262 90Q236 107 210 94Q184 107 158 90Z" fill="#f05b9b"/><circle cx="210" cy="86" r="15" fill="#ff9fc2"/>
+<path d="M132 300Q210 328 288 300L276 356Q210 379 144 356Z" fill="#8754c1"/><path d="M192 319L210 338L228 319L210 304Z" fill="#f5c34e"/>
+
+</g><style>
+/* MOTION PASS 06 — character-specific secondary motion */
+@keyframes loli-tail-wag{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(7deg)}}
+.loli-tail{transform-box:fill-box;transform-origin:18% 55%;animation:loli-tail-wag 2.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.loli-tail{animation:none}}
+</style></svg>

@@ -1,0 +1,95 @@
+{
+  "project": "PawTint World",
+  "version": 1,
+  "status": "concept-review",
+  "notes": "First-pass original SVG mascots are integrated into selected PawTint pages. Natural idle motion, staggered eye-blink cycles, Birdy wing movement, and contextual walk/hop reactions are implemented on world.html, pet-home.html and play.html. Inline JavaScript syntax checks passed on all three pages. Browser interaction checks passed: creator choice walk and card-creation hop; garden mission paired pet/Birdy hop; play-choice Birdy hop. Mobile (390px) and desktop (1920px) layouts were checked with no horizontal overflow on all three pages. Character images loaded. Reduced-motion preference was verified to disable the creator reaction animation; SVG files and CSS include reduced-motion fallbacks. Full visual animation review, comprehensive game-path QA, high-detail approved master art, and articulated frame-by-frame walk cycles remain pending. Development branch only; live site unchanged. Mascot SVGs now include subtle blink cycles with reduced-motion fallbacks; SVG tag-nesting and CSS-brace structural checks passed; browser-level blink inspection pending. Live site unchanged.",
+  "assets": [
+    {
+      "id": "pawtint-adventure-world",
+      "path": "assets/pawtint-adventure-world.svg",
+      "kind": "illustrated-scene",
+      "dimensions": "1200x820 viewBox",
+      "format": "SVG",
+      "alpha": "not audited",
+      "role": "existing shared adventure-world illustration",
+      "source": {
+        "kind": "original-project-art",
+        "tool": "authored SVG",
+        "license": "project-original"
+      },
+      "approval_status": "already-integrated; visual/technical re-audit pending",
+      "technical_checks_passed": false
+    },
+    {
+      "id": "pawtint-mascot-reference-v1",
+      "path": null,
+      "attachment_filename": "pawtint-mascot-reference-v1.jpg",
+      "repository_status": "not committed; generated image is attached to this conversation",
+      "kind": "character-concept-sheet",
+      "dimensions": "1536x1024",
+      "format": "JPEG",
+      "alpha": false,
+      "role": "three-mascot visual direction reference: Bodi, Loli and Birdy; full-body concepts plus expression studies",
+      "source": {
+        "kind": "ai-generated",
+        "tool": "OpenAI image generation",
+        "generation_id": "b9591c0c-975a-4795-9699-ed65812c9075",
+        "license": "generated-content; subject to applicable product terms",
+        "created": "2026-11-18"
+      },
+      "approval_status": "concept-review; not owner-approved",
+      "technical_checks_passed": false,
+      "limitations": [
+        "single composite sheet, not individual character files",
+        "opaque background; not a transparent sprite",
+        "no exact per-character crop, anchor or animation frames",
+        "must be reviewed at actual page scale before production use"
+      ]
+    },
+    {
+      "id": "bodi-vector-web",
+      "path": "assets/characters/bodi.svg",
+      "kind": "web-mascot-vector",
+      "format": "SVG",
+      "dimensions": "420x420 viewBox",
+      "alpha": true,
+      "role": "lightweight mascot fallback in homepage and personalized pet-home",
+      "source": {
+        "kind": "project-authored-vector",
+        "license": "project-original"
+      },
+      "approval_status": "integrated on development branch; blink CSS and reduced-motion declarations structurally checked; browser visual QA pending",
+      "technical_checks_passed": true
+    },
+    {
+      "id": "loli-vector-web",
+      "path": "assets/characters/loli.svg",
+      "kind": "web-mascot-vector",
+      "format": "SVG",
+      "dimensions": "420x420 viewBox",
+      "alpha": true,
+      "role": "lightweight mascot fallback in homepage and personalized pet-home",
+      "source": {
+        "kind": "project-authored-vector",
+        "license": "project-original"
+      },
+      "approval_status": "integrated on development branch; blink CSS and reduced-motion declarations structurally checked; browser visual QA pending",
+      "technical_checks_passed": true
+    },
+    {
+      "id": "birdy-vector-web",
+      "path": "assets/characters/birdy.svg",
+      "kind": "web-mascot-vector",
+      "format": "SVG",
+      "dimensions": "420x420 viewBox",
+      "alpha": true,
+      "role": "mascot guide in homepage and game room",
+      "source": {
+        "kind": "project-authored-vector",
+        "license": "project-original"
+      },
+      "approval_status": "integrated on development branch; blink CSS and reduced-motion declarations structurally checked; browser visual QA pending",
+      "technical_checks_passed": true
+    }
+  ]
+}
