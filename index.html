@@ -509,5 +509,46 @@
  });
  observer.observe(document.body,{childList:true,subtree:true,characterData:true});
 })();
-</script>\n</body>
+</script>\n
+<!-- PawTint visual QA fix: restore a full-width mobile hero and keep fixed helper UI clear of page content. -->
+<style id="pawtint-mobile-visual-qa">
+@media (max-width: 680px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px;
+  }
+  .hero-grid > * {
+    min-width: 0;
+  }
+  .hero-visual {
+    width: 100%;
+    min-width: 0;
+    min-height: 320px;
+    margin: 12px 0 0;
+  }
+  .photo-frame {
+    width: min(86%, 360px);
+    max-width: 100%;
+    height: 290px;
+  }
+  .mascot-cast,
+  .mascot-grid,
+  .mascot-card {
+    min-width: 0;
+  }
+  .mascot-card img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+  body {
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+  .shop-cat {
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    max-width: calc(100vw - 20px);
+  }
+}
+</style>
+</body>
 </html>
