@@ -69,6 +69,10 @@ jobs:
                   super().__init__()
                   self.has_description = False
                   self.has_canonical = False
+                  self.references = []
+                  self.title_depth = 0
+                  self.title_text = []
+                  self.h1_count = 0
 
               def handle_starttag(self, tag, attrs):
                   attrs = dict(attrs)
@@ -79,6 +83,22 @@ jobs:
                       href = attrs.get("href", "")
                       if "canonical" in rel and href.startswith(f"https://{DOMAIN}/"):
                           self.has_canonical = True
+                  for attr in ("href", "src", "poster"):
+                      value = attrs.get(attr, "").strip()
+                      if value:
+                          self.references.append(value)
+                  if tag.lower() == "title":
+                      self.title_depth += 1
+                  if tag.lower() == "h1":
+                      self.h1_count += 1
+
+              def handle_endtag(self, tag):
+                  if tag.lower() == "title" and self.title_depth:
+                      self.title_depth -= 1
+
+              def handle_data(self, data):
+                  if self.title_depth:
+                      self.title_text.append(data)
 
           errors = []
           pet_id = Path("pawtint-id.html")
@@ -88,17 +108,40 @@ jobs:
                   errors.append("PawTint ID must render the profile even when persistent storage is unavailable")
               if 'try{localStorage.removeItem(key)' not in pet_id_source:
                   errors.append("PawTint ID clear action must handle unavailable browser storage")
+
+          checked_local_refs = set()
           for page in PUBLIC_PAGES:
               path = Path(page)
               if not path.is_file():
                   errors.append(f"Missing required page: {page}")
                   continue
               parser = MetadataParser()
-              parser.feed(path.read_text(encoding="utf-8"))
+              source = path.read_text(encoding="utf-8")
+              parser.feed(source)
               if not parser.has_description:
                   errors.append(f"Missing meta description: {page}")
               if not parser.has_canonical:
                   errors.append(f"Missing canonical URL on {DOMAIN}: {page}")
+              title = "".join(parser.title_text).strip()
+              if not title:
+                  errors.append(f"Missing page title: {page}")
+              if parser.h1_count != 1:
+                  errors.append(f"Expected exactly one H1 in {page}; found {parser.h1_count}")
+
+              for reference in parser.references:
+                  parsed = urlsplit(reference)
+                  if parsed.scheme or parsed.netloc or not parsed.path:
+                      continue
+                  local_path = unquote(parsed.path)
+                  target = (path.parent / local_path).as_posix() if not local_path.startswith("/") else local_path.lstrip("/")
+                  if target == "":
+                      target = "index.html"
+                  if target.endswith("/"):
+                      target += "index.html"
+                  if not Path(target).is_file():
+                      errors.append(f"Broken local reference in {page}: {reference}")
+                  else:
+                      checked_local_refs.add(target)
 
           cname = Path("CNAME")
           if not cname.is_file() or cname.read_text(encoding="utf-8").strip() != DOMAIN:
