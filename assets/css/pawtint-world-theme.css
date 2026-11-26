@@ -1,0 +1,74 @@
+/* PawTint World visual identity v1 — reference-aligned palette and shared components */
+:root{
+  --ink:#32154f;--muted:#76648b;--cream:#fff8ff;--paper:#fffdfd;
+  --green:#e7f8ec;--green-deep:#6d2caa;--coral:#ff6fae;--yellow:#ffd166;
+  --lilac:#eadbff;--line:#ead9f2;--shadow:0 18px 50px rgba(92,40,133,.14);
+  --radius:26px;
+}
+html{scroll-behavior:smooth}
+body{
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(255,216,236,.68),transparent 28%),
+    radial-gradient(circle at 94% 16%,rgba(224,211,255,.62),transparent 26%),
+    var(--cream);
+}
+a{color:inherit}
+button,a,input,select{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid #ff8cc1;outline-offset:3px
+}
+button,.button,.primary,.nav-cta,.share,.enter-home{
+  border-radius:999px;
+  background:linear-gradient(120deg,#ff70ae 0%,#a343c7 55%,#6e2ca9 100%);
+  border:1px solid rgba(255,255,255,.72);
+  color:#fff;
+  box-shadow:0 8px 22px rgba(117,47,161,.2);
+}
+button:hover,.button:hover,.nav-cta:hover{filter:saturate(1.08);transform:translateY(-2px)}
+.brand,.brand-mark{color:#6e2ca9}
+.brand-mark{background:linear-gradient(135deg,#ff79b6,#8137bd)}
+.nav a:last-child{color:#6e2ca9}
+.eyebrow{background:#f8e7f4;color:#7133a3;border:1px solid #efd7ef}
+h1 em,.hero h1 em{color:#e85b9f}
+.category,.tool-card,.panel,.preview,.house,.room,.game,.mascot-card,.birdy-guide,.birdy-home,.reward{
+  border-color:var(--line);
+  box-shadow:var(--shadow);
+}
+.category,.tool-card,.mascot-card,.room,.game{
+  border-radius:24px;
+}
+.category:nth-child(1){background:linear-gradient(145deg,#e9f8e8,#fff)}
+.category:nth-child(2){background:linear-gradient(145deg,#ffe5ef,#fff)}
+.category:nth-child(3){background:linear-gradient(145deg,#fff1ce,#fff)}
+.category:nth-child(4){background:linear-gradient(145deg,#eee3ff,#fff)}
+.tools-band{background:linear-gradient(135deg,#4e2677,#7e3ca8 58%,#b75b9b)}
+.tools-band .eyebrow{background:rgba(255,255,255,.16);color:#ffe39a}
+.story-copy{background:linear-gradient(145deg,#fff1f5,#f0e6ff)}
+.newsletter{background:linear-gradient(135deg,#ffe1ef,#ffe9b8 55%,#eadbff)}
+.mascot-card{
+  background:linear-gradient(160deg,#fff,#f8edff 70%,#fff1f5);
+  border:1px solid #ead5f4;
+  overflow:hidden;
+}
+.mascot-card img{object-fit:contain;filter:drop-shadow(0 8px 10px rgba(91,43,126,.13))}
+.character{
+  background:radial-gradient(circle at 35% 25%,#fff 0,#fff4fb 55%,#eadcff 100%);
+  border-color:#fff;
+}
+.preview{background:linear-gradient(145deg,#ffe9f3,#eee5ff 60%,#e7f8ec)}
+.panel{background:rgba(255,253,255,.94)}
+.option[aria-pressed=true],.temperament[aria-pressed=true]{
+  border-color:#a65ac4;background:#f4e6ff;color:#56227e;
+}
+.primary,.nav-cta{font-weight:800}
+footer{color:var(--ink)}
+@media(max-width:680px){
+  .mascot-grid{grid-template-columns:1fr!important}
+  .mascot-card{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:center;gap:8px 14px;text-align:right}
+  .mascot-card img{grid-row:span 3;width:104px;height:112px}
+  .mascot-card h3,.mascot-card p,.mascot-card .mascot-role{margin:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
