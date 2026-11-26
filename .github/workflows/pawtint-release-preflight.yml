@@ -31,6 +31,56 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
 
+      - name: Check inline JavaScript syntax
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import subprocess
+          import sys
+          import tempfile
+
+          class ScriptExtractor(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.inline = []
+                  self.current = None
+              def handle_starttag(self, tag, attrs):
+                  if tag.lower() == "script" and not dict(attrs).get("src"):
+                      self.current = []
+              def handle_data(self, data):
+                  if self.current is not None:
+                      self.current.append(data)
+              def handle_endtag(self, tag):
+                  if tag.lower() == "script" and self.current is not None:
+                      source = "".join(self.current).strip()
+                      if source:
+                          self.inline.append(source)
+                      self.current = None
+
+          pages = sorted(Path(".").glob("*.html"))
+          checked = 0
+          errors = []
+          with tempfile.TemporaryDirectory() as tmp:
+              for page in pages:
+                  parser = ScriptExtractor()
+                  parser.feed(page.read_text(encoding="utf-8"))
+                  for index, source in enumerate(parser.inline, 1):
+                      script = Path(tmp) / f"{page.stem}-{index}.js"
+                      script.write_text(source, encoding="utf-8")
+                      result = subprocess.run(["node", "--check", str(script)], text=True, capture_output=True)
+                      checked += 1
+                      if result.returncode:
+                          errors.append(f"{page} inline script #{index}: {result.stderr.strip()}")
+          if errors:
+              print("Inline JavaScript syntax FAILED:")
+              for error in errors:
+                  print(" - " + error)
+              sys.exit(1)
+          print(f"Inline JavaScript syntax PASSED: {checked} inline scripts across {len(pages)} HTML pages.")
+          PY
+
       - name: Validate release pages, SEO metadata, sitemap and custom domain
         shell: bash
         run: |
