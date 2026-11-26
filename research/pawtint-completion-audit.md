@@ -97,3 +97,20 @@ Static source review of the 18 public HTML pages, sitemap, robots file, assets t
 - Runtime/browser QA: pending.
 - Live deployment alignment: pending.
 - Publishing / merge / DNS: not performed.
+
+
+
+## Execution update — 2026-11-26
+
+### Release preflight expansion
+- Expanded `.github/workflows/pawtint-release-preflight.yml` to check the 18 required public pages for a non-empty title, exactly one H1, descriptions, canonical URLs, and resolvable local href/src/poster references, in addition to CNAME, robots.txt, and sitemap validation.
+- The first run of the expanded check exposed a missing `unquote` import in the URL-decoding helper. Added the missing import in the next commit.
+- Latest workflow run for commit `91c8ae1315009b90b1b008a2f77666288000530b`: the validation step completed successfully; the workflow job was still finishing cleanup when checked. Confirm final run conclusion before treating the whole workflow as passed.
+- No browser runtime QA, merge, publication, or DNS changes were performed.
+
+### Updated status
+- Expanded static preflight validation step: passed on latest run; final workflow conclusion pending at audit time.
+- Browser/runtime QA: pending.
+- Live deployment alignment: still blocked by the main/development branch mismatch and requires explicit release authorization.
+- Owner verification of `hello@pawtint.store` and final privacy-policy review: pending.
+- Publishing: not authorized.
