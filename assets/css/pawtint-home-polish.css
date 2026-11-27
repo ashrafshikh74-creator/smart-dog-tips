@@ -1,0 +1,60 @@
+/* PawTint homepage polish v1
+   A small additive layer: preserve the approved visual identity and existing interactions. */
+:root{
+  --pt-focus:#6d2caa;
+  --pt-focus-ring:rgba(109,44,170,.22);
+}
+html{scroll-padding-top:1.25rem}
+h1,h2,h3,.eyebrow,.button,.nav-cta{
+  text-wrap:balance;
+}
+p,.hero-copy,.category p,.tool-card p{
+  text-wrap:pretty;
+}
+.hero-copy{
+  max-width:42rem;
+}
+.hero-actions{
+  row-gap:12px;
+}
+.hero-actions .button,
+.hero-actions .text-link{
+  min-height:44px;
+}
+.mascot-card img{
+  display:block;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:3px solid var(--pt-focus);
+  outline-offset:3px;
+  box-shadow:0 0 0 4px var(--pt-focus-ring);
+}
+:where(section[id],main[id]){
+  scroll-margin-top:1.25rem;
+}
+@media(max-width:620px){
+  .hero-actions{
+    align-items:stretch;
+    gap:12px;
+  }
+  .hero-actions .button{
+    justify-content:center;
+    width:100%;
+  }
+  .hero-actions .text-link{
+    align-self:flex-start;
+  }
+  .mascot-card{
+    min-width:0;
+  }
+  .mascot-card p,
+  .mascot-card h3{
+    overflow-wrap:anywhere;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
