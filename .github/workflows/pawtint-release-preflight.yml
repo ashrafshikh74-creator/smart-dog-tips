@@ -3,6 +3,7 @@ name: PawTint release preflight
 on:
   push:
     branches:
+      - main
       - pawtint-phase1-affiliate-id
   pull_request:
     branches:
